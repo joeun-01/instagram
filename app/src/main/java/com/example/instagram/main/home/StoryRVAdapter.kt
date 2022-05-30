@@ -3,9 +3,10 @@ package com.example.instagram.main.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.instagram.data.User
 import com.example.instagram.databinding.ItemHomeStoryBinding
 
-class StoryRVAdapter(private var profile: ArrayList<Int>) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
+class StoryRVAdapter(private var profile: ArrayList<User>) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
 
     interface MyItemClickListener{
         // click function
@@ -32,11 +33,11 @@ class StoryRVAdapter(private var profile: ArrayList<Int>) : RecyclerView.Adapter
     // data set의 크기를 알려줌
     override fun getItemCount(): Int = profile.size
 
-    inner class ViewHolder(val binding : ItemHomeStoryBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding : ItemHomeStoryBinding) : RecyclerView.ViewHolder(binding.root){
         // ItemView를 잡아주는 ViewHolder
-        fun bind(profile: Int){
-            binding.homeStoryPictureIv.setImageResource(profile)
-            binding.homeStoryNameTv.text = "jjy_joeun"
+        fun bind(profile: User){
+            binding.homeStoryPictureIv.setImageResource(profile.picture)
+            binding.homeStoryNameTv.text = profile.ID
         }
     }
 }
