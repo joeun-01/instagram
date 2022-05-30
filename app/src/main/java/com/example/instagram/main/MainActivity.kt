@@ -1,8 +1,10 @@
-package com.example.instagram
+package com.example.instagram.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.instagram.*
 import com.example.instagram.databinding.ActivityMainBinding
+import com.example.instagram.main.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
