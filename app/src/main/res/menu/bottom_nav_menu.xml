@@ -5,7 +5,7 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/home_icon"
         app:showAsAction="always"
         android:enabled="true"
         android:title=""
