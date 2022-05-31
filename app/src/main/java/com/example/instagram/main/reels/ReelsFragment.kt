@@ -1,15 +1,15 @@
-package com.example.instagram
+package com.example.instagram.main.reels
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.instagram.databinding.FragmentSearchBinding
+import com.example.instagram.databinding.FragmentReelsBinding
 
-class SearchFragment : Fragment() {
+class ReelsFragment : Fragment() {
 
-    private lateinit var binding : FragmentSearchBinding
+    private lateinit var binding : FragmentReelsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        binding = FragmentReelsBinding.inflate(inflater, container, false)
 
         return binding.root
     }
