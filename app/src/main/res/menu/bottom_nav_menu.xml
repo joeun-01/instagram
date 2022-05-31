@@ -25,7 +25,7 @@
 
     <item
         android:id="@+id/shopFragment"
-        android:icon="@drawable/ic_shop"
+        android:icon="@drawable/shop_icon"
         app:showAsAction="always"
         android:title="" />
 

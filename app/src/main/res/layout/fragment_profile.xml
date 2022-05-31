@@ -243,13 +243,17 @@
                 app:tabIndicatorFullWidth="true"
                 app:tabIndicatorColor="@color/black"
                 app:tabRippleColor="#00ff0000"
+                app:tabIndicatorHeight="1dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/profile_edit_tv"/>
 
             <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/profile_post_vp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@+id/profile_post_tb"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

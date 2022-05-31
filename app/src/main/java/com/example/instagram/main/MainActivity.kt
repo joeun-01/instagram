@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.example.instagram.*
 import com.example.instagram.databinding.ActivityMainBinding
 import com.example.instagram.main.home.HomeFragment
+import com.example.instagram.main.profile.GridPostFragment
+import com.example.instagram.main.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,14 +33,14 @@ class MainActivity : AppCompatActivity() {
             item ->
             when (item.itemId) {
 
-                R.id.homeFragment -> {  // home 화면 실행
+                R.id.homeFragment -> {  // 홈 화면 실행
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, HomeFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
 
-                R.id.searchFragment -> {
+                R.id.searchFragment -> {  // 검색 화면 실행
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, SearchFragment())
                         .commitAllowingStateLoss()
