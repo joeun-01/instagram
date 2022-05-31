@@ -3,16 +3,20 @@ package com.example.instagram.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.instagram.*
+import com.example.instagram.data.Post
 import com.example.instagram.databinding.ActivityMainBinding
 import com.example.instagram.main.home.HomeFragment
 import com.example.instagram.main.profile.ProfileFragment
 import com.example.instagram.main.reels.ReelsFragment
 import com.example.instagram.main.search.SearchFragment
 import com.example.instagram.main.shop.ShopFragment
+import com.example.instagram.room.InstagramDatabase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
+
+    private lateinit var instaDB : InstagramDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +24,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        instaDB = InstagramDatabase.getInstance(this)!!
+
 
         initBottomNavigation()
 
+        insertPostDummyData()
     }
 
     private fun initBottomNavigation(){
@@ -72,5 +79,20 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
+    }
+
+    private fun insertPostDummyData() {
+
+        instaDB.postDao().insert(
+            Post("bori", R.drawable.profile_ex1, "즐거운 하루", false)
+        )
+
+        instaDB.postDao().insert(
+            Post("ally", R.drawable.profile_ex2, "즐거운 하루", false)
+        )
+
+        instaDB.postDao().insert(
+            Post("dobby", R.drawable.profile_ex3, "즐거운 하루", false)
+        )
     }
 }
