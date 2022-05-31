@@ -5,8 +5,10 @@ import android.os.Bundle
 import com.example.instagram.*
 import com.example.instagram.databinding.ActivityMainBinding
 import com.example.instagram.main.home.HomeFragment
-import com.example.instagram.main.profile.GridPostFragment
 import com.example.instagram.main.profile.ProfileFragment
+import com.example.instagram.main.reels.ReelsFragment
+import com.example.instagram.main.search.SearchFragment
+import com.example.instagram.main.shop.ShopFragment
 
 class MainActivity : AppCompatActivity() {
 
