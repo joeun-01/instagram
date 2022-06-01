@@ -20,7 +20,7 @@
         android:id="@+id/main_bnv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemIconSize="25dp"
+        app:itemIconSize="30dp"
         app:itemIconTint="@color/black"
         app:labelVisibilityMode="labeled"
         app:itemRippleColor="@color/white"

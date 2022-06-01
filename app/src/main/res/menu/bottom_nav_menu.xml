@@ -13,13 +13,13 @@
 
     <item
         android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/search_icon"
         app:showAsAction="always"
         android:title="" />
 
     <item
         android:id="@+id/reelsFragment"
-        android:icon="@drawable/ic_reels"
+        android:icon="@drawable/reels_icon"
         app:showAsAction="always"
         android:title="" />
 
