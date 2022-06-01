@@ -34,9 +34,9 @@ class HomeFragment : Fragment() {
 
         // 예시 용 더미데이터
         profile.apply {
-            add(User("jjy_joeun", "정조은", R.drawable.profile_ex1))
-            add(User("second", "몰라", R.drawable.profile_ex2))
-            add(User("third", "음음", R.drawable.profile_ex3))
+            add(User("jjy_joeun", "aa", R.drawable.profile_ex1, "aa"))
+            add(User("second", "aa", R.drawable.profile_ex2, "aa"))
+            add(User("third", "aa", R.drawable.profile_ex3, "Aa"))
         }
 
         return binding.root

@@ -1,9 +1,6 @@
 package com.example.instagram.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
+import androidx.room.*
 import com.example.instagram.data.User
 
 @Dao
@@ -16,4 +13,10 @@ interface UserDao {
 
     @Update
     fun update(user: User)
+
+    @Query("SELECT * FROM UserTable")
+    fun getUsers() : List<User>
+
+    @Query("SELECT password FROM UserTable WHERE ID = :ID")
+    fun login(ID : String) : String?
 }
