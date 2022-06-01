@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/ic_launcher_instagram.xml" value="0.1205" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/login_btn_background.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/password_show_icon.xml" value="0.1775" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/reels_icon.xml" value="0.1775" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/search_icon.xml" value="0.1775" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/shop_icon.xml" value="0.171" />
@@ -11,6 +14,9 @@
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/edittext_background.xml" value="0.1775" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/home_icon.xml" value="0.171" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_home.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1205" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1205" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_list.xml" value="0.1775" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_reels.xml" value="0.1" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_search.xml" value="0.171" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_share.xml" value="0.1305" />
@@ -25,6 +31,7 @@
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/viewpager_selected_indicator.xml" value="0.171" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/activity_login.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/activity_splash.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_profile_post_grid.xml" value="0.24947916666666667" />
@@ -34,7 +41,10 @@
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_home_post.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_home_story.xml" value="0.264" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_profile_post.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/splash.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24074074074074073" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1775" />
       </map>
     </option>
   </component>
