@@ -33,6 +33,30 @@ class ProfileFragment : Fragment() {
             tab.setIcon(this.tab[position])
         }.attach()
 
+        binding.profileHighlightDownIv.setOnClickListener {
+            setTextStatus(true)
+        }
+        binding.profileHighlightUpIv.setOnClickListener {
+            setTextStatus(false)
+        }
+
         return binding.root
+    }
+
+    fun setTextStatus(isVisible: Boolean){
+        if (isVisible){
+            binding.profileHighlightTextTv.visibility = View.VISIBLE
+            binding.profileHighlightDownIv.visibility = View.GONE
+            binding.profileHighlightUpIv.visibility = View.VISIBLE
+            binding.profileHighlightNewIv.visibility = View.VISIBLE
+            binding.profileHighlightNewTv.visibility = View.VISIBLE
+        }
+        else{
+            binding.profileHighlightTextTv.visibility = View.GONE
+            binding.profileHighlightDownIv.visibility = View.VISIBLE
+            binding.profileHighlightUpIv.visibility = View.GONE
+            binding.profileHighlightNewIv.visibility = View.GONE
+            binding.profileHighlightNewTv.visibility = View.GONE
+        }
     }
 }

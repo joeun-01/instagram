@@ -43,8 +43,11 @@
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_profile_post.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/splash.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24074074074074073" />
-        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1775" />
-        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/ic_arrow_up.xml" value="0.1575" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_grid_post.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22870483398437502" />
       </map>
     </option>
   </component>
