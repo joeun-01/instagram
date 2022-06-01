@@ -3,22 +3,51 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/ic_launcher_instagram.xml" value="0.1205" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/login_btn_background.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/password_show_icon.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/reels_icon.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/search_icon.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/shop_icon.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/add_story.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/dd.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/edittext_background.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/home_icon.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_home.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1205" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1205" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_list.xml" value="0.1775" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_reels.xml" value="0.1" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_search.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_share.xml" value="0.1305" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_shop.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/ic_shop_selected.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/profile_circle_background.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/shop_icon.xml" value="0.171" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/story_background.xml" value="0.1715" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/stroke_gray.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/viewpager_indicator.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/viewpager_round_indicator.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable/viewpager_selected_indicator.xml" value="0.171" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/activity_login.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_home.xml" value="0.4" />
-        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_profile.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/activity_splash.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_profile_post_grid.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_reels.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_search.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/fragment_shop.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_home_post.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_home_story.xml" value="0.264" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_profile_post.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/splash.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24074074074074073" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_main.xml" value="0.11271529888551166" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_home.xml" value="0.10562310030395136" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_profile.xml" value="0.20516304347826086" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_reels.xml" value="0.11271529888551166" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_search.xml" value="0.11271529888551166" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_shop.xml" value="0.11271529888551166" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_home_story.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/ic_arrow_up.xml" value="0.1575" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_grid_post.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22870483398437502" />
       </map>
     </option>
   </component>

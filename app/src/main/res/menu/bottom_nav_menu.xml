@@ -5,7 +5,7 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/home_icon"
         app:showAsAction="always"
         android:enabled="true"
         android:title=""
@@ -13,19 +13,19 @@
 
     <item
         android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/search_icon"
         app:showAsAction="always"
         android:title="" />
 
     <item
         android:id="@+id/reelsFragment"
-        android:icon="@drawable/ic_reels"
+        android:icon="@drawable/reels_icon"
         app:showAsAction="always"
         android:title="" />
 
     <item
         android:id="@+id/shopFragment"
-        android:icon="@drawable/ic_shop"
+        android:icon="@drawable/shop_icon"
         app:showAsAction="always"
         android:title="" />
 
