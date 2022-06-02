@@ -1,12 +1,17 @@
 package com.example.instagram.main.home
 
+import android.content.Context
+import android.content.pm.InstallSourceInfo
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ItemHomeStoryBinding
+import com.example.instagram.room.InstagramDatabase
 
-class StoryRVAdapter(private var profile: ArrayList<User>) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
+class StoryRVAdapter(context : Context) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
+    private var instaDB = InstagramDatabase.getInstance(context)!!
+    private var profile = instaDB.userDao().getUsers()
 
     interface MyItemClickListener{
         // click function

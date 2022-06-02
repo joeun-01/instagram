@@ -1,19 +1,18 @@
 package com.example.instagram.main.home
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
 import com.example.instagram.data.Post
-import com.example.instagram.data.User
-import com.example.instagram.databinding.ItemHomePostBinding
-import com.example.instagram.databinding.ItemHomeStoryBinding
+import com.example.instagram.databinding.ItemPostBinding
 import com.example.instagram.room.InstagramDatabase
 
-class PostRVAdapter(context : Context, private var post: ArrayList<Post>) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
-
+class PostRVAdapter(context : Context) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
     private val instaDB = InstagramDatabase.getInstance(context)!!
+    private val post = instaDB.postDao().getPosts()
 
     interface MyItemClickListener{
 
@@ -24,12 +23,12 @@ class PostRVAdapter(context : Context, private var post: ArrayList<Post>) : Recy
         mItemClickListener = itemClickListener
     }
 
-    private fun updateLike(isLike: Boolean, userID :String) {
-        instaDB.postDao().updateLikeByID(!isLike, userID)
+    private fun updateLike(isLike: Boolean, userIdx :Int) {
+        instaDB.postDao().updateLikeByID(!isLike, userIdx)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding : ItemHomePostBinding = ItemHomePostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding : ItemPostBinding = ItemPostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
 
         return ViewHolder(binding)  // ViewHolder를 생성
     }
@@ -40,8 +39,8 @@ class PostRVAdapter(context : Context, private var post: ArrayList<Post>) : Recy
 
         // click listener
         holder.binding.itemHomePostLikeIv.setOnClickListener {
-            var isLike = instaDB.postDao().getLikeByID(post[position].userID)
-            updateLike(isLike, post[position].userID)
+            var isLike = instaDB.postDao().getLikeByID(post[position].userIdx)
+            updateLike(isLike, post[position].userIdx)
 
             if(isLike) {
                 holder.binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_heart)
@@ -55,21 +54,25 @@ class PostRVAdapter(context : Context, private var post: ArrayList<Post>) : Recy
     // data set의 크기를 알려줌
     override fun getItemCount(): Int = post.size
 
-    inner class ViewHolder(val binding : ItemHomePostBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding : ItemPostBinding) : RecyclerView.ViewHolder(binding.root){
         // ItemView를 잡아주는 ViewHolder
         fun bind(post: Post){
-            binding.itemHomePostIdTv.text = post.userID
-            binding.itemHomePostProfileIv.setImageResource(post.picture)
+            val user = instaDB.userDao().getUser(post.userIdx)
+
+            Log.d("유저 정보", instaDB.userDao().getUsers().toString())
+
+            binding.itemHomePostIdTv.text = user.ID
+            binding.itemHomePostProfileIv.setImageResource(user.picture)
 
             binding.itemHomePostIv.setImageResource(post.picture)
-            binding.itemHomeCommentTv.text = post.context
-
-            if(instaDB.postDao().getLikeByID(post.userID)) {
-                binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_heart)
-            }
-            else {
-                binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_filled_heart)
-            }
+            binding.itemHomePostCommentTv.text = post.context
+//
+//            if(instaDB.postDao().getLikeByID(post.userIdx)) {
+//                binding.itemHomePostLikeIv.userIdx(R.drawable.ic_heart)
+//            }
+//            else {
+//                binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+//            }
         }
     }
 }

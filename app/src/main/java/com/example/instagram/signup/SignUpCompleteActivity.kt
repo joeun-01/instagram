@@ -29,6 +29,8 @@ class SignUpCompleteActivity : AppCompatActivity() {
             var userJson = userSP.getString("userInfo", "")
 
             val user = gson.fromJson(userJson, User::class.java)
+
+            user.userIdx = userDB.userDao().getUsers().size + 1
             userDB.userDao().insert(user)
 
             startActivity(Intent(this, LoginActivity::class.java))

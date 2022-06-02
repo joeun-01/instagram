@@ -14,7 +14,8 @@ class SignUpIDActivity : AppCompatActivity() {
     lateinit var binding : ActivitySignupIdBinding
 
     private var gson : Gson = Gson()
-    private var user = User("", "", R.drawable.ic_filled_heart, "")
+
+    private var user = User(0, "", "", R.drawable.basic_profile, "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
