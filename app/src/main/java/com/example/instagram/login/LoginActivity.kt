@@ -13,6 +13,7 @@ import com.example.instagram.signup.SignUpIDActivity
 class LoginActivity: AppCompatActivity() {
 
     lateinit var binding : ActivityLoginBinding
+
     lateinit var userDB : InstagramDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +51,13 @@ class LoginActivity: AppCompatActivity() {
         Log.d("저장한 정보", userDB.userDao().login(id).toString())
 
         if(password == userDB.userDao().login(id)) {
+            // 자동로그인, 유저 정보를 불러오기 위한 유저 정보 저장
+            val userSP = getSharedPreferences("user", MODE_PRIVATE)
+            val userEditor = userSP.edit()
+
+            userEditor.putInt("userIdx", userDB.userDao().getUserIdx(id))
+            userEditor.apply()
+
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
