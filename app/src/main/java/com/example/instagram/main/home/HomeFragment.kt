@@ -19,9 +19,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var instaDB : InstagramDatabase
 
-    private var profile = ArrayList<User>()
-    private var post = ArrayList<Post>()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,13 +28,6 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         instaDB = InstagramDatabase.getInstance(requireContext())!!
-
-        // 예시 용 더미데이터
-        profile.apply {
-            add(User("jjy_joeun", "aa", R.drawable.profile_ex1, "aa"))
-            add(User("second", "aa", R.drawable.profile_ex2, "aa"))
-            add(User("third", "aa", R.drawable.profile_ex3, "Aa"))
-        }
 
         return binding.root
     }
@@ -49,19 +39,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerView() {  // RecycleView 연결
-        val storyRVAdapter = StoryRVAdapter(profile)
+        val storyRVAdapter = StoryRVAdapter(requireContext())
         binding.homeFeedStoryRv.adapter = storyRVAdapter
         binding.homeFeedStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-
-        post.addAll(instaDB.postDao().getPosts())
-
-        val postRVAdapter = PostRVAdapter(requireContext(), post)
+        val postRVAdapter = PostRVAdapter(requireContext())
         binding.homeFeedPostRv.adapter = postRVAdapter
         binding.homeFeedPostRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-        Log.d("profile 확인", profile.toString())
-
-        Log.d("post 확인", post.toString())
     }
 }

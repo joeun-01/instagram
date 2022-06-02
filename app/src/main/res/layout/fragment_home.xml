@@ -94,7 +94,7 @@
                 android:id="@+id/home_feed_post_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_home_post"
+                tools:listitem="@layout/item_post"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_marginTop="20dp"
