@@ -9,7 +9,7 @@ data class Post(
     var userID: String,  // 유저 아이디
     var picture : Int,  // 게시물 사진, 일단 하나로 설정ㅎㅅㅎ
     var context : String,  // 게시물 내용
-    var liked : Boolean  // 좋아요 눌렀는지 여부
+    var liked : Boolean, // 좋아요 눌렀는지 여부
 ){
     @PrimaryKey(autoGenerate = true) var postIdx : Int = 0
 }

@@ -25,9 +25,20 @@ class SplashActivity : AppCompatActivity() {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
 
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            autoLogin()  // 3초간 splash 화면을 띄운 후 다음으로 넘어감
 
         }, 3000)
+    }
+
+    private fun autoLogin() {  // 자동로그인 기능
+        val userSP = getSharedPreferences("user", MODE_PRIVATE)
+        val userIdx = userSP.getInt("userIdx", 0)
+
+        if(userIdx == 0) {  // userIdx가 없으면 로그인이 안된 상태 -> 로그인 창으로
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+        else {  // userIdx가 있으면 로그인이 된 상태 -> 홈 화면으로
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 }

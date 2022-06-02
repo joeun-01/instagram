@@ -12,5 +12,5 @@ data class User(
     // 팔로워랑 팔로잉을 어떻게 할지가 굉장히 고민이네요 ...........
 )
 {
-    @PrimaryKey(autoGenerate = true) var userIdx : Int = 0
+    @PrimaryKey(autoGenerate = true) var userIdx : Int = 1  // 0은 로그인에 사용할 거기 때문에 1부터
 }
