@@ -1,5 +1,7 @@
 package com.example.instagram.main.home
 
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -46,5 +48,21 @@ class HomeFragment : Fragment() {
         val postRVAdapter = PostRVAdapter(requireContext())
         binding.homeFeedPostRv.adapter = postRVAdapter
         binding.homeFeedPostRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        postRVAdapter.setMyItemClickListener(object : PostRVAdapter.MyItemClickListener {
+            override fun showComment(postIdx : Int) {
+                showAllComment(postIdx)
+            }
+        })
+    }
+
+    private fun showAllComment(postIdx : Int) {
+        val postSP = requireActivity().getSharedPreferences("post", MODE_PRIVATE)
+        val postEditor = postSP.edit()
+
+        postEditor.putInt("postIdx", postIdx)
+        postEditor.apply()
+
+        startActivity(Intent(requireContext(), CommentActivity::class.java))
     }
 }

@@ -24,6 +24,7 @@
         <activity android:name=".signup.SignUpIDActivity"/>
         <activity android:name=".signup.SignUpPasswordActivity"/>
         <activity android:name=".signup.SignUpCompleteActivity"/>
+        <activity android:name=".main.home.CommentActivity"/>
     </application>
 
 </manifest>
