@@ -49,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="좋아요 1개"
+        android:visibility="gone"
         android:layout_marginStart="12dp"
         app:layout_constraintStart_toEndOf="@id/item_comment_time_tv"
         app:layout_constraintTop_toTopOf="@id/item_comment_time_tv"
