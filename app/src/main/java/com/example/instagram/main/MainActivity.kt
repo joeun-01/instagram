@@ -3,6 +3,7 @@ package com.example.instagram.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.R
+import com.example.instagram.data.Comment
 import com.example.instagram.data.Post
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ActivityMainBinding
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         insertPostDummyData()
         insertUserDummyData()
+        insertCommentDummyData()
 
         initBottomNavigation()
 
@@ -91,15 +93,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.postDao().insert(
-            Post(1, R.drawable.profile_ex1, "즐거운 하루", false)
+            Post(1, R.drawable.profile_ex1, "즐거운 하루", false, "")
         )
 
         instaDB.postDao().insert(
-            Post(2, R.drawable.profile_ex2, "즐거운 하루", false)
+            Post(2, R.drawable.profile_ex2, "즐거운 하루", false, "")
         )
 
         instaDB.postDao().insert(
-            Post(3, R.drawable.profile_ex3, "즐거운 하루", false)
+            Post(3, R.drawable.profile_ex3, "즐거운 하루", false, "")
         )
     }
 
@@ -119,6 +121,25 @@ class MainActivity : AppCompatActivity() {
 
         instaDB.userDao().insert(
             User(instaDB.userDao().getUsers().size + 1, "example3", "password3", R.drawable.profile_ex3, "")
+        )
+    }
+
+    private fun insertCommentDummyData() {
+
+        if(instaDB.CommentDao().getComments().size > 1) {
+            return
+        }
+
+        instaDB.CommentDao().insert(
+            Comment(1, 1, "댓글 예시", "", 0, false)
+        )
+
+        instaDB.CommentDao().insert(
+            Comment(2, 2, "댓글 예시", "", 0, false)
+        )
+
+        instaDB.CommentDao().insert(
+            Comment(3, 3, "댓글 예시", "", 0, false)
         )
     }
 }

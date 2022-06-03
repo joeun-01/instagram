@@ -1,20 +1,19 @@
 package com.example.instagram.main.home
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.InstallSourceInfo
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.data.Comment
-import com.example.instagram.data.User
 import com.example.instagram.databinding.ItemCommentBinding
-import com.example.instagram.databinding.ItemHomeStoryBinding
 import com.example.instagram.room.InstagramDatabase
 
-class CommentRVAdapter(context : Context) : RecyclerView.Adapter<CommentRVAdapter.ViewHolder>() {
+class CommentRVAdapter(context : Context, postIdx : Int) : RecyclerView.Adapter<CommentRVAdapter.ViewHolder>() {
     private var instaDB = InstagramDatabase.getInstance(context)!!
     private var profile = instaDB.userDao().getUsers()
-    private var comment = instaDB.commentDao().getComments()
+    private var comment = instaDB.CommentDao().getPostComments(postIdx)
 
     interface MyItemClickListener{
         // click function
@@ -43,8 +42,15 @@ class CommentRVAdapter(context : Context) : RecyclerView.Adapter<CommentRVAdapte
 
     inner class ViewHolder(private val binding : ItemCommentBinding) : RecyclerView.ViewHolder(binding.root){
         // ItemView를 잡아주는 ViewHolder
+        @SuppressLint("SetTextI18n")
         fun bind(comment: Comment){
-            binding.itemCommentTextTv.text = comment.comment
+            binding.itemCommentProfileIv.setImageResource(instaDB.userDao().getUserPicture(comment.userIdx))
+
+            binding.itemCommentTextTv.text = instaDB.userDao().getUserID(comment.userIdx) + " " + comment.comment
+
+            if(comment.like > 0) {  // 좋아요가 하나라도 되어있으면 좋아요 개수 표시
+                binding.itemCommentLikeTv.visibility = View.VISIBLE
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ import com.example.instagram.data.User
 abstract class InstagramDatabase : RoomDatabase() {
     abstract fun userDao() : UserDao
     abstract fun postDao() : PostDao
-    abstract fun commentDao() : CommentDao
+    abstract fun CommentDao() : CommentDao
 
     companion object {
         private var instance : InstagramDatabase? = null

@@ -17,4 +17,7 @@ interface CommentDao {
 
     @Query("SELECT * FROM CommentTable")
     fun getComments() : List<Comment>
+
+    @Query("SELECT * FROM CommentTable WHERE postIdx = :postIdx")
+    fun getPostComments(postIdx : Int) : List<Comment>
 }
