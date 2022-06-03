@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
 import com.example.instagram.data.Post
@@ -15,7 +16,7 @@ class PostRVAdapter(context : Context) : RecyclerView.Adapter<PostRVAdapter.View
     private val post = instaDB.postDao().getPosts()
 
     interface MyItemClickListener{
-
+        fun showComment(postIdx : Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -48,6 +49,10 @@ class PostRVAdapter(context : Context) : RecyclerView.Adapter<PostRVAdapter.View
             else {
                 holder.binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_filled_heart)
             }
+        }
+
+        holder.binding.itemHomePostShowAllCommentTv.setOnClickListener {
+            mItemClickListener.showComment(post[position].postIdx)
         }
     }
 
