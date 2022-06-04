@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/list_settings_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_setting"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         android:text="설정"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="15dp"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toEndOf="@id/list_settings_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_iv"/>
@@ -50,8 +50,8 @@
 
     <ImageView
         android:id="@+id/list_youractivity_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_youractivity"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:text="내 활동"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@id/list_youractivity_iv"
@@ -82,8 +82,8 @@
 
     <ImageView
         android:id="@+id/list_archive_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_archive"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:text="보관"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@id/list_archive_iv"
@@ -114,8 +114,8 @@
 
     <ImageView
         android:id="@+id/list_qr_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_qr"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +128,7 @@
         android:layout_height="wrap_content"
         android:text="QR 코드"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/list_qr_iv"
@@ -146,8 +146,8 @@
 
     <ImageView
         android:id="@+id/list_saved_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_saved"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:text="저장됨"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/list_saved_iv"
@@ -178,8 +178,8 @@
 
     <ImageView
         android:id="@+id/list_closefriend_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_closefriend"
         app:layout_constraintStart_toStartOf="parent"
@@ -192,7 +192,7 @@
         android:layout_height="wrap_content"
         android:text="친한 친구"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/list_closefriend_iv"
@@ -210,8 +210,8 @@
 
     <ImageView
         android:id="@+id/list_favorite_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_favorites"
         app:layout_constraintStart_toStartOf="parent"
@@ -224,7 +224,7 @@
         android:layout_height="wrap_content"
         android:text="즐겨찾기"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/list_favorite_iv"
@@ -242,8 +242,8 @@
 
     <ImageView
         android:id="@+id/list_covid19_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_covid19"
         app:layout_constraintStart_toStartOf="parent"
@@ -256,7 +256,7 @@
         android:layout_height="wrap_content"
         android:text="코로나19 정보 센터"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@id/list_covid19_iv"
