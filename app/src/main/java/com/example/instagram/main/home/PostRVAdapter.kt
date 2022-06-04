@@ -2,6 +2,10 @@ package com.example.instagram.main.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -60,10 +64,12 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
         }
 
         holder.binding.itemPostShowAllCommentTv.setOnClickListener {
+            // 댓글 모두 보기를 누르면 댓글 창으로 넘어가도록
             mItemClickListener.showComment(post[position].postIdx)
         }
 
         holder.binding.itemPostCommentTv.setOnClickListener {
+            // 댓글을 달기 위한 bottom sheet dialog를 띄움
             mItemClickListener.writeComment(post[position].postIdx)
         }
     }
@@ -75,16 +81,28 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
         // ItemView를 잡아주는 ViewHolder
         @SuppressLint("SetTextI18n")
         fun bind(post: Post){
-            val user = instaDB.userDao().getUser(post.userIdx)
 
-            Log.d("유저 정보", instaDB.userDao().getUsers().toString())
+            // 게시물 올린 사람의 정보 연동
+            val user = instaDB.userDao().getUser(post.userIdx)
 
             binding.itemPostIdTv.text = user.ID
             binding.itemPostProfileIv.setImageResource(user.picture)
 
+            // 게시물 내용 연동
             binding.itemPostIv.setImageResource(post.picture)
-            binding.itemPostTextTv.text = post.text
 
+            val postText = user.ID + " " + post.text  // 텍스트 가져옴
+            val spannableString = SpannableString(postText)  //객체 생성
+
+            // 유저 아이디 부분만 두껍게 표시
+            val word = user.ID
+            val start = postText.indexOf(word)
+            val end = start + word.length
+
+            spannableString.setSpan(StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            binding.itemPostTextTv.text = spannableString
+
+            // 내 기준 댓글 연동
             binding.itemPostShowAllCommentTv.text = "댓글 " + comment.size + "개 모두 보기"
             binding.itemPostMyProfileIv.setImageResource(instaDB.userDao().getUserPicture(myIdx))
 //
