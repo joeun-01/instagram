@@ -6,13 +6,13 @@ import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
 import com.example.instagram.data.Comment
 import com.example.instagram.data.Post
+import com.example.instagram.data.Reply
 import com.example.instagram.databinding.ItemPostBinding
 import com.example.instagram.room.InstagramDatabase
 
@@ -21,6 +21,7 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
 
     private val post = instaDB.postDao().getPosts()
     private var comment = ArrayList<Comment>()
+    private var reply = ArrayList<Reply>()
 
     interface MyItemClickListener{
         fun showComment(postIdx : Int)
@@ -47,12 +48,15 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
         comment.clear()
         comment.addAll(instaDB.CommentDao().getPostComments(post[position].postIdx))
 
+        reply.clear()
+        reply.addAll(instaDB.CommentDao().getPostReplies(post[position].postIdx))
+
         // 해당 position에 대한 데이터를 binding
         holder.bind(post[position])
 
         // click listener
         holder.binding.itemPostLikeIv.setOnClickListener {
-            var isLike = instaDB.postDao().getLikeByID(post[position].userIdx)
+            val isLike = instaDB.postDao().getLikeByID(post[position].userIdx)
             updateLike(isLike, post[position].userIdx)
 
             if(isLike) {
@@ -103,7 +107,7 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
             binding.itemPostTextTv.text = spannableString
 
             // 내 기준 댓글 연동
-            binding.itemPostShowAllCommentTv.text = "댓글 " + comment.size + "개 모두 보기"
+            binding.itemPostShowAllCommentTv.text = "댓글 " + (comment.size + reply.size) + "개 모두 보기"
             binding.itemPostMyProfileIv.setImageResource(instaDB.userDao().getUserPicture(myIdx))
 //
 //            if(instaDB.postDao().getLikeByID(post.userIdx)) {

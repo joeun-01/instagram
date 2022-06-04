@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.R
 import com.example.instagram.data.Comment
 import com.example.instagram.data.Post
+import com.example.instagram.data.Reply
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ActivityMainBinding
 import com.example.instagram.main.home.HomeFragment
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         insertUserDummyData()
         insertPostDummyData()
         insertCommentDummyData()
+        insertReplyDummyData()
 
         initBottomNavigation()
 
@@ -143,15 +145,41 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.CommentDao().insert(
-            Comment(1, 1, "댓글 예시", "", 0, false)
+            Comment(1, 1, "댓글 예시", "", 0)
         )
 
         instaDB.CommentDao().insert(
-            Comment(2, 2, "댓글 예시", "", 0, false)
+            Comment(2, 2, "댓글 예시", "", 0)
         )
 
         instaDB.CommentDao().insert(
-            Comment(3, 3, "댓글 예시", "", 0, false)
+            Comment(3, 3, "댓글 예시", "", 0)
+        )
+    }
+
+    private fun insertReplyDummyData() {
+        if(instaDB.CommentDao().getReplies().isNotEmpty()) {
+            return
+        }
+
+        instaDB.CommentDao().insertReply(
+            Reply(5, 3, 3, "헐 대박이다", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(6, 3, 3, "진짜?", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(1, 2, 2, "와~~~", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(5, 1, 1, "에엥", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(5, 1, 1, "박박이다리", "", 0)
         )
     }
 }
