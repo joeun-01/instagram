@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Instagram</string>
+    <string name="signup_id_safe">새 계정에 사용할 사용자 이름을 선택하요. 나중에 언제든지 변경할 수 있습니다.</string>
+    <string name="signup_password_safe">비밀번호를 저장할 수 있으므로 iCloud® 기기에서 로그인 정보를 입력하지 않아도 됩니다.</string>
+    <string name="comment_title">댓글</string>
 </resources>

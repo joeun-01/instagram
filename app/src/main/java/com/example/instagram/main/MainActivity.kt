@@ -1,9 +1,11 @@
 package com.example.instagram.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.instagram.*
+import androidx.appcompat.app.AppCompatActivity
+import com.example.instagram.R
+import com.example.instagram.data.Comment
 import com.example.instagram.data.Post
+import com.example.instagram.data.User
 import com.example.instagram.databinding.ActivityMainBinding
 import com.example.instagram.main.home.HomeFragment
 import com.example.instagram.main.profile.ProfileFragment
@@ -27,9 +29,12 @@ class MainActivity : AppCompatActivity() {
         instaDB = InstagramDatabase.getInstance(this)!!
 
 
+        insertPostDummyData()
+        insertUserDummyData()
+        insertCommentDummyData()
+
         initBottomNavigation()
 
-        insertPostDummyData()
     }
 
     private fun initBottomNavigation(){
@@ -83,16 +88,58 @@ class MainActivity : AppCompatActivity() {
 
     private fun insertPostDummyData() {
 
+        if(instaDB.postDao().getPosts().isNotEmpty()) {
+            return
+        }
+
         instaDB.postDao().insert(
-            Post("bori", R.drawable.profile_ex1, "즐거운 하루", false)
+            Post(1, R.drawable.profile_ex1, "즐거운 하루", false, "")
         )
 
         instaDB.postDao().insert(
-            Post("ally", R.drawable.profile_ex2, "즐거운 하루", false)
+            Post(2, R.drawable.profile_ex2, "즐거운 하루", false, "")
         )
 
         instaDB.postDao().insert(
-            Post("dobby", R.drawable.profile_ex3, "즐거운 하루", false)
+            Post(3, R.drawable.profile_ex3, "즐거운 하루", false, "")
+        )
+    }
+
+    private fun insertUserDummyData() {
+
+        if(instaDB.userDao().getUsers().size > 1) {
+            return
+        }
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "example1", "password1", R.drawable.profile_ex1, "" )
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "example2", "password2", R.drawable.profile_ex2, "")
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "example3", "password3", R.drawable.profile_ex3, "")
+        )
+    }
+
+    private fun insertCommentDummyData() {
+
+        if(instaDB.CommentDao().getComments().size > 1) {
+            return
+        }
+
+        instaDB.CommentDao().insert(
+            Comment(1, 1, "댓글 예시", "", 0, false)
+        )
+
+        instaDB.CommentDao().insert(
+            Comment(2, 2, "댓글 예시", "", 0, false)
+        )
+
+        instaDB.CommentDao().insert(
+            Comment(3, 3, "댓글 예시", "", 0, false)
         )
     }
 }

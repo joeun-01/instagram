@@ -1,22 +1,26 @@
 package com.example.instagram.main.home
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
+import com.example.instagram.data.Comment
 import com.example.instagram.data.Post
-import com.example.instagram.data.User
-import com.example.instagram.databinding.ItemHomePostBinding
-import com.example.instagram.databinding.ItemHomeStoryBinding
+import com.example.instagram.databinding.ItemPostBinding
 import com.example.instagram.room.InstagramDatabase
 
-class PostRVAdapter(context : Context, private var post: ArrayList<Post>) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
-
+class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
     private val instaDB = InstagramDatabase.getInstance(context)!!
 
-    interface MyItemClickListener{
+    private val post = instaDB.postDao().getPosts()
+    private var comment = ArrayList<Comment>()
 
+    interface MyItemClickListener{
+        fun showComment(postIdx : Int)
+        fun writeComment(postIdx : Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -24,52 +28,72 @@ class PostRVAdapter(context : Context, private var post: ArrayList<Post>) : Recy
         mItemClickListener = itemClickListener
     }
 
-    private fun updateLike(isLike: Boolean, userID :String) {
-        instaDB.postDao().updateLikeByID(!isLike, userID)
+    private fun updateLike(isLike: Boolean, userIdx :Int) {
+        instaDB.postDao().updateLikeByID(!isLike, userIdx)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding : ItemHomePostBinding = ItemHomePostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding : ItemPostBinding = ItemPostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
 
         return ViewHolder(binding)  // ViewHolder를 생성
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // 게시물에 있는 댓글 불러오기
+        comment.clear()
+        comment.addAll(instaDB.CommentDao().getPostComments(post[position].postIdx))
+
         // 해당 position에 대한 데이터를 binding
         holder.bind(post[position])
 
         // click listener
-        holder.binding.itemHomePostLikeIv.setOnClickListener {
-            var isLike = instaDB.postDao().getLikeByID(post[position].userID)
-            updateLike(isLike, post[position].userID)
+        holder.binding.itemPostLikeIv.setOnClickListener {
+            var isLike = instaDB.postDao().getLikeByID(post[position].userIdx)
+            updateLike(isLike, post[position].userIdx)
 
             if(isLike) {
-                holder.binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_heart)
+                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
             }
             else {
-                holder.binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
             }
+        }
+
+        holder.binding.itemPostShowAllCommentTv.setOnClickListener {
+            mItemClickListener.showComment(post[position].postIdx)
+        }
+
+        holder.binding.itemPostCommentTv.setOnClickListener {
+            mItemClickListener.writeComment(post[position].postIdx)
         }
     }
 
     // data set의 크기를 알려줌
     override fun getItemCount(): Int = post.size
 
-    inner class ViewHolder(val binding : ItemHomePostBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding : ItemPostBinding) : RecyclerView.ViewHolder(binding.root){
         // ItemView를 잡아주는 ViewHolder
+        @SuppressLint("SetTextI18n")
         fun bind(post: Post){
-            binding.itemHomePostIdTv.text = post.userID
-            binding.itemHomePostProfileIv.setImageResource(post.picture)
+            val user = instaDB.userDao().getUser(post.userIdx)
 
-            binding.itemHomePostIv.setImageResource(post.picture)
-            binding.itemHomeCommentTv.text = post.context
+            Log.d("유저 정보", instaDB.userDao().getUsers().toString())
 
-            if(instaDB.postDao().getLikeByID(post.userID)) {
-                binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_heart)
-            }
-            else {
-                binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_filled_heart)
-            }
+            binding.itemPostIdTv.text = user.ID
+            binding.itemPostProfileIv.setImageResource(user.picture)
+
+            binding.itemPostIv.setImageResource(post.picture)
+            binding.itemPostTextTv.text = post.text
+
+            binding.itemPostShowAllCommentTv.text = "댓글 " + comment.size + "개 모두 보기"
+            binding.itemPostMyProfileIv.setImageResource(instaDB.userDao().getUserPicture(myIdx))
+//
+//            if(instaDB.postDao().getLikeByID(post.userIdx)) {
+//                binding.itemHomePostLikeIv.userIdx(R.drawable.ic_heart)
+//            }
+//            else {
+//                binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+//            }
         }
     }
 }

@@ -37,7 +37,7 @@ class GridPostRVAdapter (private var post: ArrayList<Post>) : RecyclerView.Adapt
         // ItemView를 잡아주는 ViewHolder
         fun bind(post: Post){
             binding.homeStoryPictureIv.setImageResource(post.picture)
-            binding.homeStoryNameTv.text = post.context
+            binding.homeStoryNameTv.text = post.text
         }
     }
 }

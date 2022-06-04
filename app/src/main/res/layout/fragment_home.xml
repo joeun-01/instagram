@@ -29,7 +29,7 @@
             android:id="@+id/home_top_add_iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/ic_profile_add"
             android:padding="10dp"
             app:layout_constraintEnd_toStartOf="@id/home_top_heart_iv"
             app:layout_constraintTop_toTopOf="parent"
@@ -58,7 +58,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/home_feed_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -94,7 +94,7 @@
                 android:id="@+id/home_feed_post_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_home_post"
+                tools:listitem="@layout/item_post"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_marginTop="20dp"
@@ -106,6 +106,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
