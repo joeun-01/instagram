@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentProfileBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : Fragment() {
@@ -40,6 +42,30 @@ class ProfileFragment : Fragment() {
             setTextStatus(false)
         }
 
+
+
+        val dialogView = layoutInflater.inflate(R.layout.fragment_list, null)
+        val dialog = BottomSheetDialog(requireContext())
+
+        dialog.setContentView(dialogView)
+        dialog.setCanceledOnTouchOutside(false)
+
+        binding.profileListIv.setOnClickListener {
+            dialog.show()
+        }
+//
+//        val delete = dialogView.findViewById<LinearLayout>(R.id.bottomDialog_delete)  // dialog custom 삭제 화면에 있는 종료 버튼
+//
+//        dialog.setOnDismissListener {
+//        }
+//
+//        delete.setOnClickListener {
+//            // dialog를 종료하면서 실행할 것들
+//
+//            dialog.dismiss()  // dialog 종료
+//        }
+
+
         return binding.root
     }
 
@@ -59,4 +85,6 @@ class ProfileFragment : Fragment() {
             binding.profileHighlightNewTv.visibility = View.GONE
         }
     }
+
+
 }
