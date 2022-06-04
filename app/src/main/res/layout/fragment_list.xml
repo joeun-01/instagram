@@ -16,14 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
 
-<!--    <ImageView-->
-<!--        android:id="@+id/list_settings_iv"-->
-<!--        android:layout_width="10dp"-->
-<!--        android:layout_height="10dp"-->
-<!--        android:src=""-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@id/list_iv"/>-->
+    <ImageView
+        android:id="@+id/list_settings_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_setting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_setting_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_setting_tv"/>
     
     <TextView
         android:id="@+id/list_setting_tv"
@@ -34,7 +35,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/list_settings_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_iv"/>
     
     <View
@@ -47,6 +48,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_setting_tv"/>
 
+    <ImageView
+        android:id="@+id/list_youractivity_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_youractivity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_youractivity_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_youractivity_tv"/>
+
     <TextView
         android:id="@+id/list_youractivity_tv"
         android:layout_width="wrap_content"
@@ -56,7 +67,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/list_youractivity_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_setting_under_view"/>
 
     <View
@@ -69,6 +80,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_youractivity_tv"/>
 
+    <ImageView
+        android:id="@+id/list_archive_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_archive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_archive_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_archive_tv"/>
+
     <TextView
         android:id="@+id/list_archive_tv"
         android:layout_width="wrap_content"
@@ -78,7 +99,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/list_archive_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_youractivity_under_view"/>
 
     <View
@@ -91,6 +112,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_archive_tv"/>
 
+    <ImageView
+        android:id="@+id/list_qr_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_qr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_qr_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_qr_tv"/>
+
     <TextView
         android:id="@+id/list_qr_tv"
         android:layout_width="wrap_content"
@@ -100,7 +131,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_qr_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_archive_under_view"/>
 
     <View
@@ -113,6 +144,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_qr_tv"/>
 
+    <ImageView
+        android:id="@+id/list_saved_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_saved"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_saved_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_saved_tv"/>
+
     <TextView
         android:id="@+id/list_saved_tv"
         android:layout_width="wrap_content"
@@ -122,7 +163,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_saved_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_qr_under_view"/>
 
     <View
@@ -135,6 +176,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_saved_tv"/>
 
+    <ImageView
+        android:id="@+id/list_closefriend_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_closefriend"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_closefriend_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_closefriend_tv"/>
+
     <TextView
         android:id="@+id/list_closefriend_tv"
         android:layout_width="wrap_content"
@@ -144,7 +195,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_closefriend_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_saved_under_view"/>
 
     <View
@@ -157,6 +208,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_closefriend_tv"/>
 
+    <ImageView
+        android:id="@+id/list_favorite_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_favorites"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_favorite_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_favorite_tv"/>
+
     <TextView
         android:id="@+id/list_favorite_tv"
         android:layout_width="wrap_content"
@@ -166,7 +227,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_favorite_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_closefriend_under_view"/>
 
     <View
@@ -179,6 +240,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_favorite_tv"/>
 
+    <ImageView
+        android:id="@+id/list_covid19_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_covid19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/list_covid19_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/list_covid19_tv"/>
+
     <TextView
         android:id="@+id/list_covid19_tv"
         android:layout_width="wrap_content"
@@ -188,7 +259,7 @@
         android:textSize="20sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/list_covid19_iv"
         app:layout_constraintTop_toBottomOf="@+id/list_favorite_under_view"/>
 
     <View
