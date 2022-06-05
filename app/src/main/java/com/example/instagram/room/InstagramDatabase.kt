@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.instagram.data.Comment
 import com.example.instagram.data.Post
+import com.example.instagram.data.Reply
 import com.example.instagram.data.User
 
-@Database(entities = [User::class, Post::class, Comment::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, Post::class, Comment::class, Reply::class], version = 1, exportSchema = false)
 abstract class InstagramDatabase : RoomDatabase() {
     abstract fun userDao() : UserDao
     abstract fun postDao() : PostDao
