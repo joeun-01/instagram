@@ -1,5 +1,6 @@
 package com.example.instagram.signup
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ class SignUpCompleteActivity : AppCompatActivity() {
     private val gson : Gson = Gson()
     lateinit var userDB : InstagramDatabase
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,11 +26,15 @@ class SignUpCompleteActivity : AppCompatActivity() {
 
         userDB = InstagramDatabase.getInstance(this)!!
 
-        binding.signupCompleteTv.setOnClickListener {
-            val userSP = getSharedPreferences("user", MODE_PRIVATE)
-            var userJson = userSP.getString("userInfo", "")
+        // 여태까지 저장한 유저 정보 가져오기
+        val userSP = getSharedPreferences("user", MODE_PRIVATE)
+        var userJson = userSP.getString("userInfo", "")
 
-            val user = gson.fromJson(userJson, User::class.java)
+        val user = gson.fromJson(userJson, User::class.java)
+
+        binding.signupCompleteWelcomeTv.text = user.ID + "님, Instagram에\n 오신 것을 환영합니다"
+
+        binding.signupCompleteCompleteBtn.setOnClickListener {
 
             user.userIdx = userDB.userDao().getUsers().size + 1
             userDB.userDao().insert(user)

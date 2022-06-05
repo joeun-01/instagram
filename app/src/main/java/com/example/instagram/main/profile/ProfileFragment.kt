@@ -48,7 +48,8 @@ class ProfileFragment : Fragment() {
         val dialog = BottomSheetDialog(requireContext())
 
         dialog.setContentView(dialogView)
-        dialog.setCanceledOnTouchOutside(false)
+
+        // dialog 밖을 누르면 dialog가 사라지도록 코드 변경했습니다!!!!!!!!
 
         binding.profileListIv.setOnClickListener {
             dialog.show()
