@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "UserTable")
 data class User(
+    // 유저 데이터 클래스
     @PrimaryKey var userIdx : Int, // 유저 인덱스
     var ID : String,  // 인스타 아이디, 아이디로 로그인 예정
     var password : String,  // 비밀번호

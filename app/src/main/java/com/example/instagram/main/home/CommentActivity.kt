@@ -1,7 +1,11 @@
 package com.example.instagram.main.home
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.data.Post
@@ -36,10 +40,17 @@ class CommentActivity : AppCompatActivity() {
         binding.commentProfileIv.setImageResource(instaDB.userDao().getUserPicture(post.userIdx))
 
         // 게시물 글 연동
-        val id = instaDB.userDao().getUserID(post.userIdx)
-        val text = post.text
 
-        binding.commentTextTv.text = "$id $text"
+        val commentText = instaDB.userDao().getUserID(post.userIdx) + " " + post.text  // 텍스트 가져옴
+        val spannableString = SpannableString(commentText)  //객체 생성
+
+        // 유저 아이디 부분만 두껍게 표시
+        val word = instaDB.userDao().getUserID(post.userIdx)
+        val start = commentText.indexOf(word)
+        val end = start + word.length
+
+        spannableString.setSpan(StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.commentTextTv.text = spannableString
 
         val commentRVAdapter = CommentRVAdapter(this, postIdx)
         binding.commentReplyRv.adapter = commentRVAdapter

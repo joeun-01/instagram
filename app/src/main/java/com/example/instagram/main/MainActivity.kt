@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.R
 import com.example.instagram.data.Comment
 import com.example.instagram.data.Post
+import com.example.instagram.data.Reply
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ActivityMainBinding
 import com.example.instagram.main.home.HomeFragment
@@ -29,9 +30,10 @@ class MainActivity : AppCompatActivity() {
         instaDB = InstagramDatabase.getInstance(this)!!
 
 
-        insertPostDummyData()
         insertUserDummyData()
+        insertPostDummyData()
         insertCommentDummyData()
+        insertReplyDummyData()
 
         initBottomNavigation()
 
@@ -86,25 +88,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun insertPostDummyData() {
-
-        if(instaDB.postDao().getPosts().isNotEmpty()) {
-            return
-        }
-
-        instaDB.postDao().insert(
-            Post(1, R.drawable.profile_ex1, "즐거운 하루", false, "")
-        )
-
-        instaDB.postDao().insert(
-            Post(2, R.drawable.profile_ex2, "즐거운 하루", false, "")
-        )
-
-        instaDB.postDao().insert(
-            Post(3, R.drawable.profile_ex3, "즐거운 하루", false, "")
-        )
-    }
-
     private fun insertUserDummyData() {
 
         if(instaDB.userDao().getUsers().size > 1) {
@@ -112,15 +95,46 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "example1", "password1", R.drawable.profile_ex1, "" )
+            User(instaDB.userDao().getUsers().size + 1, "ddobby", "password1", R.drawable.profile_ex1, "도비" )
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "example2", "password2", R.drawable.profile_ex2, "")
+            User(instaDB.userDao().getUsers().size + 1, "ally", "password2", R.drawable.profile_ex2, "앨리")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "example3", "password3", R.drawable.profile_ex3, "")
+            User(instaDB.userDao().getUsers().size + 1, "blue", "password3", R.drawable.profile_ex3, "블루")
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "luna", "password4", R.drawable.profile_ex1, "루나" )
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "harry", "password5", R.drawable.profile_ex2, "해리")
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "cocoa", "password6", R.drawable.profile_ex3, "코코아")
+        )
+    }
+
+    private fun insertPostDummyData() {
+
+        if(instaDB.postDao().getPosts().isNotEmpty()) {
+            return
+        }
+
+        instaDB.postDao().insert(
+            Post(2, R.drawable.profile_ex1, "얼음 깨기 너무 재밌었다!", false, "")
+        )
+
+        instaDB.postDao().insert(
+            Post(5, R.drawable.profile_ex2, "한강 최고ㅎㅎ", false, "")
+        )
+
+        instaDB.postDao().insert(
+            Post(1, R.drawable.profile_ex3, "차가 마시고 싶은 날...", false, "")
         )
     }
 
@@ -131,15 +145,41 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.CommentDao().insert(
-            Comment(1, 1, "댓글 예시", "", 0, false)
+            Comment(1, 1, "댓글 예시", "", 0)
         )
 
         instaDB.CommentDao().insert(
-            Comment(2, 2, "댓글 예시", "", 0, false)
+            Comment(2, 2, "댓글 예시", "", 0)
         )
 
         instaDB.CommentDao().insert(
-            Comment(3, 3, "댓글 예시", "", 0, false)
+            Comment(3, 3, "댓글 예시", "", 0)
+        )
+    }
+
+    private fun insertReplyDummyData() {
+        if(instaDB.CommentDao().getReplies().isNotEmpty()) {
+            return
+        }
+
+        instaDB.CommentDao().insertReply(
+            Reply(5, 3, 3, "헐 대박이다", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(6, 3, 3, "진짜?", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(1, 2, 2, "와~~~", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(5, 1, 1, "에엥", "", 0)
+        )
+
+        instaDB.CommentDao().insertReply(
+            Reply(5, 1, 1, "박박이다리", "", 0)
         )
     }
 }
