@@ -43,12 +43,26 @@ class ProfileFragment : Fragment() {
         }
 
 
+        val createView = layoutInflater.inflate(R.layout.fragment_create, null)
+        val create = BottomSheetDialog(requireContext())
+
+        create.setContentView(createView)
+        create.setCanceledOnTouchOutside(true)
+
+        binding.profileAddIv.setOnClickListener {
+            create.show()
+        }
+
+
 
         val dialogView = layoutInflater.inflate(R.layout.fragment_list, null)
         val dialog = BottomSheetDialog(requireContext())
+//
+//        val layout = dialogView.layoutParams
+//        layout.height =
 
         dialog.setContentView(dialogView)
-        dialog.setCanceledOnTouchOutside(false)
+        dialog.setCanceledOnTouchOutside(true)
 
         binding.profileListIv.setOnClickListener {
             dialog.show()
