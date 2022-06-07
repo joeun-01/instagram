@@ -38,6 +38,8 @@
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22870483398437502" />
         <entry key="app/src/main/res/layout/fragment_profile_list.xml" value="0.25815217391304346" />
+        <entry key="app/src/main/res/layout/fragment_reels.xml" value="0.25815217391304346" />
+        <entry key="app/src/main/res/layout/item_home_story.xml" value="0.25815217391304346" />
       </map>
     </option>
   </component>
