@@ -61,10 +61,14 @@
         <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/ic_arrow_up.xml" value="0.1575" />
         <entry key="app/src/main/res/drawable/spinner_bottom.xml" value="0.162" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_signup_id.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_signup_password.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragemtn_profile_edit.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_create.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_grid_post.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2427536231884058" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22870483398437502" />
         <entry key="app/src/main/res/layout/fragment_profile_list.xml" value="0.25815217391304346" />

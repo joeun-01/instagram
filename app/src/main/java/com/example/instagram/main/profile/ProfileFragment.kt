@@ -8,8 +8,10 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentProfileBinding
+import com.example.instagram.main.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 
 class ProfileFragment : Fragment() {
 
@@ -40,6 +42,10 @@ class ProfileFragment : Fragment() {
         }
         binding.profileHighlightUpIv.setOnClickListener {
             setTextStatus(false)
+        }
+
+        binding.profileEditTv.setOnClickListener {
+            changeEditFragment()
         }
 
 
@@ -98,6 +104,11 @@ class ProfileFragment : Fragment() {
             binding.profileHighlightNewIv.visibility = View.GONE
             binding.profileHighlightNewTv.visibility = View.GONE
         }
+    }
+
+    fun changeEditFragment(){
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.profileFragment, ProfileEditFragment()).commitAllowingStateLoss()
     }
 
 
