@@ -35,7 +35,7 @@
         android:layout_marginEnd="10dp"
         android:text="완료"
         android:textSize="20dp"
-        android:textColor="@color/"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/edit_profile_tv"
         app:layout_constraintEnd_toEndOf="parent"/>
 
