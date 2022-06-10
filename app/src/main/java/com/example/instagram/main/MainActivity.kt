@@ -3,10 +3,7 @@ package com.example.instagram.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.R
-import com.example.instagram.data.Comment
-import com.example.instagram.data.Post
-import com.example.instagram.data.Reply
-import com.example.instagram.data.User
+import com.example.instagram.data.*
 import com.example.instagram.databinding.ActivityMainBinding
 import com.example.instagram.main.home.HomeFragment
 import com.example.instagram.main.profile.ProfileFragment
@@ -31,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
 
         insertUserDummyData()
+        insertStoryDummyData()
         insertPostDummyData()
         insertCommentDummyData()
         insertReplyDummyData()
@@ -116,6 +114,29 @@ class MainActivity : AppCompatActivity() {
 
         instaDB.userDao().insert(
             User(instaDB.userDao().getUsers().size + 1, "cocoa", "password6", R.drawable.profile_ex3, "코코아")
+        )
+    }
+
+    private fun insertStoryDummyData() {
+
+        if(instaDB.storyDao().getStories().isNotEmpty()) {
+            return
+        }
+
+        instaDB.storyDao().insert(
+            Story(4, R.drawable.profile_ex3, "")
+        )
+
+        instaDB.storyDao().insert(
+            Story(6, R.drawable.profile_ex3, "")
+        )
+
+        instaDB.storyDao().insert(
+            Story(3, R.drawable.profile_ex3, "")
+        )
+
+        instaDB.storyDao().insert(
+            Story(1, R.drawable.profile_ex3, "")
         )
     }
 
