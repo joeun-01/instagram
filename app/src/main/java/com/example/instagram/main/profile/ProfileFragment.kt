@@ -68,7 +68,6 @@ class ProfileFragment : Fragment() {
 //        layout.height =
 
         dialog.setContentView(dialogView)
-        dialog.setCanceledOnTouchOutside(true)
 
         binding.profileListIv.setOnClickListener {
             dialog.show()

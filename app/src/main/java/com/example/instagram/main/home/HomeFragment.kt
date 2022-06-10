@@ -36,7 +36,12 @@ class HomeFragment : Fragment() {
 
         instaDB = InstagramDatabase.getInstance(requireContext())!!
 
+        // 스토리의 맨 왼쪽에 내 스토리 띄우기
+        binding.homeMyStoryIv.setImageResource(instaDB.userDao().getUserPicture(getMyIdx()))
+        binding.homeMyNameTv.text = instaDB.userDao().getUserID(getMyIdx())
+
         // 댓글 달기 위한 준비랄까요...........
+        // 근데 실패함 ..........................................진짜 슬프다
         dialogBinding.writeCommentEt.addTextChangedListener(object :TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 dialogBinding.writeCommentEt.hint = "이렇게 바꿔보자"
