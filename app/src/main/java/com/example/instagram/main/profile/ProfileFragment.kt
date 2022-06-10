@@ -1,17 +1,15 @@
 package com.example.instagram.main.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentProfileBinding
-import com.example.instagram.main.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.gson.Gson
 
 class ProfileFragment : Fragment() {
 
@@ -88,7 +86,7 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    fun setTextStatus(isVisible: Boolean){
+    private fun setTextStatus(isVisible: Boolean){
         if (isVisible){
             binding.profileHighlightTextTv.visibility = View.VISIBLE
             binding.profileHighlightDownIv.visibility = View.GONE
@@ -105,10 +103,8 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    fun changeEditFragment(){
-        (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.profileFragment, ProfileEditFragment()).commitAllowingStateLoss()
+    private fun changeEditFragment(){
+        startActivity(Intent(activity, ProfileEditActivity::class.java))
     }
-
 
 }
