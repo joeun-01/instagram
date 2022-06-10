@@ -40,28 +40,6 @@ class HomeFragment : Fragment() {
         binding.homeMyStoryIv.setImageResource(instaDB.userDao().getUserPicture(getMyIdx()))
         binding.homeMyNameTv.text = instaDB.userDao().getUserID(getMyIdx())
 
-        // 댓글 달기 위한 준비랄까요...........
-        // 근데 실패함 ..........................................진짜 슬프다
-        dialogBinding.writeCommentEt.addTextChangedListener(object :TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                dialogBinding.writeCommentEt.hint = "이렇게 바꿔보자"
-                // 입력이 시작되기 전에 작동
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                // 입력이 시작되면 작동
-                dialogBinding.writeCommentEnterTv.setTextColor(Color.parseColor("0C88FA"))
-                // 왜 안바뀌지???????
-                /// 왜 ??????????????????????????????????????????????????????????????????????????????/
-                // ????????????????????????????????????
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                // 입력이 끝난 후에 작동
-                // 여기에 comment 값을 넣고
-                dialogBinding.writeCommentEt.hint = "다 썼다!"
-            }
-        })
 
         return binding.root
     }
@@ -73,7 +51,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerView() {  // RecycleView 연결
-        val storyRVAdapter = StoryRVAdapter(requireContext())
+        val storyRVAdapter = StoryRVAdapter(requireContext(), getMyIdx())
         binding.homeFeedStoryRv.adapter = storyRVAdapter
         binding.homeFeedStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -106,9 +84,29 @@ class HomeFragment : Fragment() {
 
         dialog.show()
 
-        dialogBinding.writeCommentEnterTv.setOnClickListener {
+        // 댓글 달기
+        dialogBinding.writeCommentEt.addTextChangedListener(object :TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                dialogBinding.writeCommentEt.hint = "이렇게 바꿔보자"
+                // 입력이 시작되기 전에 작동
+            }
 
-        }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                // 입력이 시작되면 작동
+                dialogBinding.writeCommentEnterTv.setTextColor(Color.parseColor("0C88FA"))
+                // 왜 안바뀌지???????
+                /// 왜 ??????????????????????????????????????????????????????????????????????????????/
+                // ????????????????????????????????????
+                // 진심 왜 안되는겨 ?????????? ???????????? ? ?  ?? ? ? ? ?? ? ? ?? ? ? ? ? ? ?  ???????
+                // ?  ?  ??
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                // 입력이 끝난 후에 작동
+                // 여기에 comment 값을 넣고
+                dialogBinding.writeCommentEt.hint = "다 썼다!"
+            }
+        })
     }
 
     private fun showAllComment(postIdx : Int) {  // 댓글 모두 보기를 누르면 CommentActivity로 이동
