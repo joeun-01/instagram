@@ -1,18 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reels_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="릴스"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/reels_camera_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_camera"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/reels_heart_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_heartwhite"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@id/reels_chat_iv"
+        app:layout_constraintEnd_toEndOf="@id/reels_chat_iv"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/reels_heartred_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_filled_heart"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@id/reels_chat_iv"
+        app:layout_constraintEnd_toEndOf="@id/reels_chat_iv"
+        android:visibility="gone"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/reels_chat_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_chatwhite"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@id/reels_message_iv"
+        app:layout_constraintStart_toStartOf="@id/reels_camera_iv"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/reels_message_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_messagewhite"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintStart_toStartOf="@id/reels_camera_iv"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

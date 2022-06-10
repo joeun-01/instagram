@@ -8,8 +8,10 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentProfileBinding
+import com.example.instagram.main.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 
 class ProfileFragment : Fragment() {
 
@@ -42,14 +44,30 @@ class ProfileFragment : Fragment() {
             setTextStatus(false)
         }
 
+        binding.profileEditTv.setOnClickListener {
+            changeEditFragment()
+        }
+
+
+        val createView = layoutInflater.inflate(R.layout.fragment_create, null)
+        val create = BottomSheetDialog(requireContext())
+
+        create.setContentView(createView)
+        create.setCanceledOnTouchOutside(true)
+
+        binding.profileAddIv.setOnClickListener {
+            create.show()
+        }
+
 
 
         val dialogView = layoutInflater.inflate(R.layout.fragment_list, null)
         val dialog = BottomSheetDialog(requireContext())
+//
+//        val layout = dialogView.layoutParams
+//        layout.height =
 
         dialog.setContentView(dialogView)
-
-        // dialog 밖을 누르면 dialog가 사라지도록 코드 변경했습니다!!!!!!!!
 
         binding.profileListIv.setOnClickListener {
             dialog.show()
@@ -85,6 +103,11 @@ class ProfileFragment : Fragment() {
             binding.profileHighlightNewIv.visibility = View.GONE
             binding.profileHighlightNewTv.visibility = View.GONE
         }
+    }
+
+    fun changeEditFragment(){
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.profileFragment, ProfileEditFragment()).commitAllowingStateLoss()
     }
 
 
