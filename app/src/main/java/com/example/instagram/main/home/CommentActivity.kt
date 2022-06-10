@@ -56,5 +56,8 @@ class CommentActivity : AppCompatActivity() {
         binding.commentReplyRv.adapter = commentRVAdapter
         binding.commentReplyRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
+
+        // 왜 자꾸 behind 라고 뜨는 거지 ???????????????????????????
+
     }
 }
