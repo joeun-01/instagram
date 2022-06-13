@@ -24,7 +24,10 @@
         <activity android:name=".signup.SignUpIDActivity"/>
         <activity android:name=".signup.SignUpPasswordActivity"/>
         <activity android:name=".signup.SignUpCompleteActivity"/>
+        
+        <activity android:name=".main.home.StoryActivity"/>
         <activity android:name=".main.home.CommentActivity"/>
+        
 
         <activity android:name=".main.profile.ProfileEditActivity"/>
     </application>

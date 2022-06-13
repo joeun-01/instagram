@@ -24,8 +24,8 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
     private var reply = ArrayList<Reply>()
 
     interface MyItemClickListener{
-        fun showComment(postIdx : Int)
-        fun writeComment(postIdx : Int)
+        fun onShowComment(postIdx : Int)
+        fun onWriteComment(postIdx : Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -69,12 +69,12 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
 
         holder.binding.itemPostShowAllCommentTv.setOnClickListener {
             // 댓글 모두 보기를 누르면 댓글 창으로 넘어가도록
-            mItemClickListener.showComment(post[position].postIdx)
+            mItemClickListener.onShowComment(post[position].postIdx)
         }
 
         holder.binding.itemPostCommentTv.setOnClickListener {
             // 댓글을 달기 위한 bottom sheet dialog를 띄움
-            mItemClickListener.writeComment(post[position].postIdx)
+            mItemClickListener.onWriteComment(post[position].postIdx)
         }
     }
 
