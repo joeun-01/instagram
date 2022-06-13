@@ -30,6 +30,9 @@ interface UserDao {
     @Query("SELECT ID FROM UserTable WHERE userIdx = :userIdx")
     fun getUserID(userIdx: Int) : String
 
+    @Query("SELECT name FROM UserTable WHERE userIdx = :userIdx")
+    fun getUserName(userIdx: Int) : String
+
     // 로그인 프로세스
     @Query("SELECT password FROM UserTable WHERE ID = :ID")
     fun login(ID : String) : String?

@@ -3,6 +3,7 @@ package com.example.instagram.signup
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ActivitySignupCompleteBinding
@@ -38,6 +39,9 @@ class SignUpCompleteActivity : AppCompatActivity() {
 
             user.userIdx = userDB.userDao().getUsers().size + 1
             userDB.userDao().insert(user)
+
+            //Log.d("user no.0 ", userDB.userDao().getUser(0).toString())
+            Log.d("signup User id ", userDB.userDao().getUser(user.userIdx).toString())
 
             startActivity(Intent(this, LoginActivity::class.java))
         }
