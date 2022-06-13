@@ -16,7 +16,6 @@ import com.example.instagram.databinding.FragmentHomeBinding
 import com.example.instagram.databinding.WriteReplyBottomSheetDialogBinding
 import com.example.instagram.room.InstagramDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import java.util.zip.Inflater
 
 class HomeFragment : Fragment() {
 
@@ -55,16 +54,22 @@ class HomeFragment : Fragment() {
         binding.homeFeedStoryRv.adapter = storyRVAdapter
         binding.homeFeedStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
+        storyRVAdapter.setMyItemClickListener(object : StoryRVAdapter.MyItemClickListener {
+            override fun onShowStory(userIdx : Int) {
+                showStory(userIdx)
+            }
+        })
+
         val postRVAdapter = PostRVAdapter(requireContext(), getMyIdx())
         binding.homeFeedPostRv.adapter = postRVAdapter
         binding.homeFeedPostRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         postRVAdapter.setMyItemClickListener(object : PostRVAdapter.MyItemClickListener {
-            override fun showComment(postIdx : Int) {
+            override fun onShowComment(postIdx : Int) {
                 showAllComment(postIdx)
             }
 
-            override fun writeComment(postIdx: Int) {
+            override fun onWriteComment(postIdx: Int) {
                 writeMyComment(postIdx)
             }
         })
@@ -76,6 +81,13 @@ class HomeFragment : Fragment() {
         return userSP.getInt("userIdx", 0)
     }
 
+    private fun showStory(userIdx : Int) {  // 스토리 자세히 보기
+        val intent = Intent(requireActivity(), StoryActivity::class.java)
+
+        intent.putExtra("userIdx", userIdx)  // userIdx를 넘겨줘서 누구의 스토리를 볼건지 알 수 있게 해줌
+        requireActivity().startActivity(intent)  // StoryActivity 실행
+    }
+
     private fun writeMyComment(postIdx: Int) {  // 댓글 달기를 누르면 Bottom Sheet Dialog를 띄움
         val dialogView = layoutInflater.inflate(R.layout.write_reply_bottom_sheet_dialog, null)
         val dialog = BottomSheetDialog(requireContext())
@@ -85,6 +97,7 @@ class HomeFragment : Fragment() {
         dialog.show()
 
         // 댓글 달기
+        // findviewid로 나중에 해보자 !!!!
         dialogBinding.writeCommentEt.addTextChangedListener(object :TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 dialogBinding.writeCommentEt.hint = "이렇게 바꿔보자"

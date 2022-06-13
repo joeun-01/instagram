@@ -16,6 +16,7 @@ class StoryRVAdapter(context : Context, myIdx: Int) : RecyclerView.Adapter<Story
 
     interface MyItemClickListener{
         // click function
+        fun onShowStory(userIdx : Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -34,12 +35,16 @@ class StoryRVAdapter(context : Context, myIdx: Int) : RecyclerView.Adapter<Story
         holder.bind(story[position])
 
         // click listener
+        holder.binding.homeStoryLy.setOnClickListener {
+            // 스토리를 누르면 자세히 볼 수 있도록
+            mItemClickListener.onShowStory(story[position].userIdx)
+        }
     }
 
     // data set의 크기를 알려줌
     override fun getItemCount(): Int = story.size
 
-    inner class ViewHolder(private val binding : ItemHomeStoryBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding : ItemHomeStoryBinding) : RecyclerView.ViewHolder(binding.root){
         // ItemView를 잡아주는 ViewHolder
         fun bind(story: Story){
             // 스토리 화면에 보이는 프사, 아이디 연동
