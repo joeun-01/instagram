@@ -124,19 +124,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.storyDao().insert(
-            Story(4, R.drawable.profile_ex3, "")
+            Story(4, R.drawable.story_dummy1, "")
         )
 
         instaDB.storyDao().insert(
-            Story(6, R.drawable.profile_ex3, "")
+            Story(6, R.drawable.story_dummy2, "")
         )
 
         instaDB.storyDao().insert(
-            Story(3, R.drawable.profile_ex3, "")
+            Story(3, R.drawable.story_dummy3, "")
         )
 
         instaDB.storyDao().insert(
-            Story(1, R.drawable.profile_ex3, "")
+            Story(1, R.drawable.story_dummy4, "")
         )
     }
 
