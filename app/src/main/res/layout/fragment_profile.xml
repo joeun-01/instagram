@@ -32,18 +32,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
+            <!--            로그인할때 들어온 아이디로 텍스트 변경하기-->
+
             <TextView
                 android:id="@+id/profile_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="jjy_joeun"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@id/profile_private_iv"
-                app:layout_constraintTop_toTopOf="@id/profile_private_iv"/>
-
-<!--            로그인할때 들어온 아이디로 텍스트 변경하기-->
+                app:layout_constraintTop_toTopOf="@id/profile_private_iv" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/profile_down_iv"
