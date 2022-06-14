@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
 import com.example.instagram.data.Comment
+import com.example.instagram.data.LikedPost
 import com.example.instagram.data.Post
 import com.example.instagram.data.Reply
 import com.example.instagram.databinding.ItemPostBinding
@@ -33,8 +34,12 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
         mItemClickListener = itemClickListener
     }
 
-    private fun updateLike(isLike: Boolean, userIdx :Int) {
-        instaDB.postDao().updateLikeByID(!isLike, userIdx)
+    private fun addToLikeTable(postIdx : Int) {  // 좋아요
+        instaDB.postDao().addLikedPost(LikedPost(postIdx, myIdx))
+    }
+
+    private fun deleteFromLikeTable(postIdx: Int) {  // 좋아요 취소
+        instaDB.postDao().deleteLikedPost(postIdx, myIdx)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -55,25 +60,29 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
         holder.bind(post[position])
 
         // click listener
+        // 좋아요 관련
         holder.binding.itemPostLikeIv.setOnClickListener {
-            val isLike = instaDB.postDao().getLikeByID(post[position].userIdx)
-            updateLike(isLike, post[position].userIdx)
-
-            if(isLike) {
-                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
-            }
-            else {
+            if(instaDB.postDao().checkLikedPost(myIdx, post[position].postIdx).isEmpty()) {  // 좋아요가 안되어있는 경우
+                addToLikeTable(post[position].postIdx)
                 holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+            }
+            else {  // 좋아요를 한 경우
+                deleteFromLikeTable(post[position].postIdx)
+                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
             }
         }
 
+        // 댓글 모두 보기, 댓글 아이콘을 누르면 댓글 창으로 넘어가도록
         holder.binding.itemPostShowAllCommentTv.setOnClickListener {
-            // 댓글 모두 보기를 누르면 댓글 창으로 넘어가도록
             mItemClickListener.onShowComment(post[position].postIdx)
         }
 
+        holder.binding.itemPostCommentIv.setOnClickListener {
+            mItemClickListener.onShowComment(post[position].postIdx)
+        }
+
+        // 댓글을 달기 위한 bottom sheet dialog를 띄움
         holder.binding.itemPostCommentTv.setOnClickListener {
-            // 댓글을 달기 위한 bottom sheet dialog를 띄움
             mItemClickListener.onWriteComment(post[position].postIdx)
         }
     }
@@ -109,13 +118,14 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
             // 내 기준 댓글 연동
             binding.itemPostShowAllCommentTv.text = "댓글 " + (comment.size + reply.size) + "개 모두 보기"
             binding.itemPostMyProfileIv.setImageResource(instaDB.userDao().getUserPicture(myIdx))
-//
-//            if(instaDB.postDao().getLikeByID(post.userIdx)) {
-//                binding.itemHomePostLikeIv.userIdx(R.drawable.ic_heart)
-//            }
-//            else {
-//                binding.itemHomePostLikeIv.setImageResource(R.drawable.ic_filled_heart)
-//            }
+
+            // 좋아요한 게시물은 하트 채우기
+            if(instaDB.postDao().checkLikedPost(myIdx, post.postIdx).isEmpty()) {  // 좋아요가 안되어있는 경우
+                binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
+            }
+            else {  // 좋아요를 한 경우
+                binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+            }
         }
     }
 }

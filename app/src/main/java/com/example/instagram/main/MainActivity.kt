@@ -93,27 +93,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "ddobby", "password1", R.drawable.profile_ex1, "도비" )
+            User(instaDB.userDao().getUsers().size + 1, "ddobby", "ddobby", R.drawable.profile_ex1, "도비" )
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "ally", "password2", R.drawable.profile_ex2, "앨리")
+            User(instaDB.userDao().getUsers().size + 1, "ally", "ally", R.drawable.profile_ex2, "앨리")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "blue", "password3", R.drawable.profile_ex3, "블루")
+            User(instaDB.userDao().getUsers().size + 1, "blue", "blue", R.drawable.profile_ex3, "블루")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "luna", "password4", R.drawable.profile_ex1, "루나" )
+            User(instaDB.userDao().getUsers().size + 1, "luna", "luna", R.drawable.profile_ex1, "루나" )
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "harry", "password5", R.drawable.profile_ex2, "해리")
+            User(instaDB.userDao().getUsers().size + 1, "harry", "harry", R.drawable.profile_ex2, "해리")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "cocoa", "password6", R.drawable.profile_ex3, "코코아")
+            User(instaDB.userDao().getUsers().size + 1, "cocoa", "cocoa", R.drawable.profile_ex3, "코코아")
         )
     }
 
@@ -135,9 +135,6 @@ class MainActivity : AppCompatActivity() {
             Story(3, R.drawable.story_dummy3, "")
         )
 
-        instaDB.storyDao().insert(
-            Story(1, R.drawable.story_dummy4, "")
-        )
     }
 
     private fun insertPostDummyData() {
@@ -147,15 +144,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.postDao().insert(
-            Post(2, R.drawable.profile_ex1, "얼음 깨기 너무 재밌었다!", false, "")
+            Post(2, R.drawable.profile_ex1, "얼음 깨기 너무 재밌었다!", "", 0)
         )
 
         instaDB.postDao().insert(
-            Post(5, R.drawable.profile_ex2, "한강 최고ㅎㅎ", false, "")
+            Post(5, R.drawable.profile_ex2, "한강 최고ㅎㅎ", "", 0)
         )
 
         instaDB.postDao().insert(
-            Post(1, R.drawable.profile_ex3, "차가 마시고 싶은 날...", false, "")
+            Post(1, R.drawable.profile_ex3, "차가 마시고 싶은 날...", "", 0)
         )
     }
 

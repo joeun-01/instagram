@@ -18,6 +18,10 @@ interface StoryDao {
     @Query("SELECT * FROM StoryTable")
     fun getStories() : List<Story>
 
+    // 내 스토리 가져오기
+    @Query("SELECT * FROM StoryTable WHERE userIdx = :myIdx")
+    fun getMyStory(myIdx: Int) : List<Story>
+
     // 내 스토리 빼고 가져오기
     @Query("SELECT * FROM StoryTable WHERE NOT userIdx = :myIdx")
     fun getOthersStory(myIdx : Int) : List<Story>

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.R
+import com.example.instagram.data.Story
 import com.example.instagram.databinding.FragmentHomeBinding
 import com.example.instagram.databinding.WriteReplyBottomSheetDialogBinding
 import com.example.instagram.room.InstagramDatabase
@@ -35,11 +36,6 @@ class HomeFragment : Fragment() {
 
         instaDB = InstagramDatabase.getInstance(requireContext())!!
 
-        // 스토리의 맨 왼쪽에 내 스토리 띄우기
-        binding.homeMyStoryIv.setImageResource(instaDB.userDao().getUserPicture(getMyIdx()))
-        binding.homeMyNameTv.text = instaDB.userDao().getUserID(getMyIdx())
-
-
         return binding.root
     }
 
@@ -53,6 +49,20 @@ class HomeFragment : Fragment() {
         val storyRVAdapter = StoryRVAdapter(requireContext(), getMyIdx())
         binding.homeFeedStoryRv.adapter = storyRVAdapter
         binding.homeFeedStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        // 스토리에 내 스토리 먼저 추가 후 다른 사람들 스토리 추가
+        storyRVAdapter.clearNewStory()
+
+        // 내 스토리를 무조건 맨 앞에 추가하기 위해서 따로 해줌
+        if(instaDB.storyDao().getMyStory(getMyIdx()).isEmpty()) {  // 내 스토리가 없는 경우
+            // 실제로 스토리가 있는 게 아니라 더미데이터기 때문에 데이터베이스에는 넣지 않음
+            storyRVAdapter.addMyDummyStory(Story(getMyIdx(), 0, ""))
+        }
+        else {  // 내 스토리가 있는 경우
+            storyRVAdapter.addNewStory(instaDB.storyDao().getMyStory(getMyIdx()))
+        }
+
+        storyRVAdapter.addNewStory(instaDB.storyDao().getOthersStory(getMyIdx()))
 
         storyRVAdapter.setMyItemClickListener(object : StoryRVAdapter.MyItemClickListener {
             override fun onShowStory(userIdx : Int) {
