@@ -15,8 +15,6 @@ class ProfileEditActivity : AppCompatActivity() {
     private lateinit var binding : ActivityProfileEditBinding
     private lateinit var instaDB : InstagramDatabase
 
-    private val gson : Gson = Gson()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

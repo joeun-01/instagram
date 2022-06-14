@@ -54,19 +54,35 @@ class ProfileFragment : Fragment() {
             changeEditFragment()
         }
 
+        binding.profileAddIv.setOnClickListener {
+            showDialogCreate()
+        }
 
+        binding.profileListIv.setOnClickListener {
+            showDialogList()
+        }
+
+
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        binding.profileNameTv.text = instaDB.userDao().getUserID(getMyIdx())
+    }
+
+    private fun showDialogCreate(){
         val createView = layoutInflater.inflate(R.layout.fragment_create, null)
         val create = BottomSheetDialog(requireContext())
 
         create.setContentView(createView)
         create.setCanceledOnTouchOutside(true)
 
-        binding.profileAddIv.setOnClickListener {
-            create.show()
-        }
+        create.show()
+    }
 
-
-
+    private fun showDialogList(){
         val dialogView = layoutInflater.inflate(R.layout.fragment_list, null)
         val dialog = BottomSheetDialog(requireContext())
 //
@@ -74,11 +90,11 @@ class ProfileFragment : Fragment() {
 //        layout.height =
 
         dialog.setContentView(dialogView)
+        dialog.setCanceledOnTouchOutside(true)
 
-        binding.profileListIv.setOnClickListener {
-            dialog.show()
-        }
-//
+        dialog.show()
+
+        //
 //        val delete = dialogView.findViewById<LinearLayout>(R.id.bottomDialog_delete)  // dialog custom 삭제 화면에 있는 종료 버튼
 //
 //        dialog.setOnDismissListener {
@@ -89,8 +105,6 @@ class ProfileFragment : Fragment() {
 //
 //            dialog.dismiss()  // dialog 종료
 //        }
-
-        return binding.root
     }
 
     private fun getMyIdx(): Int {  // 내 정보를 가져오기 위한 함수
