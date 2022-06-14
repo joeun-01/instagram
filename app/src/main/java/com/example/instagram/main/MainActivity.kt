@@ -115,6 +115,22 @@ class MainActivity : AppCompatActivity() {
         instaDB.userDao().insert(
             User(instaDB.userDao().getUsers().size + 1, "cocoa", "cocoa", R.drawable.profile_ex3, "코코아")
         )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "ark", "ark", R.drawable.profile_ex3, "아크")
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "ginie", "ginie", R.drawable.profile_ex1, "지니" )
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "seora", "seora", R.drawable.profile_ex2, "서라")
+        )
+
+        instaDB.userDao().insert(
+            User(instaDB.userDao().getUsers().size + 1, "tama", "tama", R.drawable.profile_ex3, "타마")
+        )
     }
 
     private fun insertStoryDummyData() {
@@ -133,6 +149,18 @@ class MainActivity : AppCompatActivity() {
 
         instaDB.storyDao().insert(
             Story(3, R.drawable.story_dummy3, "")
+        )
+
+        instaDB.storyDao().insert(
+            Story(9, R.drawable.story_dummy4, "")
+        )
+
+        instaDB.storyDao().insert(
+            Story(7, R.drawable.story_dummy5, "")
+        )
+
+        instaDB.storyDao().insert(
+            Story(2, R.drawable.story_dummy6, "")
         )
 
     }
@@ -197,7 +225,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         instaDB.CommentDao().insertReply(
-            Reply(5, 1, 1, "박박이다리", "", 0)
+            Reply(5, 1, 1, "대박이다", "", 0)
         )
     }
 }

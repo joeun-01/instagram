@@ -27,6 +27,7 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
     interface MyItemClickListener{
         fun onShowComment(postIdx : Int)
         fun onWriteComment(postIdx : Int)
+        fun onShowShare(postIdx: Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -84,6 +85,11 @@ class PostRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.A
         // 댓글을 달기 위한 bottom sheet dialog를 띄움
         holder.binding.itemPostCommentTv.setOnClickListener {
             mItemClickListener.onWriteComment(post[position].postIdx)
+        }
+
+        // 공유 아이콘을 누르면 share bottom sheet dialog를 띄움
+        holder.binding.itemPostShareIv.setOnClickListener {
+            mItemClickListener.onShowShare(post[position].postIdx)
         }
     }
 
