@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/spinner_bottom">
+    android:background="@drawable/spinner_bottom"
+    android:paddingBottom="30dp">
 
     <ImageView
         android:id="@+id/list_iv"

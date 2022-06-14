@@ -119,13 +119,25 @@
         <entry key="app/src/main/res/drawable/ic_grid.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/ic_tag.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/spinner_bottom.xml" value="0.162" />
+        <entry key="app/src/main/res/layout/activity_comment.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_profile_edit.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_signup_password.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/fragemtn_profile_edit.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_create.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_grid_post.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_list.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22870483398437502" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.2234375" />
+        <entry key="app/src/main/res/layout/item_comment.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/item_home_story.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/item_post.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/item_reelsimg.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/item_reply.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/item_searchimg.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/write_reply_bottom_sheet_dialog.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
