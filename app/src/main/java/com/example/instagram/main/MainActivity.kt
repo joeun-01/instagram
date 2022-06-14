@@ -2,6 +2,7 @@ package com.example.instagram.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.data.*
 import com.example.instagram.databinding.ActivityMainBinding
@@ -10,6 +11,7 @@ import com.example.instagram.main.profile.ProfileFragment
 import com.example.instagram.main.reels.ReelsFragment
 import com.example.instagram.main.search.SearchFragment
 import com.example.instagram.main.shop.ShopFragment
+import com.example.instagram.main.shop.ShopItemFragment
 import com.example.instagram.room.InstagramDatabase
 
 class MainActivity : AppCompatActivity() {
@@ -203,4 +205,5 @@ class MainActivity : AppCompatActivity() {
             Reply(5, 1, 1, "박박이다리", "", 0)
         )
     }
+
 }
