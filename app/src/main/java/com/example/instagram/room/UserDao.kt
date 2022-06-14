@@ -20,6 +20,9 @@ interface UserDao {
     @Query("SELECT * FROM UserTable WHERE userIdx = :userIdx")
     fun getUser(userIdx : Int) : User
 
+    @Query("SELECT * FROM UserTable WHERE NOT userIdx = :myIdx")
+    fun getOthers(myIdx : Int) : List<User>
+
     // 유저 정보 가져오기
     @Query("SELECT userIdx FROM UserTable WHERE ID = :ID")
     fun getUserIdx(ID : String) : Int

@@ -12,7 +12,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.R
+import com.example.instagram.data.Story
 import com.example.instagram.databinding.FragmentHomeBinding
+import com.example.instagram.databinding.SharePostBottomSheetDialogBinding
 import com.example.instagram.databinding.WriteReplyBottomSheetDialogBinding
 import com.example.instagram.room.InstagramDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -20,7 +22,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
-    private lateinit var dialogBinding : WriteReplyBottomSheetDialogBinding
 
     private lateinit var instaDB : InstagramDatabase
 
@@ -31,14 +32,8 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        dialogBinding = WriteReplyBottomSheetDialogBinding.inflate(inflater, container, false)
 
         instaDB = InstagramDatabase.getInstance(requireContext())!!
-
-        // 스토리의 맨 왼쪽에 내 스토리 띄우기
-        binding.homeMyStoryIv.setImageResource(instaDB.userDao().getUserPicture(getMyIdx()))
-        binding.homeMyNameTv.text = instaDB.userDao().getUserID(getMyIdx())
-
 
         return binding.root
     }
@@ -53,6 +48,20 @@ class HomeFragment : Fragment() {
         val storyRVAdapter = StoryRVAdapter(requireContext(), getMyIdx())
         binding.homeFeedStoryRv.adapter = storyRVAdapter
         binding.homeFeedStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        // 스토리에 내 스토리 먼저 추가 후 다른 사람들 스토리 추가
+        storyRVAdapter.clearNewStory()
+
+        // 내 스토리를 무조건 맨 앞에 추가하기 위해서 따로 해줌
+        if(instaDB.storyDao().getMyStory(getMyIdx()).isEmpty()) {  // 내 스토리가 없는 경우
+            // 실제로 스토리가 있는 게 아니라 더미데이터기 때문에 데이터베이스에는 넣지 않음
+            storyRVAdapter.addMyDummyStory(Story(getMyIdx(), 0, ""))
+        }
+        else {  // 내 스토리가 있는 경우
+            storyRVAdapter.addNewStory(instaDB.storyDao().getMyStory(getMyIdx()))
+        }
+
+        storyRVAdapter.addNewStory(instaDB.storyDao().getOthersStory(getMyIdx()))
 
         storyRVAdapter.setMyItemClickListener(object : StoryRVAdapter.MyItemClickListener {
             override fun onShowStory(userIdx : Int) {
@@ -72,6 +81,10 @@ class HomeFragment : Fragment() {
             override fun onWriteComment(postIdx: Int) {
                 writeMyComment(postIdx)
             }
+
+            override fun onShowShare(postIdx: Int) {
+                showShareDialog(postIdx)
+            }
         })
     }
 
@@ -89,37 +102,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun writeMyComment(postIdx: Int) {  // 댓글 달기를 누르면 Bottom Sheet Dialog를 띄움
-        val dialogView = layoutInflater.inflate(R.layout.write_reply_bottom_sheet_dialog, null)
-        val dialog = BottomSheetDialog(requireContext())
+        val dialog = CommentBottomSheetDialog()
 
-        dialog.setContentView(dialogView)
+        dialog.show(requireActivity().supportFragmentManager, dialog.tag)
 
-        dialog.show()
-
-        // 댓글 달기
-        // findviewid로 나중에 해보자 !!!!
-        dialogBinding.writeCommentEt.addTextChangedListener(object :TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                dialogBinding.writeCommentEt.hint = "이렇게 바꿔보자"
-                // 입력이 시작되기 전에 작동
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                // 입력이 시작되면 작동
-                dialogBinding.writeCommentEnterTv.setTextColor(Color.parseColor("0C88FA"))
-                // 왜 안바뀌지???????
-                /// 왜 ??????????????????????????????????????????????????????????????????????????????/
-                // ????????????????????????????????????
-                // 진심 왜 안되는겨 ?????????? ???????????? ? ?  ?? ? ? ? ?? ? ? ?? ? ? ? ? ? ?  ???????
-                // ?  ?  ??
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                // 입력이 끝난 후에 작동
-                // 여기에 comment 값을 넣고
-                dialogBinding.writeCommentEt.hint = "다 썼다!"
-            }
-        })
     }
 
     private fun showAllComment(postIdx : Int) {  // 댓글 모두 보기를 누르면 CommentActivity로 이동
@@ -130,6 +116,12 @@ class HomeFragment : Fragment() {
         postEditor.apply()
 
         startActivity(Intent(requireContext(), CommentActivity::class.java))
+    }
+
+    private fun showShareDialog(postIdx: Int) {  // 공유 아이콘을 누르면 Bottom Sheet Dialog를 띄움
+        val dialog = ShareBottomSheetDialog()
+
+        dialog.show(requireActivity().supportFragmentManager, dialog.tag)
     }
 
 }

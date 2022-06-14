@@ -3,6 +3,7 @@ package com.example.instagram.main.home
 import android.content.Context
 import android.content.pm.InstallSourceInfo
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.data.Story
@@ -10,9 +11,9 @@ import com.example.instagram.data.User
 import com.example.instagram.databinding.ItemHomeStoryBinding
 import com.example.instagram.room.InstagramDatabase
 
-class StoryRVAdapter(context : Context, myIdx: Int) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
+class StoryRVAdapter(context : Context, private val myIdx: Int) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
     private var instaDB = InstagramDatabase.getInstance(context)!!
-    private var story = instaDB.storyDao().getOthersStory(myIdx)
+    private var story = arrayListOf<Story>()
 
     interface MyItemClickListener{
         // click function
@@ -22,6 +23,20 @@ class StoryRVAdapter(context : Context, myIdx: Int) : RecyclerView.Adapter<Story
     private lateinit var mItemClickListener: MyItemClickListener
     fun setMyItemClickListener(itemClickListener : MyItemClickListener){
         mItemClickListener = itemClickListener
+    }
+
+    fun addMyDummyStory(story : Story) {
+        // 리사이클러뷰에 들어갈 스토리 초기화
+        this.story.add(story)
+    }
+
+    fun addNewStory(story : List<Story>) {
+        // 리사이클러뷰에 들어갈 스토리 초기화
+        this.story.addAll(story)
+    }
+
+    fun clearNewStory() {
+        this.story.clear()
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -50,6 +65,12 @@ class StoryRVAdapter(context : Context, myIdx: Int) : RecyclerView.Adapter<Story
             // 스토리 화면에 보이는 프사, 아이디 연동
             binding.homeStoryPictureIv.setImageResource(instaDB.userDao().getUserPicture(story.userIdx))
             binding.homeStoryNameTv.text = instaDB.userDao().getUserID(story.userIdx)
+
+            // 내 스토리 & 올린 스토리가 없을 경우에는 더하기 버튼 띄우기
+            if(story.userIdx == myIdx && story.picture == 0) {
+                binding.homeStoryAddBtn.visibility = View.VISIBLE
+                binding.homeStoryPictureIv.background = null
+            }
         }
     }
 }

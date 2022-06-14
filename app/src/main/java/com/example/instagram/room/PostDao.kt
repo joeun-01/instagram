@@ -1,6 +1,7 @@
 package com.example.instagram.room
 
 import androidx.room.*
+import com.example.instagram.data.LikedPost
 import com.example.instagram.data.Post
 
 @Dao
@@ -23,15 +24,13 @@ interface PostDao {
     // 게시물 정보 받아오기
 
     // 좋아요 관련 DAO
-    @Query("UPDATE PostTable SET liked = :liked WHERE userIdx = :userIdx")
-    fun updateLikeByID(liked: Boolean, userIdx: Int)
+    @Insert
+    fun addLikedPost(likedPost: LikedPost)  // 좋아요
 
-    @Query("SELECT liked FROM PostTable WHERE userIdx = :userIdx")
-    fun getLikeByID(userIdx: Int) : Boolean
+    @Query("DELETE FROM LikedPostTable WHERE userIdx = :userIdx AND postIdx = :postIdx")
+    fun deleteLikedPost(userIdx: Int, postIdx: Int)  // 좋아요 취소
 
-//
-//    @Query("SELECT AT.* FROM UserTable WHERE ")
-//
-//    @Query("SELECT AT.* FROM UserTable as LT LEFT JOIN Comm as AT on LT.albumId = AT.id WHERE LT.jwt = :jwt")
-//    fun getLikedAlbums(jwt: String?) : List<Album>
+   @Query("SELECT * FROM LikedPostTable WHERE userIdx = :userIdx AND postIdx = :postIdx")
+    fun checkLikedPost(userIdx : Int, postIdx : Int) : List<LikedPost>  // 좋아요한 게시물인지 확인
+
 }
