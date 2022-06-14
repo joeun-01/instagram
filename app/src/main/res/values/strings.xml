@@ -4,4 +4,6 @@
     <string name="signup_password_safe">비밀번호를 저장할 수 있으므로 iCloud® 기기에서 로그인 정보를 입력하지 않아도 됩니다.</string>
     <string name="comment_title">댓글</string>
     <string name="add_new_account">새로운 전화번호 또는 이메일 주소 추가</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
