@@ -114,10 +114,18 @@
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_reply.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_searchimg.xml" value="0.19017094017094016" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/write_reply_bottom_sheet_dialog.xml" value="0.11271529888551166" />
+        <entry key="app/src/main/res/drawable/background_bottomsheet.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/home_icon.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/ic_arrow_up.xml" value="0.1575" />
         <entry key="app/src/main/res/drawable/ic_grid.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/ic_tag.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/login_btn_background.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/password_show_icon.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/profile_circle_background.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/reels_icon.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/search_grayradius.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/search_icon.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/spinner_bottom.xml" value="0.162" />
         <entry key="app/src/main/res/layout/activity_comment.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
