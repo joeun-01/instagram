@@ -5,6 +5,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<!--search 기본 화면-->
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/search_searchbar_iv"

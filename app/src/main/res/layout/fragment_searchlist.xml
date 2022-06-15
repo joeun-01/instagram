@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--검색 기본 화면에서 검색바를 누르면 전환되는 화면, 최근 검색 리스트 보여줌-->
+
     <EditText
         android:id="@+id/searchlist_searchbar_et"
         android:layout_width="match_parent"
@@ -15,6 +17,8 @@
         android:maxLines="1"
         android:hint="검색"
         android:paddingStart="35dp"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatImageView
