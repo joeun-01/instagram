@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentProfileBinding
+import com.example.instagram.main.home.ShareBottomSheetDialog
 import com.example.instagram.room.InstagramDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
@@ -73,26 +74,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showDialogCreate(){
-        val createView = layoutInflater.inflate(R.layout.fragment_create, null)
-        val create = BottomSheetDialog(requireContext())
+        val create = CreateBottomSheetDialog()
 
-        create.setContentView(createView)
-        create.setCanceledOnTouchOutside(true)
-
-        create.show()
+        create.show(requireActivity().supportFragmentManager, create.tag)
     }
 
     private fun showDialogList(){
-        val dialogView = layoutInflater.inflate(R.layout.fragment_list, null)
-        val dialog = BottomSheetDialog(requireContext())
-//
-//        val layout = dialogView.layoutParams
-//        layout.height =
+        val dialog = ListBottomSheetDialog()
 
-        dialog.setContentView(dialogView)
-        dialog.setCanceledOnTouchOutside(true)
+        dialog.show(requireActivity().supportFragmentManager, dialog.tag)
 
-        dialog.show()
 
         //
 //        val delete = dialogView.findViewById<LinearLayout>(R.id.bottomDialog_delete)  // dialog custom 삭제 화면에 있는 종료 버튼
