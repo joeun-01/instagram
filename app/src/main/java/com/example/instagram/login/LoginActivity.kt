@@ -61,6 +61,8 @@ class LoginActivity: AppCompatActivity() {
             userEditor.putInt("userIdx", userDB.userDao().getUserIdx(id))
             userEditor.apply()
 
+            Log.d("Login User id ", userDB.userDao().getUser(userDB.userDao().getUserIdx(id)).toString())
+
             // 로그인이 완료되면 홈 화면으로
             startActivity(Intent(this, MainActivity::class.java))
         }

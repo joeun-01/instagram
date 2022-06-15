@@ -3,23 +3,40 @@ package com.example.instagram.main.home
 import android.content.Context
 import android.content.pm.InstallSourceInfo
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.instagram.data.Story
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ItemHomeStoryBinding
 import com.example.instagram.room.InstagramDatabase
 
-class StoryRVAdapter(context : Context) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
+class StoryRVAdapter(context : Context, private val myIdx: Int) : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
     private var instaDB = InstagramDatabase.getInstance(context)!!
-    private var profile = instaDB.userDao().getUsers()
+    private var story = arrayListOf<Story>()
 
     interface MyItemClickListener{
         // click function
+        fun onShowStory(userIdx : Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
     fun setMyItemClickListener(itemClickListener : MyItemClickListener){
         mItemClickListener = itemClickListener
+    }
+
+    fun addMyDummyStory(story : Story) {
+        // 리사이클러뷰에 들어갈 스토리 초기화
+        this.story.add(story)
+    }
+
+    fun addNewStory(story : List<Story>) {
+        // 리사이클러뷰에 들어갈 스토리 초기화
+        this.story.addAll(story)
+    }
+
+    fun clearNewStory() {
+        this.story.clear()
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -30,19 +47,30 @@ class StoryRVAdapter(context : Context) : RecyclerView.Adapter<StoryRVAdapter.Vi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // 해당 position에 대한 데이터를 binding
-        holder.bind(profile[position])
+        holder.bind(story[position])
 
         // click listener
+        holder.binding.homeStoryLy.setOnClickListener {
+            // 스토리를 누르면 자세히 볼 수 있도록
+            mItemClickListener.onShowStory(story[position].userIdx)
+        }
     }
 
     // data set의 크기를 알려줌
-    override fun getItemCount(): Int = profile.size
+    override fun getItemCount(): Int = story.size
 
-    inner class ViewHolder(private val binding : ItemHomeStoryBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding : ItemHomeStoryBinding) : RecyclerView.ViewHolder(binding.root){
         // ItemView를 잡아주는 ViewHolder
-        fun bind(profile: User){
-            binding.homeStoryPictureIv.setImageResource(profile.picture)
-            binding.homeStoryNameTv.text = profile.ID
+        fun bind(story: Story){
+            // 스토리 화면에 보이는 프사, 아이디 연동
+            binding.homeStoryPictureIv.setImageResource(instaDB.userDao().getUserPicture(story.userIdx))
+            binding.homeStoryNameTv.text = instaDB.userDao().getUserID(story.userIdx)
+
+            // 내 스토리 & 올린 스토리가 없을 경우에는 더하기 버튼 띄우기
+            if(story.userIdx == myIdx && story.picture == 0) {
+                binding.homeStoryAddBtn.visibility = View.VISIBLE
+                binding.homeStoryPictureIv.background = null
+            }
         }
     }
 }
