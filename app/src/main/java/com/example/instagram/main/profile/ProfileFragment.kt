@@ -73,38 +73,15 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showDialogCreate(){
-        val createView = layoutInflater.inflate(R.layout.fragment_create, null)
-        val create = BottomSheetDialog(requireContext())
+        val create = CreateBottomSheetDialog()
 
-        create.setContentView(createView)
-        create.setCanceledOnTouchOutside(true)
-
-        create.show()
+        create.show(requireActivity().supportFragmentManager, create.tag)
     }
 
     private fun showDialogList(){
-        val dialogView = layoutInflater.inflate(R.layout.fragment_list, null)
-        val dialog = BottomSheetDialog(requireContext())
-//
-//        val layout = dialogView.layoutParams
-//        layout.height =
+        val dialog = ListBottomSheetDialog()
 
-        dialog.setContentView(dialogView)
-        dialog.setCanceledOnTouchOutside(true)
-
-        dialog.show()
-
-        //
-//        val delete = dialogView.findViewById<LinearLayout>(R.id.bottomDialog_delete)  // dialog custom 삭제 화면에 있는 종료 버튼
-//
-//        dialog.setOnDismissListener {
-//        }
-//
-//        delete.setOnClickListener {
-//            // dialog를 종료하면서 실행할 것들
-//
-//            dialog.dismiss()  // dialog 종료
-//        }
+        dialog.show(requireActivity().supportFragmentManager, dialog.tag)
     }
 
     private fun getMyIdx(): Int {  // 내 정보를 가져오기 위한 함수
