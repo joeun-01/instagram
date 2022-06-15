@@ -22,6 +22,8 @@ class SettingsFragment: Fragment() {
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
+        binding.sttsBackIv.setOnClickListener {  }
+
         binding.sttsLogoutTv.setOnClickListener {
             startActivity(Intent(activity, LoginActivity::class.java))
         }
