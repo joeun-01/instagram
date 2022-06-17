@@ -95,43 +95,43 @@ class MainActivity : AppCompatActivity() {
         }
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "ddobby", "ddobby", R.drawable.profile_ex1, "도비" )
+            User(instaDB.userDao().getUsers().size + 1, "", "ddobby", "ddobby", R.drawable.profile_ex1, "도비" )
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "ally", "ally", R.drawable.profile_ex2, "앨리")
+            User(instaDB.userDao().getUsers().size + 1, "", "ally", "ally", R.drawable.profile_ex2, "앨리")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "blue", "blue", R.drawable.profile_ex3, "블루")
+            User(instaDB.userDao().getUsers().size + 1, "", "blue", "blue", R.drawable.profile_ex3, "블루")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "luna", "luna", R.drawable.profile_ex1, "루나" )
+            User(instaDB.userDao().getUsers().size + 1, "" , "luna", "luna", R.drawable.profile_ex1, "루나" )
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "harry", "harry", R.drawable.profile_ex2, "해리")
+            User(instaDB.userDao().getUsers().size + 1, "", "harry", "harry", R.drawable.profile_ex2, "해리")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "cocoa", "cocoa", R.drawable.profile_ex3, "코코아")
+            User(instaDB.userDao().getUsers().size + 1, "", "cocoa", "cocoa", R.drawable.profile_ex3, "코코아")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "ark", "ark", R.drawable.profile_ex3, "아크")
+            User(instaDB.userDao().getUsers().size + 1, "", "ark", "ark", R.drawable.profile_ex3, "아크")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "ginie", "ginie", R.drawable.profile_ex1, "지니" )
+            User(instaDB.userDao().getUsers().size + 1, "", "ginie", "ginie", R.drawable.profile_ex1, "지니" )
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "seora", "seora", R.drawable.profile_ex2, "서라")
+            User(instaDB.userDao().getUsers().size + 1, "", "seora", "seora", R.drawable.profile_ex2, "서라")
         )
 
         instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "tama", "tama", R.drawable.profile_ex3, "타마")
+            User(instaDB.userDao().getUsers().size + 1, "", "tama", "tama", R.drawable.profile_ex3, "타마")
         )
     }
 
