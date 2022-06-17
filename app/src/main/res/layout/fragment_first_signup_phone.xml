@@ -41,6 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/phone"
+            android:inputType="phone"
             android:textColor="@color/black"
             android:textColorHint="#D5D5D5"
             android:background="@null"
@@ -49,7 +50,7 @@
             app:layout_constraintStart_toEndOf="@+id/first_signup_kr_phone_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
