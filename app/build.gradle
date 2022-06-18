@@ -71,6 +71,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-auth:21.0.5'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
 
 
     implementation "com.github.skydoves:expandablelayout:1.0.7"
