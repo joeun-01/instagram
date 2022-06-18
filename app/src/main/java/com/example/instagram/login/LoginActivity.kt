@@ -74,6 +74,14 @@ class LoginActivity: AppCompatActivity() {
         // 파이어베이스를 이용한 로그인
         firebaseAuth!!.signInWithEmailAndPassword(id, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
+                // 자동로그인, 유저 정보를 불러오기 위한 유저 정보 저장
+                val userSP = getSharedPreferences("user", MODE_PRIVATE)
+                val userEditor = userSP.edit()
+
+                userEditor.putString("uid", firebaseAuth!!.uid)
+                userEditor.apply()
+
+                // 홈 화면 띄우기
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
