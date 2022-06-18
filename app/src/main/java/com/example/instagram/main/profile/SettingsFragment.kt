@@ -24,11 +24,11 @@ class SettingsFragment: Fragment() {
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
+
         binding.sttsBackIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, ProfileFragment()).commitAllowingStateLoss()
         }
-
 
         binding.sttsLogoutTv.setOnClickListener {
             startActivity(Intent(activity, LoginActivity::class.java))
