@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.data.User
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivityFirstSignupStep4Binding
 import com.example.instagram.login.LoginActivity
 import com.google.gson.Gson
@@ -33,7 +34,7 @@ class FirstSignUpStep4Activity : AppCompatActivity() {
                 val userSP = getSharedPreferences("user", MODE_PRIVATE)
                 var userJson = userSP.getString("userInfo", "")
 
-                val user = gson.fromJson(userJson, User::class.java)
+                val user = gson.fromJson(userJson, UserDB::class.java)
                 user.ID = id
 
                 val userEditor = userSP.edit()
