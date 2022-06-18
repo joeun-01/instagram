@@ -83,19 +83,6 @@ class ProfileFragment : Fragment() {
         val dialog = ListBottomSheetDialog()
 
         dialog.show(requireActivity().supportFragmentManager, dialog.tag)
-
-
-        //
-//        val delete = dialogView.findViewById<LinearLayout>(R.id.bottomDialog_delete)  // dialog custom 삭제 화면에 있는 종료 버튼
-//
-//        dialog.setOnDismissListener {
-//        }
-//
-//        delete.setOnClickListener {
-//            // dialog를 종료하면서 실행할 것들
-//
-//            dialog.dismiss()  // dialog 종료
-//        }
     }
 
     private fun getMyIdx(): Int {  // 내 정보를 가져오기 위한 함수
