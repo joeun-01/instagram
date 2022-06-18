@@ -1,19 +1,23 @@
 package com.example.instagram.main.profile
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentProfileBinding
+import com.example.instagram.room.InstagramDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentProfileBinding
+    private lateinit var instaDB : InstagramDatabase
 
     private var tab = arrayListOf(R.drawable.ic_grid, R.drawable.ic_tag)
 
@@ -24,6 +28,10 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         binding = FragmentProfileBinding.inflate(inflater, container, false)
+        instaDB = InstagramDatabase.getInstance(requireContext())!!
+
+        // 로그인한 사용자 ID 연동
+        binding.profileNameTv.text = instaDB.userDao().getUserID(getMyIdx())
 
         // ViewPager 연결
         val profileVPAdapter = ProfileVPAdapter(this)
@@ -46,44 +54,40 @@ class ProfileFragment : Fragment() {
             changeEditFragment()
         }
 
-
-        val createView = layoutInflater.inflate(R.layout.fragment_create, null)
-        val create = BottomSheetDialog(requireContext())
-
-        create.setContentView(createView)
-        create.setCanceledOnTouchOutside(true)
-
         binding.profileAddIv.setOnClickListener {
-            create.show()
+            showDialogCreate()
         }
-
-
-
-        val dialogView = layoutInflater.inflate(R.layout.fragment_list, null)
-        val dialog = BottomSheetDialog(requireContext())
-//
-//        val layout = dialogView.layoutParams
-//        layout.height =
-
-        dialog.setContentView(dialogView)
 
         binding.profileListIv.setOnClickListener {
-            dialog.show()
+            showDialogList()
         }
-//
-//        val delete = dialogView.findViewById<LinearLayout>(R.id.bottomDialog_delete)  // dialog custom 삭제 화면에 있는 종료 버튼
-//
-//        dialog.setOnDismissListener {
-//        }
-//
-//        delete.setOnClickListener {
-//            // dialog를 종료하면서 실행할 것들
-//
-//            dialog.dismiss()  // dialog 종료
-//        }
 
 
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        binding.profileNameTv.text = instaDB.userDao().getUserID(getMyIdx())
+    }
+
+    private fun showDialogCreate(){
+        val create = CreateBottomSheetDialog()
+
+        create.show(requireActivity().supportFragmentManager, create.tag)
+    }
+
+    private fun showDialogList(){
+        val dialog = ListBottomSheetDialog()
+
+        dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+    }
+
+    private fun getMyIdx(): Int {  // 내 정보를 가져오기 위한 함수
+        val userSP = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
+
+        return userSP.getInt("userIdx", 0)
     }
 
     private fun setTextStatus(isVisible: Boolean){

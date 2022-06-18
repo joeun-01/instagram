@@ -28,7 +28,10 @@ class ReelsRVAdapter(private val reelsList: ArrayList<ReelsItem>): RecyclerView.
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(Img: ReelsItem) {
-
+            binding.itemReelsIdTv.text = Img.userId
+            binding.itemReelsUserimgIv.setImageResource(Img.userImg!!)
+            binding.itemReelsUserimg2Iv.setImageResource(Img.userImg!!)
+            binding.itemReelsContentTv.text=Img.content
             binding.itemReelsImg.setImageResource(Img.ReelsImg!!)
 
         }

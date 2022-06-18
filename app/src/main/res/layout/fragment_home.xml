@@ -50,15 +50,15 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_send"
-            android:layout_marginTop="5dp"
-            android:padding="11dp"
+            android:layout_marginTop="3dp"
+            android:padding="11.5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:id="@+id/home_feed_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -73,50 +73,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/home_my_story_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/profile_circle_background"
-                android:src="@drawable/basic_profile"
-                android:padding="4dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/home_add_btn"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_plus"
-                android:background="@drawable/add_story_background"
-                android:padding="8dp"
-                app:layout_constraintBottom_toBottomOf="@id/home_my_story_iv"
-                app:layout_constraintEnd_toEndOf="@id/home_my_story_iv"/>
-
-            <TextView
-                android:id="@+id/home_my_name_tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="닉네임"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:ellipsize="end"
-                app:layout_constraintStart_toStartOf="@id/home_my_story_iv"
-                app:layout_constraintEnd_toEndOf="@id/home_my_story_iv"
-                app:layout_constraintTop_toBottomOf="@id/home_my_story_iv"/>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_feed_story_rv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
                 tools:listitem="@layout/item_home_story"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
-                android:layout_marginStart="10dp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/home_my_story_iv"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <View
@@ -141,6 +108,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,12 +23,14 @@ class ReelsFragment: Fragment() {
     ): View? {
 
         binding = FragmentReelsBinding.inflate(inflater, container, false)
-        clickListener()
+
 
         //더미데이터
         reelsDatas.apply {
-            add(ReelsItem(0, R.drawable.reels_dummyimg2))
-            add(ReelsItem(0,R.drawable.reels_dummyimg))
+            add(ReelsItem("joeun",R.drawable.profile_ex1,"조은 하루", R.drawable.reels_dummyimg2))
+            add(ReelsItem("blue",R.drawable.profile_ex2,"블루야 왜 블루",R.drawable.reels_dummyimg))
+            add(ReelsItem("dobby",R.drawable.profile_ex3,"dobby is free",R.drawable.reels_dummyimg2))
+            add(ReelsItem("ally",R.drawable.profile_ex1,"zzzzzzzzzzzzzzzzzz",R.drawable.reels_dummyimg))
 
         }
 
@@ -42,25 +44,6 @@ class ReelsFragment: Fragment() {
 
     }
 
-    //하트 누를 때 돔작
-    private fun setToggleStatus(click: Boolean) {
-        if (click) {
-            binding.reelsHeartIv.visibility = View.VISIBLE
-            binding.reelsHeartredIv.visibility = View.GONE
-        } else {
-            binding.reelsHeartIv.visibility = View.GONE
-            binding.reelsHeartredIv.visibility = View.VISIBLE
-        }
-    }
-
-    private fun clickListener(){
-        binding.reelsHeartIv.setOnClickListener {
-            setToggleStatus(false)
-        }
-        binding.reelsHeartredIv.setOnClickListener {
-            setToggleStatus(true)
-        }
-    }
 
 
 }

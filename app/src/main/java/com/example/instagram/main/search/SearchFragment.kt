@@ -24,13 +24,13 @@ class SearchFragment: Fragment() {
 
         binding = FragmentSearchBinding.inflate(inflater, container, false)
 
+        //검색바 누르면 검색리스트 fragment로 전환
         binding.searchSearchbarIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, SearchListFragment()).commitAllowingStateLoss()
         }
 
-
-        //더미데이터
+        //게시물 사진 더미데이터
         searchDatas.apply {
             add(SearchItem(0, R.drawable.search_img1))
             add(SearchItem(0, R.drawable.search_img2))

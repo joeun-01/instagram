@@ -43,7 +43,7 @@ class SignUpPasswordActivity : AppCompatActivity() {
                 startActivity(Intent(this, SignUpCompleteActivity::class.java))
             }
             else {
-                Toast.makeText(this, "비밀번호를 입력해야합니다.", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "비밀번호를 입력해야합니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }

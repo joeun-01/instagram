@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.instagram.data.*
 
-@Database(entities = [User::class, Story::class, Post::class, Comment::class, Reply::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, Story::class, LikedPost::class, Post::class, Comment::class, Reply::class], version = 1, exportSchema = false)
 abstract class InstagramDatabase : RoomDatabase() {
     abstract fun userDao() : UserDao
     abstract fun storyDao() : StoryDao

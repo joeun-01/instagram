@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.instagram">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +26,16 @@
         <activity android:name=".signup.SignUpIDActivity"/>
         <activity android:name=".signup.SignUpPasswordActivity"/>
         <activity android:name=".signup.SignUpCompleteActivity"/>
+
+        <activity android:name=".signup.FirstSignUpStep1Activity"/>
+        <activity android:name=".signup.FirstSignUpStep2Activity"/>
+        <activity android:name=".signup.FirstSignUpStep3Activity"/>
+        <activity android:name=".signup.FirstSignUpStep4Activity"/>
+        <activity android:name=".signup.FirstSignUpCompleteActivity"/>
+        
+        <activity android:name=".main.home.StoryActivity"/>
         <activity android:name=".main.home.CommentActivity"/>
+        
 
         <activity android:name=".main.profile.ProfileEditActivity"/>
     </application>
