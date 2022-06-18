@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.instagram.databinding.FragmentShopBinding
 import com.example.instagram.databinding.FragmentShopItemBinding
 
 class ShopItemFragment : Fragment() {

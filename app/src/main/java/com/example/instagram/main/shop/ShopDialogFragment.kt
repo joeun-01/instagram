@@ -1,4 +1,4 @@
-package com.example.instagram.main.search
+package com.example.instagram.main.shop
 
 import android.os.Bundle
 import android.view.LayoutInflater

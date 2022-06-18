@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentShopBinding
 import com.example.instagram.main.MainActivity
+import com.example.instagram.main.home.PostRVAdapter
 import com.example.instagram.main.search.SearchListFragment
 
 class ShopFragment : Fragment() {
@@ -17,7 +18,6 @@ class ShopFragment : Fragment() {
     private lateinit var binding: FragmentShopBinding
     private var shopDatas = ArrayList<ShopItem>()
     private var shopWishDatas = ArrayList<WishItem>()
-    private var shopFragment = ShopFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +47,6 @@ class ShopFragment : Fragment() {
         binding.shopListRv.layoutManager =
             GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         val shopRVAdapter = ShopRVAdapter(shopDatas)
-        binding.shopListRv.adapter = shopRVAdapter
 
 
         binding.shopWishlistRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -61,12 +60,11 @@ class ShopFragment : Fragment() {
         }
 
 
-        /*val bottomSheet = ShopDialogFragment()
+        val bottomSheet = ShopDialogFragment()
+
         binding.shopListIv.setOnClickListener {
-            childFragmentManager.beginTransaction().replace(R.id.main_frm, bottomSheet)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
-        }*/
+            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+        }
 
         return binding.root
     }
