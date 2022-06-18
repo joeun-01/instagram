@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.data.User
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivityFirstSignupCompleteBinding
 import com.example.instagram.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,7 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
     private val gson : Gson = Gson()
     private var auth : FirebaseAuth? = null
     private lateinit var mDatabase : DatabaseReference
+    private var userList = arrayListOf<UserDB>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,16 +71,19 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
     }
 
     private fun putIntoDatabase(user : User) {
-        mDatabase.child("user").child("1").setValue(user)
+        mDatabase.child("user").child(userList.size.toString()).setValue(user)
     }
 
     private fun readUser(context : Context) {
-        mDatabase.child("users").child("1").addValueEventListener(object : ValueEventListener {
+        mDatabase.child("user").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
-                if (dataSnapshot.getValue(User::class.java) != null) {
-                    val post = dataSnapshot.getValue(User::class.java)
-                    Log.w("FireBaseData", "getData" + post.toString())
+                if (dataSnapshot.getValue(UserDB::class.java) != null) {
+                    val user = dataSnapshot.getValue(UserDB::class.java)
+                    if (user != null) {
+                        userList.add(user)
+                    }
+                    Log.w("FireBaseData", "getData" + user.toString())
                 } else {
                     Toast.makeText(context, "데이터 없음...", Toast.LENGTH_SHORT).show()
                 }
