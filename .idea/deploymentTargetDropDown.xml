@@ -7,11 +7,14 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\android-sdk\.android\avd\mp.avd" />
+            <value value="C:\Users\subin\AndroidStudioProjects\insta.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
+
+
     <timeTargetWasSelectedWithDropDown value="2022-06-14T15:01:27.933956500Z" />
+
   </component>
 </project>
