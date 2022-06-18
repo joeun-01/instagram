@@ -1,5 +1,6 @@
 package com.example.instagram.main.profile
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -31,6 +32,13 @@ class SettingsFragment: Fragment() {
         }
 
         binding.sttsLogoutTv.setOnClickListener {
+            // 로그아웃하면 저장한 uid를 지워줌
+            val userSP = requireActivity().getSharedPreferences("user", MODE_PRIVATE)
+            val userEditor = userSP.edit()
+
+            userEditor.remove("uid")
+            userEditor.apply()
+
             startActivity(Intent(activity, LoginActivity::class.java))
         }
 
