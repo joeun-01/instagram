@@ -2,22 +2,15 @@ package com.example.instagram.main.home
 
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.instagram.R
 import com.example.instagram.data.Story
 import com.example.instagram.databinding.FragmentHomeBinding
-import com.example.instagram.databinding.SharePostBottomSheetDialogBinding
-import com.example.instagram.databinding.WriteReplyBottomSheetDialogBinding
 import com.example.instagram.room.InstagramDatabase
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class HomeFragment : Fragment() {
 
