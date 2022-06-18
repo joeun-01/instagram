@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.instagram.data.User
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivityFirstSignupCompleteBinding
 import com.example.instagram.login.LoginActivity
@@ -27,9 +28,9 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
     private lateinit var mDatabase : DatabaseReference
 
     private val database = Firebase.database
+
     private val myRef = database.getReference("user")
     private var userList = arrayListOf<UserDB>()
-
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,22 +60,19 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
         readUser()
 
         binding.firstSignupCompleteNextTv.setOnClickListener {
-            createAccount(user.email, user.password)
-            user.uid = auth!!.uid.toString()
-
-            putIntoDatabase(user)  // 이 따 얘를 create account로 넘겨주자
-            Log.d("SUCCESS-MAIN", userList.toString())
-
-            startLoginActivity()
+            createAccount(user)
         }
-
-        // 뭐라도 추가함
     }
 
-    private fun createAccount(email: String, password: String) {
-        auth?.createUserWithEmailAndPassword(email, password)?.addOnCompleteListener(this) {
+    private fun createAccount(user: UserDB) {
+        auth?.createUserWithEmailAndPassword(user.email, user.password)?.addOnCompleteListener(this) {
                 task ->
             if (task.isSuccessful) {
+                putIntoDatabase(user)
+                Log.d("SUCCESS-MAIN", userList.toString())
+
+                startLoginActivity()  // 회원가입이 끝나면 로그인 화면으로
+
                 Toast.makeText(this, "계정 생성 완료", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "계정 생성 실패", Toast.LENGTH_SHORT).show()
@@ -83,7 +81,7 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
     }
 
     private fun putIntoDatabase(user : UserDB) {
-        mDatabase.child("user").child((userList.size + 1).toString()).setValue(user)
+        mDatabase.child("user").child((auth!!.uid.toString())).setValue(user)
     }
 
     private fun readUser() {

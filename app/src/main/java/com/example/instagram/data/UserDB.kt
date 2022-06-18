@@ -6,5 +6,4 @@ data class UserDB (
     var ID : String = "",
     var name : String = "",
     var picture : Int = 0,
-    var uid : String = ""
 )

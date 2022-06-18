@@ -87,6 +87,12 @@ class HomeFragment : Fragment() {
         return userSP.getInt("userIdx", 0)
     }
 
+    private fun getMyUid() : String? {  // 내 정보를 가져오기 위한 함수
+        val userSP = requireActivity().getSharedPreferences("user", MODE_PRIVATE)
+
+        return userSP.getString("uid", "")
+    }
+
     private fun showStory(userIdx : Int) {  // 스토리 자세히 보기
         val intent = Intent(requireActivity(), StoryActivity::class.java)
 

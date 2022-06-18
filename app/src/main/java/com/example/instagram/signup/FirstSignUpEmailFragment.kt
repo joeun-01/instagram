@@ -18,7 +18,7 @@ class FirstSignUpEmailFragment : Fragment() {
     lateinit var binding: FragmentFirstSignupEmailBinding
 
     private var gson : Gson = Gson()
-    private var user = UserDB("", "", "", "", R.drawable.basic_profile, "")
+    private var user = UserDB("", "", "", "", R.drawable.basic_profile)
 
     override fun onCreateView(
         inflater: LayoutInflater,
