@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentShopBinding
 import com.example.instagram.main.MainActivity
-import com.example.instagram.main.home.PostRVAdapter
-import com.example.instagram.main.search.SearchListFragment
 
 class ShopFragment : Fragment() {
 
