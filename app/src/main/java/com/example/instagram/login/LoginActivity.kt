@@ -78,7 +78,7 @@ class LoginActivity: AppCompatActivity() {
                 val userSP = getSharedPreferences("user", MODE_PRIVATE)
                 val userEditor = userSP.edit()
 
-                userEditor.putString("uid", firebaseAuth!!.uid)
+                userEditor.putString("uid", firebaseAuth!!.currentUser?.uid)
                 userEditor.apply()
 
                 // 홈 화면 띄우기
