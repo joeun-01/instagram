@@ -45,6 +45,7 @@ class ShopFragment : Fragment() {
         binding.shopListRv.layoutManager =
             GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         val shopRVAdapter = ShopRVAdapter(shopDatas)
+        binding.shopListRv.adapter = shopRVAdapter
 
 
         binding.shopWishlistRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
