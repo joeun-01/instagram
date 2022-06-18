@@ -68,6 +68,7 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
             startLoginActivity()
         }
 
+        // 뭐라도 추가함
     }
 
     private fun createAccount(email: String, password: String) {

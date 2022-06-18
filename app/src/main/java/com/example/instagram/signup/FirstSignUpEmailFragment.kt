@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
-import com.example.instagram.data.User
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentFirstSignupEmailBinding
 import com.google.gson.Gson
