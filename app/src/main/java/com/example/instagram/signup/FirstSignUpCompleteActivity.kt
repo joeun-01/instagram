@@ -1,7 +1,6 @@
 package com.example.instagram.signup
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -27,9 +26,9 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
 
     private lateinit var mDatabase : DatabaseReference
 
-    private var userList = arrayListOf<UserDB>()
     private val database = Firebase.database
     private val myRef = database.getReference("user")
+    private var userList = arrayListOf<UserDB>()
 
 
     @SuppressLint("SetTextI18n")
@@ -55,13 +54,11 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
             startLoginActivity()
         }
 
+        readUser()
+
         binding.firstSignupCompleteNextTv.setOnClickListener {
             createAccount(user.email, user.password)
             user.uid = auth!!.uid.toString()
-
-            readUser(this)
-            Log.d("MAIN-SUCCESS", userList.toString())
-
 
             putIntoDatabase(user)  // 이 따 얘를 create account로 넘겨주자
 
@@ -82,10 +79,10 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
     }
 
     private fun putIntoDatabase(user : UserDB) {
-        mDatabase.child("user").child(userList.size.toString() + 1).setValue(user)
+        mDatabase.child("user").child((userList.size + 1).toString()).setValue(user)
     }
 
-    private fun readUser(context : Context) {
+    private fun readUser() {
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
@@ -96,13 +93,11 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
                     }
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-
-
-
 
 //        myRef.addValueEventListener(object : ValueEventListener {
 //            override fun onDataChange(dataSnapshot: DataSnapshot) {
