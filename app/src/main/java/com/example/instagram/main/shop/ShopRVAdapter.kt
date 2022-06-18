@@ -33,14 +33,7 @@ class ShopRVAdapter(private val shopList: ArrayList<ShopItem>): RecyclerView.Ada
         fun bind(Img: ShopItem) {
             binding.shopItemIv.setImageResource(Img.shopImg!!)
 
-            /*binding.shopItemIv.setOnClickListener {
-                
-            }*/
 
-            /*binding.shopItemIv.setOnClickListener {
-               *//* (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frm, ShopItemFragment()).commitAllowingStateLoss()*//*
-            }*/
         }
     }
 }
