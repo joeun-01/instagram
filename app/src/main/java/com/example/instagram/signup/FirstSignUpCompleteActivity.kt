@@ -54,6 +54,8 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
             startLoginActivity()
         }
 
+        // 값이 바뀌면 DB에서 값을 받아옴
+        // 한 번만 호출하는 게 중요!!!!
         readUser()
 
         binding.firstSignupCompleteNextTv.setOnClickListener {
@@ -61,6 +63,7 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
             user.uid = auth!!.uid.toString()
 
             putIntoDatabase(user)  // 이 따 얘를 create account로 넘겨주자
+            Log.d("SUCCESS-MAIN", userList.toString())
 
             startLoginActivity()
         }
