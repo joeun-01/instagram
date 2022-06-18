@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Instagram/instagram/app/src/main/res/drawable/bottom_sheet_border.xml" value="0.1" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/drawable/ic_arrow_up.xml" value="0.1775" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/drawable/ic_close.xml" value="0.1775" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/drawable/ic_comment.xml" value="0.1775" />
@@ -35,17 +36,21 @@
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/fragment_searchlist.xml" value="0.23385416666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/fragment_shop.xml" value="0.2" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/fragment_shop_dialog.xml" value="0.23385416666666667" />
-        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/fragment_shop_item.xml" value="0.2" />
+        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/fragment_shop_item.xml" value="0.1" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/fragment_wishlist.xml" value="0.176" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_brand.xml" value="0.24947916666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_comment.xml" value="0.23385416666666667" />
+        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_content2_parent.xml" value="0.24947916666666667" />
+        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_content_child.xml" value="0.24947916666666667" />
+        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_content_parent.xml" value="0.17346014492753623" />
+        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_contents2_child.xml" value="0.24947916666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_detail.xml" value="0.24947916666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_home_story.xml" value="0.23385416666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_post.xml" value="0.23385416666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_reelsimg.xml" value="0.23385416666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_reply.xml" value="0.23385416666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_searchimg.xml" value="0.23385416666666667" />
-        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_shipping.xml" value="0.24947916666666667" />
+        <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_shipping.xml" value="0.242914979757085" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_shop.xml" value="0.24947916666666667" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_shop_wish.xml" value="0.2" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_shopping.xml" value="0.176" />
