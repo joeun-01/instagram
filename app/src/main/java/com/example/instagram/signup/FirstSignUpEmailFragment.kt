@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.data.User
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentFirstSignupEmailBinding
 import com.google.gson.Gson
 
@@ -18,7 +19,7 @@ class FirstSignUpEmailFragment : Fragment() {
     lateinit var binding: FragmentFirstSignupEmailBinding
 
     private var gson : Gson = Gson()
-    private var user = User(0, "", "", "", R.drawable.basic_profile, "")
+    private var user = UserDB("", "", "", "", R.drawable.basic_profile, "")
 
     override fun onCreateView(
         inflater: LayoutInflater,
