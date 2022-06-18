@@ -27,7 +27,7 @@ class FirstSignUpStep1Activity : AppCompatActivity() {
 
         // ViewPager와 TabLayout 연결
         TabLayoutMediator(binding.firstSignupStep1Tb, binding.firstSignupStep1Vp) {
-            tab, position ->
+                tab, position ->
             tab.text = this.tab[position]
         }.attach()
 
