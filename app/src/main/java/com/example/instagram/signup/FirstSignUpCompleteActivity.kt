@@ -69,12 +69,12 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
 
     private fun createAccount(email: String, password: String) {
         auth?.createUserWithEmailAndPassword(email, password)?.addOnCompleteListener(this) {
-            task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "계정 생성 완료", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "계정 생성 실패", Toast.LENGTH_SHORT).show()
-                }
+                task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "계정 생성 완료", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "계정 생성 실패", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
