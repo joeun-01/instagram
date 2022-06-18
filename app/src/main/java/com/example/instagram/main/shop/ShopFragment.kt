@@ -45,7 +45,6 @@ class ShopFragment : Fragment() {
         binding.shopListRv.layoutManager =
             GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         val shopRVAdapter = ShopRVAdapter(shopDatas)
-        binding.shopListRv.adapter = shopRVAdapter
 
 
         binding.shopWishlistRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -59,12 +58,11 @@ class ShopFragment : Fragment() {
         }
 
 
-        /*val bottomSheet = ShopDialogFragment()
+        val bottomSheet = ShopDialogFragment()
+
         binding.shopListIv.setOnClickListener {
-            childFragmentManager.beginTransaction().replace(R.id.main_frm, bottomSheet)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
-        }*/
+            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+        }
 
         return binding.root
     }

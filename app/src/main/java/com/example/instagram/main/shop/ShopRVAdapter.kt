@@ -12,8 +12,6 @@ import com.example.instagram.main.search.SearchItem
 
 class ShopRVAdapter(private val shopList: ArrayList<ShopItem>): RecyclerView.Adapter<ShopRVAdapter.ViewHolder>() {
 
-    private var activity: MainActivity? = null
-
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemShopBinding =
@@ -35,10 +33,14 @@ class ShopRVAdapter(private val shopList: ArrayList<ShopItem>): RecyclerView.Ada
         fun bind(Img: ShopItem) {
             binding.shopItemIv.setImageResource(Img.shopImg!!)
 
-            binding.shopItemIv.setOnClickListener {
-               /* (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frm, ShopItemFragment()).commitAllowingStateLoss()*/
-            }
+            /*binding.shopItemIv.setOnClickListener {
+                
+            }*/
+
+            /*binding.shopItemIv.setOnClickListener {
+               *//* (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, ShopItemFragment()).commitAllowingStateLoss()*//*
+            }*/
         }
     }
 }

@@ -6,9 +6,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ActivitySignupPasswordBinding
+import com.example.instagram.login.LoginActivity
 import com.google.gson.Gson
 
-class SignUpPasswordActivity : AppCompatActivity() {
+class FirstSignUpStep3Activity : AppCompatActivity() {
+
     lateinit var binding : ActivitySignupPasswordBinding
 
     private val gson : Gson = Gson()
@@ -19,13 +21,13 @@ class SignUpPasswordActivity : AppCompatActivity() {
         binding = ActivitySignupPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.signupPasswordBackIv.setOnClickListener {
-            // 뒤로가기 버튼 누르면 아이디 입력 창으로 다시 돌아감
-            startActivity(Intent(this, SignUpIDActivity::class.java))
+        // 로그인 화면 연결
+        binding.signupPasswordLoginTv.setOnClickListener {
+            startLoginActivity()
         }
 
-        binding.signupPasswordNextBtn.setOnClickListener {  // 비밀번호 입력 후 넘어가기
-            var password = binding.signupPasswordEt.text.toString()
+        binding.signupPasswordNextBtn.setOnClickListener {
+            val password = binding.signupPasswordEt.text.toString()
 
             if(password.isNotEmpty()) {
                 val userSP = getSharedPreferences("user", MODE_PRIVATE)
@@ -40,11 +42,17 @@ class SignUpPasswordActivity : AppCompatActivity() {
                 userEditor.putString("userInfo", userJson)
                 userEditor.apply()
 
-                startActivity(Intent(this, SignUpCompleteActivity::class.java))
+                startActivity(Intent(this, FirstSignUpStep4Activity::class.java))
             }
             else {
                 Toast.makeText(this, "비밀번호를 입력해야합니다.", Toast.LENGTH_SHORT).show()
             }
+
         }
+
+    }
+
+    private fun startLoginActivity() {
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

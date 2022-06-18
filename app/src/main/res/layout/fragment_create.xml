@@ -1,237 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="500dp"
+    app:cardCornerRadius="25dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/spinner_bottom"
-    android:paddingBottom="100dp">
+    android:background="@drawable/background_bottomsheet">
 
-    <ImageView
-        android:id="@+id/create_iv"
-        android:layout_width="40dp"
-        android:layout_height="10dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_line"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
 
-    <TextView
-        android:id="@+id/create_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="만들기"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/create_iv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:id="@+id/create_iv"
+                android:layout_width="40dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-    <View
-        android:id="@+id/create_under_view"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="10dp"
-        android:background="#a8a8a8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_tv"/>
+            <TextView
+                android:id="@+id/create_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="만들기"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/create_iv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <ImageView
-        android:id="@+id/create_post_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_create_post"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/create_post_tv"
-        app:layout_constraintBottom_toBottomOf="@+id/create_post_tv"/>
-
-    <TextView
-        android:id="@+id/create_post_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="게시"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toEndOf="@id/create_post_iv"
-        app:layout_constraintTop_toBottomOf="@+id/create_under_view"/>
-
-    <View
-        android:id="@+id/create_post_under_view"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="15dp"
-        android:background="#a8a8a8"
-        app:layout_constraintStart_toStartOf="@id/create_post_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_post_tv"/>
-
-    <ImageView
-        android:id="@+id/create_reel_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_create_reel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/create_reel_tv"
-        app:layout_constraintBottom_toBottomOf="@+id/create_reel_tv"/>
-
-    <TextView
-        android:id="@+id/create_reel_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="릴스"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toEndOf="@id/create_reel_iv"
-        app:layout_constraintTop_toBottomOf="@+id/create_post_under_view"/>
-
-    <View
-        android:id="@+id/create_reel_under_view"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="15dp"
-        android:background="#a8a8a8"
-        app:layout_constraintStart_toStartOf="@id/create_reel_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_reel_tv"/>
-
-    <ImageView
-        android:id="@+id/create_story_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_create_story"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/create_story_tv"
-        app:layout_constraintBottom_toBottomOf="@+id/create_story_tv"/>
-
-    <TextView
-        android:id="@+id/create_story_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="스토리"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toEndOf="@id/create_story_iv"
-        app:layout_constraintTop_toBottomOf="@+id/create_reel_under_view"/>
-
-    <View
-        android:id="@+id/create_story_under_view"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="15dp"
-        android:background="#a8a8a8"
-        app:layout_constraintStart_toStartOf="@id/create_story_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_story_tv"/>
-
-    <ImageView
-        android:id="@+id/create_highlight_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_create_highlight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/create_highlight_tv"
-        app:layout_constraintBottom_toBottomOf="@+id/create_highlight_tv"/>
-
-    <TextView
-        android:id="@+id/create_highlight_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="스토리 하이라이트"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toEndOf="@+id/create_highlight_iv"
-        app:layout_constraintTop_toBottomOf="@+id/create_story_under_view"/>
-
-    <View
-        android:id="@+id/create_highlight_under_view"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="15dp"
-        android:background="#a8a8a8"
-        app:layout_constraintStart_toStartOf="@id/create_highlight_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_highlight_tv"/>
-
-    <ImageView
-        android:id="@+id/create_live_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_create_live"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/create_live_tv"
-        app:layout_constraintBottom_toBottomOf="@+id/create_live_tv"/>
-
-    <TextView
-        android:id="@+id/create_live_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="라이브 방송"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toEndOf="@+id/create_live_iv"
-        app:layout_constraintTop_toBottomOf="@+id/create_highlight_under_view"/>
-
-    <View
-        android:id="@+id/create_live_under_view"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="15dp"
-        android:background="#a8a8a8"
-        app:layout_constraintStart_toStartOf="@id/create_live_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_live_tv"/>
-
-    <ImageView
-        android:id="@+id/create_guide_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_create_guide"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/create_guide_tv"
-        app:layout_constraintBottom_toBottomOf="@+id/create_guide_tv"/>
-
-    <TextView
-        android:id="@+id/create_guide_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="가이드"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toEndOf="@+id/create_guide_iv"
-        app:layout_constraintTop_toBottomOf="@+id/create_live_under_view"/>
-
-    <View
-        android:id="@+id/create_guide_under_view"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="15dp"
-        android:background="#a8a8a8"
-        app:layout_constraintStart_toStartOf="@id/create_guide_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_guide_tv"/>
+            <View
+                android:id="@+id/create_under_view"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="10dp"
+                android:background="#a8a8a8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/create_tv"/>
 
 
+            <ImageView
+                android:id="@+id/create_post_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_create_post"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_post_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/create_post_tv"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/create_post_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="게시"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@id/create_post_iv"
+                app:layout_constraintTop_toBottomOf="@+id/create_under_view"/>
+
+            <View
+                android:id="@+id/create_post_under_view"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="15dp"
+                android:background="#a8a8a8"
+                app:layout_constraintStart_toStartOf="@id/create_post_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_post_tv"/>
+
+            <ImageView
+                android:id="@+id/create_reel_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_create_reel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_reel_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/create_reel_tv"/>
+
+            <TextView
+                android:id="@+id/create_reel_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="릴스"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@id/create_reel_iv"
+                app:layout_constraintTop_toBottomOf="@+id/create_post_under_view"/>
+
+            <View
+                android:id="@+id/create_reel_under_view"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="15dp"
+                android:background="#a8a8a8"
+                app:layout_constraintStart_toStartOf="@id/create_reel_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_reel_tv"/>
+
+            <ImageView
+                android:id="@+id/create_story_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_create_story"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_story_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/create_story_tv"/>
+
+            <TextView
+                android:id="@+id/create_story_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="스토리"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@id/create_story_iv"
+                app:layout_constraintTop_toBottomOf="@+id/create_reel_under_view"/>
+
+            <View
+                android:id="@+id/create_story_under_view"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="15dp"
+                android:background="#a8a8a8"
+                app:layout_constraintStart_toStartOf="@id/create_story_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_story_tv"/>
+
+            <ImageView
+                android:id="@+id/create_highlight_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_create_highlight"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_highlight_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/create_highlight_tv"/>
+
+            <TextView
+                android:id="@+id/create_highlight_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="스토리 하이라이트"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/create_highlight_iv"
+                app:layout_constraintTop_toBottomOf="@+id/create_story_under_view"/>
+
+            <View
+                android:id="@+id/create_highlight_under_view"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="15dp"
+                android:background="#a8a8a8"
+                app:layout_constraintStart_toStartOf="@id/create_highlight_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_highlight_tv"/>
+
+            <ImageView
+                android:id="@+id/create_live_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_create_live"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_live_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/create_live_tv"/>
+
+            <TextView
+                android:id="@+id/create_live_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="라이브 방송"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/create_live_iv"
+                app:layout_constraintTop_toBottomOf="@+id/create_highlight_under_view"/>
+
+            <View
+                android:id="@+id/create_live_under_view"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="15dp"
+                android:background="#a8a8a8"
+                app:layout_constraintStart_toStartOf="@id/create_live_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_live_tv"/>
+
+            <ImageView
+                android:id="@+id/create_guide_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_create_guide"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_guide_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/create_guide_tv"/>
+
+            <TextView
+                android:id="@+id/create_guide_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가이드"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/create_guide_iv"
+                app:layout_constraintTop_toBottomOf="@+id/create_live_under_view"/>
+
+            <View
+                android:id="@+id/create_guide_under_view"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="15dp"
+                android:background="#a8a8a8"
+                app:layout_constraintStart_toStartOf="@id/create_guide_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_guide_tv"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
