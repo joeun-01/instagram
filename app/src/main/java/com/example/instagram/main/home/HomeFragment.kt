@@ -3,20 +3,33 @@ package com.example.instagram.main.home
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.instagram.data.Story
+import com.example.instagram.data.StoryDB
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentHomeBinding
 import com.example.instagram.room.InstagramDatabase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
 
     private lateinit var instaDB : InstagramDatabase
+    private var gson : Gson = Gson()
+
+    // 스토리 파이어베이스
+    private val database = Firebase.database
+    private val storyRef = database.getReference("story")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,24 +50,47 @@ class HomeFragment : Fragment() {
         initRecyclerView()
     }
 
-    private fun initRecyclerView() {  // RecycleView 연결
-        val storyRVAdapter = StoryRVAdapter(requireContext(), getMyIdx())
+    private fun initRecyclerView() {
+        // RecycleView 연결
+        val storyRVAdapter = StoryRVAdapter(getMyUid())
         binding.homeFeedStoryRv.adapter = storyRVAdapter
         binding.homeFeedStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        // 스토리에 내 스토리 먼저 추가 후 다른 사람들 스토리 추가
-        storyRVAdapter.clearNewStory()
+        // 스토리 데이터 받아오기
+        storyRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                storyRVAdapter.clearNewStory()
 
-        // 내 스토리를 무조건 맨 앞에 추가하기 위해서 따로 해줌
-        if(instaDB.storyDao().getMyStory(getMyIdx()).isEmpty()) {  // 내 스토리가 없는 경우
-            // 실제로 스토리가 있는 게 아니라 더미데이터기 때문에 데이터베이스에는 넣지 않음
-            storyRVAdapter.addMyDummyStory(Story(getMyIdx(), 0, ""))
-        }
-        else {  // 내 스토리가 있는 경우
-            storyRVAdapter.addNewStory(instaDB.storyDao().getMyStory(getMyIdx()))
-        }
+                if (snapshot.exists()){
+                    var exist = false  // 내 스토리 존재 여부 확인을 위한 변수
 
-        storyRVAdapter.addNewStory(instaDB.storyDao().getOthersStory(getMyIdx()))
+                    for (storySnapshot in snapshot.children){
+                        val getData = storySnapshot.getValue(StoryDB::class.java)
+
+                        if (getData != null) {
+                            if(getData.uid == getMyUid()) {
+                                // 내가 올린 스토리가 있으면 맨 처음에 뜨도록 추가
+                                storyRVAdapter.addNewStoryToFirst(getData)
+                                exist = true  // 존재 여부를 확인
+                            }
+                            // 내가 올린 스토리가 아니면 순서 상관 없이 추가
+                            storyRVAdapter.addNewStory(getData)
+                        }
+
+//                        Log.d("SUCCESS", getData.toString())
+                    }
+
+                    if(!exist) {
+                        // 내가 올린 스토리가 존재하지 않으면 더미데이터를 추가
+                        storyRVAdapter.addNewStoryToFirst(StoryDB(getMyUid(), 0, ""))
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("FAIL", "데이터를 불러오지 못했습니다")
+            }
+        })
 
         storyRVAdapter.setMyItemClickListener(object : StoryRVAdapter.MyItemClickListener {
             override fun onShowStory(userIdx : Int) {
@@ -90,7 +126,15 @@ class HomeFragment : Fragment() {
     private fun getMyUid() : String? {  // 내 정보를 가져오기 위한 함수
         val userSP = requireActivity().getSharedPreferences("user", MODE_PRIVATE)
 
-        return userSP.getString("uid", "")
+        return userSP.getString("myUid", "")
+    }
+
+    private fun getMyInfo() : UserDB? {  // 내 정보를 가져오기 위한 함수
+        val userSP = requireActivity().getSharedPreferences("user", MODE_PRIVATE)
+
+        val userJson = userSP.getString("myInfo", "")
+
+        return gson.fromJson(userJson, UserDB::class.java)
     }
 
     private fun showStory(userIdx : Int) {  // 스토리 자세히 보기

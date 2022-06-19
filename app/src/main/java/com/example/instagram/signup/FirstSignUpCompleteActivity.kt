@@ -28,7 +28,6 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
     private lateinit var mDatabase : DatabaseReference
 
     private val database = Firebase.database
-
     private val myRef = database.getReference("user")
     private var userList = arrayListOf<UserDB>()
 
@@ -57,7 +56,7 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
 
         // 값이 바뀌면 DB에서 값을 받아옴
         // 한 번만 호출하는 게 중요!!!!
-        readUser()
+//        readUser()
 
         binding.firstSignupCompleteNextTv.setOnClickListener {
             createAccount(user)
@@ -97,24 +96,10 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.d("FAIL", "데이터를 불러오지 못했습니다")
             }
         })
 
-//        myRef.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                val user = dataSnapshot.children
-//                for(data in user) {
-//                    userList.add(data)
-//                    Log.d("SUCCESS", data.toString())
-//                }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // Getting Post failed, log a message
-//                Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException())
-//            }
-//        })
     }
 
     private fun startLoginActivity() {
