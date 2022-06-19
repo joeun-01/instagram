@@ -2,13 +2,18 @@ package com.example.instagram.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivityLoginBinding
 import com.example.instagram.main.MainActivity
 import com.example.instagram.room.InstagramDatabase
 import com.example.instagram.signup.FirstSignUpStep1Activity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 
 
 class LoginActivity: AppCompatActivity() {
@@ -17,6 +22,12 @@ class LoginActivity: AppCompatActivity() {
 
     private lateinit var userDB : InstagramDatabase
     private var firebaseAuth: FirebaseAuth? = null
+
+    private var gson : Gson = Gson()
+
+    // 내 정보 가져오기
+    private val database = Firebase.database
+    private val myRef = database.getReference("user")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,12 +85,21 @@ class LoginActivity: AppCompatActivity() {
         // 파이어베이스를 이용한 로그인
         firebaseAuth!!.signInWithEmailAndPassword(id, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                // 자동로그인, 유저 정보를 불러오기 위한 유저 정보 저장
-                val userSP = getSharedPreferences("user", MODE_PRIVATE)
-                val userEditor = userSP.edit()
+                // 자동로그인, 유저 정보를 불러오기 위한 현재 유저 정보 저장
+                var user : UserDB
 
-                userEditor.putString("uid", firebaseAuth!!.currentUser?.uid)
-                userEditor.apply()
+                myRef.child(firebaseAuth!!.currentUser!!.uid).get().addOnSuccessListener {
+                    if(it != null) {
+                        user = it.getValue(UserDB::class.java)!!
+
+                        saveMyUid(firebaseAuth!!.currentUser!!.uid)
+                        saveMyInfo(user)
+
+                    }
+                    else {
+                        Log.d("FAIL-MAIN", "데이터 읽어오기가 실패했습니다")
+                    }
+                }
 
                 // 홈 화면 띄우기
                 val intent = Intent(this, MainActivity::class.java)
@@ -88,6 +108,24 @@ class LoginActivity: AppCompatActivity() {
                 Toast.makeText(this, "로그인 오류", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun saveMyInfo(user : UserDB) {
+        val userSP = getSharedPreferences("user", MODE_PRIVATE)
+        val userEditor = userSP.edit()
+
+        val userJson = gson.toJson(user)
+
+        userEditor.putString("myInfo", userJson)
+        userEditor.apply()
+    }
+
+    private fun saveMyUid(uid : String) {
+        val userSP = getSharedPreferences("user", MODE_PRIVATE)
+        val userEditor = userSP.edit()
+
+        userEditor.putString("myUid", uid)
+        userEditor.apply()
     }
 
 }
