@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.instagram.data.Story
 import com.example.instagram.data.StoryDB
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentHomeBinding
@@ -93,8 +94,8 @@ class HomeFragment : Fragment() {
         })
 
         storyRVAdapter.setMyItemClickListener(object : StoryRVAdapter.MyItemClickListener {
-            override fun onShowStory(userIdx : Int) {
-                showStory(userIdx)
+            override fun onShowStory(story: StoryDB) {
+                showStory(story)
             }
         })
 
@@ -137,10 +138,12 @@ class HomeFragment : Fragment() {
         return gson.fromJson(userJson, UserDB::class.java)
     }
 
-    private fun showStory(userIdx : Int) {  // 스토리 자세히 보기
+    private fun showStory(story: StoryDB) {  // 스토리 자세히 보기
         val intent = Intent(requireActivity(), StoryActivity::class.java)
 
-        intent.putExtra("userIdx", userIdx)  // userIdx를 넘겨줘서 누구의 스토리를 볼건지 알 수 있게 해줌
+        intent.putExtra("userID", story.uid)  // userIdx를 넘겨줘서 누구의 스토리를 볼건지 알 수 있게 해줌
+        intent.putExtra("story", story.picture)
+        intent.putExtra("date", story.date)
         requireActivity().startActivity(intent)  // StoryActivity 실행
     }
 
