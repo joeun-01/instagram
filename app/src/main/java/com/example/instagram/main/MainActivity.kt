@@ -38,15 +38,13 @@ class MainActivity : AppCompatActivity() {
 
 
         insertUserDummyData()
-//        insertStoryDummyData()
-        insertPostDummyData()
         insertCommentDummyData()
         insertReplyDummyData()
 
         initBottomNavigation()
 
         // 유저 정보가 잘 들어왔는지 확인
-//        Log.d("SUCCESS-MAIN", getMyInfo().toString())
+//        Log.d("SUCCESS-INFO", getMyInfo().toString())
 
         var user : UserDB
         userRef.child(getMyUid().toString()).get().addOnSuccessListener {
@@ -173,36 +171,15 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun insertStoryDummyData() {
-
+    private fun insertPostDummyData() {
         var mDatabase : DatabaseReference = FirebaseDatabase.getInstance().reference  // 데이터 넣기용
 
-        mDatabase.child("story").child("1").setValue(StoryDB("55Szelu38WUuRboyJe0tfMOt4Wb2", R.drawable.story_dummy1, ""))
-        mDatabase.child("story").child("2").setValue(StoryDB("zZJwehvuAobyz74ey93Dr2Qot7v1", R.drawable.story_dummy2, ""))
-        mDatabase.child("story").child("3").setValue(StoryDB("953fvgZBVKOWjiMbgDqTPBWiOUe2", R.drawable.story_dummy3, ""))
-        mDatabase.child("story").child("4").setValue(StoryDB("GtpScCFisoQqnO8SaTkTqojrMJ62", R.drawable.story_dummy4, ""))
-        mDatabase.child("story").child("5").setValue(StoryDB("J1VVdi5H5QUrEkxXuWIsDamQqLE2", R.drawable.story_dummy5, ""))
-        mDatabase.child("story").child("6").setValue(StoryDB("kQMcCspPocXh9I0Dw85oNq497CW2", R.drawable.story_dummy6, ""))
-
-    }
-
-    private fun insertPostDummyData() {
-
-        if(instaDB.postDao().getPosts().isNotEmpty()) {
-            return
-        }
-
-        instaDB.postDao().insert(
-            Post(2, R.drawable.profile_ex1, "얼음 깨기 너무 재밌었다!", "", 0)
-        )
-
-        instaDB.postDao().insert(
-            Post(5, R.drawable.profile_ex2, "한강 최고ㅎㅎ", "", 0)
-        )
-
-        instaDB.postDao().insert(
-            Post(1, R.drawable.profile_ex3, "차가 마시고 싶은 날...", "", 0)
-        )
+        mDatabase.child("post").child("1").setValue(PostDB("55Szelu38WUuRboyJe0tfMOt4Wb2", 1, R.drawable.post_dummy1, "수플레 너무 맛있다!"))
+        mDatabase.child("post").child("2").setValue(PostDB("zZJwehvuAobyz74ey93Dr2Qot7v1", 2, R.drawable.post_dummy2, "미용실에서 만난 귀여운 강아지"))
+        mDatabase.child("post").child("3").setValue(PostDB("953fvgZBVKOWjiMbgDqTPBWiOUe2", 3, R.drawable.post_dummy3, "케이크 냠"))
+        mDatabase.child("post").child("4").setValue(PostDB("GtpScCFisoQqnO8SaTkTqojrMJ62", 4, R.drawable.post_dummy4, "고양고양이"))
+        mDatabase.child("post").child("5").setValue(PostDB("J1VVdi5H5QUrEkxXuWIsDamQqLE2", 5, R.drawable.post_dummy5, "바람개비 동산에서 소풍하기"))
+        mDatabase.child("post").child("6").setValue(PostDB("kQMcCspPocXh9I0Dw85oNq497CW2", 6, R.drawable.post_dummy6, "벚꽃엔딩"))
     }
 
     private fun insertCommentDummyData() {

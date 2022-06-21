@@ -77,8 +77,6 @@ class StoryRVAdapter(private val myUid: String?) : RecyclerView.Adapter<StoryRVA
             // 스토리에 맞는 유저 정보 불러오기
             var user : UserDB
 
-            Log.d("SUCCESS-USER", story.toString())
-
             userRef.child(story.uid!!).get().addOnSuccessListener {
                 user = it.getValue(UserDB::class.java)!!
 

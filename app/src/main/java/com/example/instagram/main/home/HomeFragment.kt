@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.instagram.data.PostDB
 import com.example.instagram.data.Story
 import com.example.instagram.data.StoryDB
 import com.example.instagram.data.UserDB
@@ -28,9 +29,10 @@ class HomeFragment : Fragment() {
     private lateinit var instaDB : InstagramDatabase
     private var gson : Gson = Gson()
 
-    // 스토리 파이어베이스
+    // 파이어베이스
     private val database = Firebase.database
     private val storyRef = database.getReference("story")
+    private val postRef = database.getReference("post")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -99,9 +101,32 @@ class HomeFragment : Fragment() {
             }
         })
 
-        val postRVAdapter = PostRVAdapter(requireContext(), getMyIdx())
+        val postRVAdapter = PostRVAdapter(requireContext(), getMyInfo())
         binding.homeFeedPostRv.adapter = postRVAdapter
         binding.homeFeedPostRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        // 게시물 데이터 받아오기
+        postRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                postRVAdapter.clearNewPost()
+
+                if (snapshot.exists()){
+                    for (postSnapshot in snapshot.children){
+                        val getData = postSnapshot.getValue(PostDB::class.java)
+
+                        if (getData != null) {
+                            postRVAdapter.addNewPost(getData)
+                        }
+
+                        Log.d("SUCCESS", getData.toString())
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("FAIL", "데이터를 불러오지 못했습니다")
+            }
+        })
 
         postRVAdapter.setMyItemClickListener(object : PostRVAdapter.MyItemClickListener {
             override fun onShowComment(postIdx : Int) {
