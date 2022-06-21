@@ -22,7 +22,7 @@ class StoryRVAdapter(private val myUid: String?) : RecyclerView.Adapter<StoryRVA
 
     interface MyItemClickListener{
         // click function
-        fun onShowStory(userIdx : Int)
+        fun onShowStory(story: StoryDB)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -34,18 +34,21 @@ class StoryRVAdapter(private val myUid: String?) : RecyclerView.Adapter<StoryRVA
     fun addNewStory(story : StoryDB) {
         // 리사이클러뷰에 들어갈 스토리 추가
         this.story.add(story)
+        notifyDataSetChanged()
         Log.d("SUCCESS-STORY", this.story.toString())
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun addNewStoryToFirst(story : StoryDB) {
         this.story.add(0, story)
+        notifyDataSetChanged()
         Log.d("SUCCESS-STORY", this.story.toString())
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun clearNewStory() {
         this.story.clear()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -59,10 +62,10 @@ class StoryRVAdapter(private val myUid: String?) : RecyclerView.Adapter<StoryRVA
         holder.bind(story[position])
 
         // click listener
-//        holder.binding.homeStoryLy.setOnClickListener {
-//            // 스토리를 누르면 자세히 볼 수 있도록
-//            mItemClickListener.onShowStory(story[position].userIdx)
-//        }
+        holder.binding.homeStoryLy.setOnClickListener {
+            // 스토리를 누르면 자세히 볼 수 있도록
+            mItemClickListener.onShowStory(story[position])
+        }
     }
 
     // data set의 크기를 알려줌
@@ -73,8 +76,6 @@ class StoryRVAdapter(private val myUid: String?) : RecyclerView.Adapter<StoryRVA
         fun bind(story: StoryDB){
             // 스토리에 맞는 유저 정보 불러오기
             var user : UserDB
-
-            Log.d("SUCCESS-USER", story.toString())
 
             userRef.child(story.uid!!).get().addOnSuccessListener {
                 user = it.getValue(UserDB::class.java)!!

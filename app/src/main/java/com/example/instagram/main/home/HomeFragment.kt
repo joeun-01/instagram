@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.instagram.data.PostDB
+import com.example.instagram.data.Story
 import com.example.instagram.data.StoryDB
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentHomeBinding
@@ -27,9 +29,10 @@ class HomeFragment : Fragment() {
     private lateinit var instaDB : InstagramDatabase
     private var gson : Gson = Gson()
 
-    // 스토리 파이어베이스
+    // 파이어베이스
     private val database = Firebase.database
     private val storyRef = database.getReference("story")
+    private val postRef = database.getReference("post")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -93,14 +96,37 @@ class HomeFragment : Fragment() {
         })
 
         storyRVAdapter.setMyItemClickListener(object : StoryRVAdapter.MyItemClickListener {
-            override fun onShowStory(userIdx : Int) {
-                showStory(userIdx)
+            override fun onShowStory(story: StoryDB) {
+                showStory(story)
             }
         })
 
-        val postRVAdapter = PostRVAdapter(requireContext(), getMyIdx())
+        val postRVAdapter = PostRVAdapter(requireContext(), getMyInfo())
         binding.homeFeedPostRv.adapter = postRVAdapter
         binding.homeFeedPostRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        // 게시물 데이터 받아오기
+        postRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                postRVAdapter.clearNewPost()
+
+                if (snapshot.exists()){
+                    for (postSnapshot in snapshot.children){
+                        val getData = postSnapshot.getValue(PostDB::class.java)
+
+                        if (getData != null) {
+                            postRVAdapter.addNewPost(getData)
+                        }
+
+                        Log.d("SUCCESS", getData.toString())
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("FAIL", "데이터를 불러오지 못했습니다")
+            }
+        })
 
         postRVAdapter.setMyItemClickListener(object : PostRVAdapter.MyItemClickListener {
             override fun onShowComment(postIdx : Int) {
@@ -137,10 +163,12 @@ class HomeFragment : Fragment() {
         return gson.fromJson(userJson, UserDB::class.java)
     }
 
-    private fun showStory(userIdx : Int) {  // 스토리 자세히 보기
+    private fun showStory(story: StoryDB) {  // 스토리 자세히 보기
         val intent = Intent(requireActivity(), StoryActivity::class.java)
 
-        intent.putExtra("userIdx", userIdx)  // userIdx를 넘겨줘서 누구의 스토리를 볼건지 알 수 있게 해줌
+        intent.putExtra("userID", story.uid)  // userIdx를 넘겨줘서 누구의 스토리를 볼건지 알 수 있게 해줌
+        intent.putExtra("story", story.picture)
+        intent.putExtra("date", story.date)
         requireActivity().startActivity(intent)  // StoryActivity 실행
     }
 
