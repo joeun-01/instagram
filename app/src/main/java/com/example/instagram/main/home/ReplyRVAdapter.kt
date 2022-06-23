@@ -75,7 +75,7 @@ class ReplyRVAdapter : RecyclerView.Adapter<ReplyRVAdapter.ViewHolder>() {
                 // 댓글 내용 표시
                 binding.itemReplyProfileIv.setImageResource(user.picture)
 
-                val replyText = user.ID + " " + reply.comment  // 텍스트 가져옴
+                val replyText = user.ID + "  " + reply.comment  // 텍스트 가져옴
                 val spannableString = SpannableString(replyText)  //객체 생성
 
                 // 유저 아이디 부분만 두껍게 표시
