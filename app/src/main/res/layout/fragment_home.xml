@@ -63,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:scrollbars="none"
         app:layout_constraintTop_toBottomOf="@id/home_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,17 +98,23 @@
                 android:id="@+id/home_feed_post_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_post"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@id/home_feed_story_rv"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="vertical"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_feed_story_rv"
+                app:layout_constraintVertical_bias="0.0"
+                tools:listitem="@layout/item_post" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+<!--    android:overScrollMode="never"-->
+<!--    android:nestedScrollingEnabled="false"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
