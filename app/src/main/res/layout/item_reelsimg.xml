@@ -9,11 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/reels_dummyimg2"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/reels_dummyimg2"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-  <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -34,7 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="userid"
-            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textSize="19sp"
             android:textColor="@color/white"
             android:layout_marginStart="10dp"
             app:layout_constraintStart_toEndOf="@id/item_reels_userimg_iv"
@@ -47,6 +48,7 @@
           android:layout_height="wrap_content"
           android:text="팔로우"
           android:textSize="14sp"
+          android:background="@drawable/follow_round_background"
           android:textColor="@color/white"
           android:layout_marginStart="15dp"
           app:layout_constraintStart_toEndOf="@id/item_reels_id_tv"
@@ -55,7 +57,7 @@
 
         <TextView
             android:id="@+id/item_reels_content_tv"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="노래도 잘하는 강동원"
             android:textSize="15sp"
@@ -106,8 +108,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_reels_heart_iv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:src="@drawable/ic_heartwhite"/>
 
         <TextView
@@ -123,8 +125,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_reels_chat_iv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:src="@drawable/ic_chatwhite"/>
 
         <TextView
@@ -139,15 +141,17 @@
 
         <ImageView
             android:id="@+id/item_reels_msg_iv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_messagewhite"
             android:layout_marginBottom="15dp"/>
 
         <ImageView
             android:id="@+id/item_reels_more_iv"
-            android:layout_width="40dp"
+            android:layout_width="22dp"
             android:layout_height="40dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_morewhite"
             android:layout_marginBottom="15dp"/>
 
@@ -155,9 +159,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/item_reels_userimg2_cv"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         app:cardCornerRadius="5dp"
+        android:layout_gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 

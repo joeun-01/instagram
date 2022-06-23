@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--사용자 아이디를 누르면 나오는 사용자 화면-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/useracc_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/useracc_back_iv"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_arrow_left"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/useracc_id_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="userid"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="120dp"
+        app:layout_constraintStart_toEndOf="@id/useracc_back_iv"
+        app:layout_constraintTop_toTopOf="@id/useracc_back_iv"
+        app:layout_constraintBottom_toBottomOf="@id/useracc_back_iv"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/useracc_more_iv"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_more"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/useracc_back_iv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
+       app:layout_constraintTop_toBottomOf="@id/useracc_top">
+
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:id="@+id/useracc_top_cv"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       <androidx.appcompat.widget.AppCompatImageView
+           android:id="@+id/searchuseracc_img_iv"
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginStart="20dp"
+           android:background="@drawable/profile_circle_background"
+           android:src="@drawable/basic_profile"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintStart_toStartOf="parent"/>
+
+
+       <LinearLayout
+           android:id="@+id/searchuseracc_post_num"
+           android:layout_width="80dp"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginStart="20dp"
+           app:layout_constraintTop_toTopOf="@id/searchuseracc_img_iv"
+           app:layout_constraintBottom_toBottomOf="@id/searchuseracc_img_iv"
+           app:layout_constraintEnd_toStartOf="@+id/searchuseracc_follower_num">
+
+           <TextView
+               android:id="@+id/searchuseracc_post_real_num_tv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="12"
+               android:textAlignment="center"
+               android:textColor="@color/black"
+               android:textStyle="bold"/>
+
+           <TextView
+               android:id="@+id/searchuseracc_post_num_title_tv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="게시물"
+               android:textAlignment="center"
+               android:textColor="@color/black"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/searchuseracc_follower_num"
+           android:layout_width="80dp"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           app:layout_constraintTop_toTopOf="@id/searchuseracc_post_num"
+           app:layout_constraintBottom_toBottomOf="@id/searchuseracc_post_num"
+           app:layout_constraintEnd_toStartOf="@+id/searchuseracc_following_num">
+
+           <TextView
+               android:id="@+id/searchuseracc_follower_num_tv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="197"
+               android:textAlignment="center"
+               android:textColor="@color/black"
+               android:textStyle="bold"/>
+
+           <TextView
+               android:id="@+id/searchuseracc_follower_num_title_tv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="팔로워"
+               android:textAlignment="center"
+               android:textColor="@color/black"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/searchuseracc_following_num"
+           android:layout_width="80dp"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginEnd="10dp"
+           app:layout_constraintTop_toTopOf="@id/searchuseracc_follower_num"
+           app:layout_constraintBottom_toBottomOf="@id/searchuseracc_follower_num"
+           app:layout_constraintEnd_toEndOf="parent">
+
+           <TextView
+               android:id="@+id/searchuseracc_following_num_tv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="193"
+               android:textAlignment="center"
+               android:textColor="@color/black"
+               android:textStyle="bold"/>
+
+           <TextView
+               android:id="@+id/searchuseracc_following_num_title_tv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="팔로잉"
+               android:textAlignment="center"
+               android:textColor="@color/black"/>
+
+       </LinearLayout>
+
+        <TextView
+            android:id="@+id/searchuseracc_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="글 내용"
+            app:layout_constraintStart_toStartOf="@id/searchuseracc_img_iv"
+            app:layout_constraintTop_toBottomOf="@id/searchuseracc_img_iv"/>
+
+           <TextView
+               android:id="@+id/searchacc_follow_btn"
+               android:layout_width="160dp"
+               android:layout_height="wrap_content"
+               android:background="@drawable/stroke_gray"
+               android:paddingVertical="10dp"
+               android:text="팔로우"
+               android:textAlignment="center"
+               android:textColor="@color/white"
+               android:backgroundTint="#1FA1FF"
+               android:textSize="15sp"
+               app:layout_constraintStart_toStartOf="@id/searchuseracc_content_tv"
+               app:layout_constraintTop_toBottomOf="@id/searchuseracc_content_tv" />
+
+           <TextView
+            android:id="@+id/searchuseracc_msg_btn"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="메시지"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:paddingVertical="10dp"
+            android:textSize="15sp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/stroke_gray"
+            app:layout_constraintTop_toTopOf="@id/searchacc_follow_btn"
+            app:layout_constraintStart_toEndOf="@id/searchacc_follow_btn"/>
+
+           <androidx.appcompat.widget.AppCompatImageView
+               android:id="@+id/searchuser_add_friend_iv"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:src="@drawable/ic_icon_more"
+               android:padding="10dp"
+               android:background="@drawable/stroke_gray"
+               android:layout_marginEnd="20dp"
+               android:layout_marginStart="5dp"
+               app:layout_constraintStart_toEndOf="@id/searchuseracc_msg_btn"
+               app:layout_constraintTop_toTopOf="@id/searchuseracc_msg_btn"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+   </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

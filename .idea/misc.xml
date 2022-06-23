@@ -52,7 +52,6 @@
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_shopping.xml" value="0.176" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/item_wishlist.xml" value="0.4" />
         <entry key="..\:/Instagram/instagram/app/src/main/res/layout/write_reply_bottom_sheet_dialog.xml" value="0.23385416666666667" />
-
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/ic_enter_comment.xml" value="0.178" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/ic_launcher_instagram.xml" value="0.1205" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/drawable-v24/login_btn_background.xml" value="0.1775" />
@@ -96,6 +95,9 @@
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/item_reply.xml" value="0.2" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/layout/splash.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/jjy02/AndroidStudioProjects/instagram/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24074074074074073" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/background_bottomsheet.xml" value="0.186" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/bottom_sheet_border.xml" value="0.186" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/follow_round_background.xml" value="0.189" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/follow_whitebox.xml" value="0.1" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/ic_arrow_down.xml" value="0.161" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/ic_arrow_up.xml" value="0.1455" />
@@ -140,20 +142,25 @@
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/shop_icon.xml" value="0.142" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/drawable/spinner_bottom.xml" value="0.152" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout-v23/share_post_bottom_sheet_dialog.xml" value="0.19927536231884058" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_comment.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_login.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_profile_edit.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_signup_complete.xml" value="0.11271529888551166" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_signup_id.xml" value="0.11271529888551166" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_signup_password.xml" value="0.11271529888551166" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/activity_splash.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragemtn_profile_edit.xml" value="0.1" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_cart.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_create.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_first_signup_email.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_first_signup_phone.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_grid_post.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_home.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_list.xml" value="0.11271529888551166" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_profile.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_profile_edit.xml" value="0.23177083333333334" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_reels.xml" value="0.1" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_reels.xml" value="0.25343999226562525" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_search.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_search_account.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_search_audio.xml" value="0.23177083333333334" />
@@ -162,18 +169,30 @@
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_search_tag.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_searchlist.xml" value="0.19017094017094016" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_searchrst.xml" value="0.23072916666666668" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_searchtab.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_settings.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_shop.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_shop_dialog.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_shop_item.xml" value="0.5125115848007414" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_useraccount.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/fragment_wishlist.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_brand.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_comment.xml" value="0.11271529888551166" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_content2_child.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_content2_parent.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_content_child.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_content_parent.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_detail.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_home_post.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_home_story.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_post.xml" value="0.11271529888551166" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_profile_post.xml" value="0.23177083333333334" />
-        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_reelsimg.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_reelsimg.xml" value="0.38399998828125037" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_reply.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_searchimg.xml" value="0.19017094017094016" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_searchlist.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_searchtab.xml" value="0.23072916666666668" />
+        <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_searchuseracc.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_share_post.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_shipping.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/subin/Desktop/CE/UMC/instagram/app/src/main/res/layout/item_shop.xml" value="0.19927536231884058" />
