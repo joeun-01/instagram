@@ -39,9 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         insertUserDummyData()
 
-        var mDatabase : DatabaseReference = FirebaseDatabase.getInstance().reference  // 데이터 넣기용
-        mDatabase.child("comment").child("9").setValue(ReplyDB("SDOmkPoe6QOXuhtV4rDddwDaSx53", 1, 9, "여기 어디야?!", "", 0))
-
         initBottomNavigation()
 
         // 유저 정보가 잘 들어왔는지 확인

@@ -144,6 +144,7 @@ class CommentRVAdapter(private var context: Context) : RecyclerView.Adapter<Comm
                         if(replyCount == 1) {
                             // 답글이 하나면 그냥 보여주기
                             binding.itemCommentReplyRv.visibility = View.VISIBLE
+                            binding.itemComment.setPadding(0, 0, 0, 10)
                         }
                         else if(replyCount > 1) {
                             // 답글이 두 개 이상이면 더보기를 띄워주기

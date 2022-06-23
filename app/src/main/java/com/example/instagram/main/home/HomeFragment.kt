@@ -169,6 +169,12 @@ class HomeFragment : Fragment() {
     private fun writeMyComment(postIdx: Int) {  // 댓글 달기를 누르면 Bottom Sheet Dialog를 띄움
         val dialog = CommentBottomSheetDialog()
 
+        val commentSP = requireActivity().getSharedPreferences("post", MODE_PRIVATE)
+        val commentEditor = commentSP.edit()
+
+        commentEditor.putInt("post_comment", postIdx)
+        commentEditor.apply()
+
         dialog.show(requireActivity().supportFragmentManager, dialog.tag)
 
     }
