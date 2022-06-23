@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.data.PostDB
-import com.example.instagram.data.Story
 import com.example.instagram.data.StoryDB
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentHomeBinding
@@ -54,7 +53,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        // RecycleView 연결
+        // 스토리 리사이클러뷰 연결
         val storyRVAdapter = StoryRVAdapter(getMyUid())
         binding.homeFeedStoryRv.adapter = storyRVAdapter
         binding.homeFeedStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -101,6 +100,7 @@ class HomeFragment : Fragment() {
             }
         })
 
+        // 게시물 리사이클러뷰 연결
         val postRVAdapter = PostRVAdapter(requireContext(), getMyInfo())
         binding.homeFeedPostRv.adapter = postRVAdapter
         binding.homeFeedPostRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -129,8 +129,8 @@ class HomeFragment : Fragment() {
         })
 
         postRVAdapter.setMyItemClickListener(object : PostRVAdapter.MyItemClickListener {
-            override fun onShowComment(postIdx : Int) {
-                showAllComment(postIdx)
+            override fun onShowComment(post: PostDB) {
+                showAllComment(post)
             }
 
             override fun onWriteComment(postIdx: Int) {
@@ -141,12 +141,6 @@ class HomeFragment : Fragment() {
                 showShareDialog(postIdx)
             }
         })
-    }
-
-    private fun getMyIdx(): Int {  // 내 정보를 가져오기 위한 함수
-        val userSP = requireActivity().getSharedPreferences("user", MODE_PRIVATE)
-
-        return userSP.getInt("userIdx", 0)
     }
 
     private fun getMyUid() : String? {  // 내 정보를 가져오기 위한 함수
@@ -175,15 +169,23 @@ class HomeFragment : Fragment() {
     private fun writeMyComment(postIdx: Int) {  // 댓글 달기를 누르면 Bottom Sheet Dialog를 띄움
         val dialog = CommentBottomSheetDialog()
 
+        val commentSP = requireActivity().getSharedPreferences("post", MODE_PRIVATE)
+        val commentEditor = commentSP.edit()
+
+        commentEditor.putInt("post_comment", postIdx)
+        commentEditor.apply()
+
         dialog.show(requireActivity().supportFragmentManager, dialog.tag)
 
     }
 
-    private fun showAllComment(postIdx : Int) {  // 댓글 모두 보기를 누르면 CommentActivity로 이동
+    private fun showAllComment(post : PostDB) {  // 댓글 모두 보기를 누르면 CommentActivity로 이동
         val postSP = requireActivity().getSharedPreferences("post", MODE_PRIVATE)
         val postEditor = postSP.edit()
 
-        postEditor.putInt("postIdx", postIdx)
+        val postJson = gson.toJson(post)
+
+        postEditor.putString("postInfo", postJson)
         postEditor.apply()
 
         startActivity(Intent(requireContext(), CommentActivity::class.java))

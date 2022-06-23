@@ -27,8 +27,6 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
 
     private lateinit var mDatabase : DatabaseReference
 
-    private val database = Firebase.database
-    private val myRef = database.getReference("user")
     private var userList = arrayListOf<UserDB>()
 
     @SuppressLint("SetTextI18n")
@@ -81,25 +79,6 @@ class FirstSignUpCompleteActivity : AppCompatActivity() {
 
     private fun putIntoDatabase(user : UserDB) {
         mDatabase.child("user").child((auth!!.uid.toString())).setValue(user)
-    }
-
-    private fun readUser() {
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
-                    for (userSnapshot in snapshot.children){
-                        val getData = userSnapshot.getValue(UserDB::class.java)
-                        userList.add(getData!!)
-                        Log.d("SUCCESS", userList.toString())
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("FAIL", "데이터를 불러오지 못했습니다")
-            }
-        })
-
     }
 
     private fun startLoginActivity() {

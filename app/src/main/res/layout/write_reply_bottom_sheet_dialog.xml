@@ -111,7 +111,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/write_comment_background"
-        android:hint="조은(으)로 댓글 달기..."
+        android:hint="댓글 달기..."
         android:textColorHint="#D5D5D5"
         android:inputType="text"
         android:paddingVertical="12dp"

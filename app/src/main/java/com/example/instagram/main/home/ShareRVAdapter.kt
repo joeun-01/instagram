@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.instagram.data.Story
 import com.example.instagram.data.User
 import com.example.instagram.databinding.ItemSharePostBinding
 import com.example.instagram.room.InstagramDatabase
