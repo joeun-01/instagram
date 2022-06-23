@@ -103,6 +103,7 @@
                 android:id="@+id/comment_reply_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 tools:listitem="@layout/item_comment"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"

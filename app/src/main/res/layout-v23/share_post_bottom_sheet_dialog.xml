@@ -12,6 +12,7 @@
         android:hint="검색"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColorHint="#ABABAB"
         android:background="@drawable/search_grayradius"
         android:drawableStart="@drawable/ic_search_selected"
         android:drawableTint="#8C8C8C"

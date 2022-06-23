@@ -34,6 +34,7 @@ class CommentRVAdapter(private var context: Context) : RecyclerView.Adapter<Comm
 
     interface MyItemClickListener{
         // click function
+        fun onWriteReply(comment: CommentDB)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -66,11 +67,17 @@ class CommentRVAdapter(private var context: Context) : RecyclerView.Adapter<Comm
         holder.bind(comment[position])
 
         // click listener
+
         // 답글 보기
         holder.binding.itemCommentShowReply.setOnClickListener {
             holder.binding.itemCommentReplyRv.visibility = View.VISIBLE
             holder.binding.itemCommentShowReply.visibility = View.GONE
             holder.binding.itemComment.setPadding(0, 0, 0, 10)
+        }
+
+        // 답글 달기
+        holder.binding.itemCommentReplyTv.setOnClickListener {
+            mItemClickListener.onWriteReply(comment[position])
         }
     }
 
@@ -90,7 +97,7 @@ class CommentRVAdapter(private var context: Context) : RecyclerView.Adapter<Comm
                 // 댓글 내용 표시
                 binding.itemCommentProfileIv.setImageResource(user.picture)
 
-                val commentText = user.ID + " " + comment.comment  // 텍스트 가져옴
+                val commentText = user.ID + "  " + comment.comment  // 텍스트 가져옴
                 val spannableString = SpannableString(commentText)  //객체 생성
 
                 // 유저 아이디 부분만 두껍게 표시
@@ -136,7 +143,7 @@ class CommentRVAdapter(private var context: Context) : RecyclerView.Adapter<Comm
                             }
                         }
 
-                        Log.d("CHECK", replyCount.toString())
+//                        Log.d("CHECK", replyCount.toString())
 
                         binding.itemCommentShowReplyTv.text = "답글 " + replyRVAdapter.itemCount + "개 모두 보기"
 
@@ -144,7 +151,6 @@ class CommentRVAdapter(private var context: Context) : RecyclerView.Adapter<Comm
                         if(replyCount == 1) {
                             // 답글이 하나면 그냥 보여주기
                             binding.itemCommentReplyRv.visibility = View.VISIBLE
-                            binding.itemComment.setPadding(0, 0, 0, 10)
                         }
                         else if(replyCount > 1) {
                             // 답글이 두 개 이상이면 더보기를 띄워주기

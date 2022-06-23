@@ -115,9 +115,15 @@ class CommentActivity : AppCompatActivity() {
             }
         })
 
+        commentRVAdapter.setMyItemClickListener(object : CommentRVAdapter.MyItemClickListener {
+            override fun onWriteReply(comment: CommentDB) {
+                writeReply(comment)
+            }
+
+        })
+
         // 내 프사 달기
         binding.commentMyProfileIv.setImageResource(getMyInfo()!!.picture)
-
 
         // 댓글 달기
         binding.commentWriteEt.addTextChangedListener(object : TextWatcher {
@@ -141,7 +147,7 @@ class CommentActivity : AppCompatActivity() {
         binding.commentEnterTv.setOnClickListener {
             if(binding.commentWriteEt.text != null) {
                 // 데이터베이스에 댓글 저장
-                putIntoDatabase(post.postIdx, binding.commentWriteEt.text.toString())
+                putCommentDatabase(post.postIdx, binding.commentWriteEt.text.toString())
 
                 // 댓글 달기 창 원래대로 되돌리기
                 binding.commentWriteEt.text = null
@@ -169,7 +175,16 @@ class CommentActivity : AppCompatActivity() {
         return gson.fromJson(userJson, UserDB::class.java)
     }
 
-    private fun putIntoDatabase(postIdx : Int, comment : String) {
+    @SuppressLint("SetTextI18n")
+    private fun writeReply(comment: CommentDB) {
+//        binding.commentWriteEt.setText("@" + "jjy_joeun")  // 닉네임을 입력하고
+//
+//        // 키보드도 같이 올려주기
+//        val inputManager : InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+//        inputManager.showSoftInput(binding.commentWriteEt, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    private fun putCommentDatabase(postIdx : Int, comment : String) {
         countRef.get().addOnSuccessListener {
             val count = it.getValue(CountDB::class.java)!!
 
