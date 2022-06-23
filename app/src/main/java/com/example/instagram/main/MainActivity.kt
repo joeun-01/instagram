@@ -38,8 +38,9 @@ class MainActivity : AppCompatActivity() {
 
 
         insertUserDummyData()
-        insertCommentDummyData()
-        insertReplyDummyData()
+
+        var mDatabase : DatabaseReference = FirebaseDatabase.getInstance().reference  // 데이터 넣기용
+        mDatabase.child("comment").child("9").setValue(ReplyDB("SDOmkPoe6QOXuhtV4rDddwDaSx53", 1, 9, "여기 어디야?!", "", 0))
 
         initBottomNavigation()
 
@@ -168,62 +169,6 @@ class MainActivity : AppCompatActivity() {
 
         instaDB.userDao().insert(
             User(instaDB.userDao().getUsers().size + 1, "", "tama", "tama", R.drawable.profile_ex3, "타마")
-        )
-    }
-
-    private fun insertPostDummyData() {
-        var mDatabase : DatabaseReference = FirebaseDatabase.getInstance().reference  // 데이터 넣기용
-
-        mDatabase.child("post").child("1").setValue(PostDB("55Szelu38WUuRboyJe0tfMOt4Wb2", 1, R.drawable.post_dummy1, "수플레 너무 맛있다!"))
-        mDatabase.child("post").child("2").setValue(PostDB("zZJwehvuAobyz74ey93Dr2Qot7v1", 2, R.drawable.post_dummy2, "미용실에서 만난 귀여운 강아지"))
-        mDatabase.child("post").child("3").setValue(PostDB("953fvgZBVKOWjiMbgDqTPBWiOUe2", 3, R.drawable.post_dummy3, "케이크 냠"))
-        mDatabase.child("post").child("4").setValue(PostDB("GtpScCFisoQqnO8SaTkTqojrMJ62", 4, R.drawable.post_dummy4, "고양고양이"))
-        mDatabase.child("post").child("5").setValue(PostDB("J1VVdi5H5QUrEkxXuWIsDamQqLE2", 5, R.drawable.post_dummy5, "바람개비 동산에서 소풍하기"))
-        mDatabase.child("post").child("6").setValue(PostDB("kQMcCspPocXh9I0Dw85oNq497CW2", 6, R.drawable.post_dummy6, "벚꽃엔딩"))
-    }
-
-    private fun insertCommentDummyData() {
-
-        if(instaDB.CommentDao().getComments().size > 1) {
-            return
-        }
-
-        instaDB.CommentDao().insert(
-            Comment(1, 1, "댓글 예시", "", 0)
-        )
-
-        instaDB.CommentDao().insert(
-            Comment(2, 2, "댓글 예시", "", 0)
-        )
-
-        instaDB.CommentDao().insert(
-            Comment(3, 3, "댓글 예시", "", 0)
-        )
-    }
-
-    private fun insertReplyDummyData() {
-        if(instaDB.CommentDao().getReplies().isNotEmpty()) {
-            return
-        }
-
-        instaDB.CommentDao().insertReply(
-            Reply(5, 3, 3, "헐 대박이다", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(6, 3, 3, "진짜?", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(1, 2, 2, "와~~~", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(5, 1, 1, "에엥", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(5, 1, 1, "대박이다", "", 0)
         )
     }
 

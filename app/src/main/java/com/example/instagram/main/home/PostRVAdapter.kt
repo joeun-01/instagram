@@ -17,7 +17,7 @@ import com.example.instagram.room.InstagramDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class PostRVAdapter(context : Context, private val myInfo : UserDB?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
+class PostRVAdapter(private val context : Context, private val myInfo : UserDB?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
     private val instaDB = InstagramDatabase.getInstance(context)!!
 
     private val post = arrayListOf<PostDB>()
@@ -29,7 +29,7 @@ class PostRVAdapter(context : Context, private val myInfo : UserDB?) : RecyclerV
     private val userRef = database.getReference("user")
 
     interface MyItemClickListener{
-        fun onShowComment(postIdx : Int)
+        fun onShowComment(post: PostDB)
         fun onWriteComment(postIdx : Int)
         fun onShowShare(postIdx: Int)
     }
@@ -93,11 +93,11 @@ class PostRVAdapter(context : Context, private val myInfo : UserDB?) : RecyclerV
 
         // 댓글 모두 보기, 댓글 아이콘을 누르면 댓글 창으로 넘어가도록
         holder.binding.itemPostShowAllCommentTv.setOnClickListener {
-            mItemClickListener.onShowComment(post[position].postIdx)
+            mItemClickListener.onShowComment(post[position])
         }
 
         holder.binding.itemPostCommentIv.setOnClickListener {
-            mItemClickListener.onShowComment(post[position].postIdx)
+            mItemClickListener.onShowComment(post[position])
         }
 
         // 댓글을 달기 위한 bottom sheet dialog를 띄움
@@ -148,8 +148,11 @@ class PostRVAdapter(context : Context, private val myInfo : UserDB?) : RecyclerV
                 Log.d("FAIL-STORY", "유저 데이터를 받아오지 못했습니다")
             }
 
-            // 내 기준 댓글 연동
-            binding.itemPostShowAllCommentTv.text = "댓글 " + (comment.size + reply.size) + "개 모두 보기"
+//            // 내 기준 댓글 연동
+            val commentRVAdapter = CommentRVAdapter(context)
+            val replyRVAdapter = ReplyRVAdapter()
+
+            binding.itemPostShowAllCommentTv.text = "댓글 " + (commentRVAdapter.itemCount + replyRVAdapter.itemCount) + "개 모두 보기"
             binding.itemPostMyProfileIv.setImageResource(myInfo!!.picture)
 
 //            // 좋아요한 게시물은 하트 채우기
