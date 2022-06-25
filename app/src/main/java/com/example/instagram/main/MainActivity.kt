@@ -1,8 +1,8 @@
 package com.example.instagram.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.data.*
 import com.example.instagram.databinding.ActivityMainBinding
@@ -11,14 +11,22 @@ import com.example.instagram.main.profile.ProfileFragment
 import com.example.instagram.main.reels.ReelsFragment
 import com.example.instagram.main.search.SearchFragment
 import com.example.instagram.main.shop.ShopFragment
-import com.example.instagram.main.shop.ShopItemFragment
 import com.example.instagram.room.InstagramDatabase
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
     private lateinit var instaDB : InstagramDatabase
+    private var gson : Gson = Gson()
+
+    private val database = Firebase.database
+    private val userRef = database.getReference("user")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +38,39 @@ class MainActivity : AppCompatActivity() {
 
 
         insertUserDummyData()
-        insertStoryDummyData()
-        insertPostDummyData()
-        insertCommentDummyData()
-        insertReplyDummyData()
 
         initBottomNavigation()
 
+        // 유저 정보가 잘 들어왔는지 확인
+//        Log.d("SUCCESS-INFO", getMyInfo().toString())
 
+        var user : UserDB
+        userRef.child(getMyUid().toString()).get().addOnSuccessListener {
+            if(it != null) {
+                user = it.getValue(UserDB::class.java)!!
+                Log.d("SUCCESS-MAIN", user.toString())
+            }
+            else {
+                Log.d("FAIL-MAIN", "데이터가 존재하지 않습니다")
+            }
+        }.addOnFailureListener {
+            Log.d("FAIL-MAIN", "데이터가 존재하지 않습니다")
+        }
+
+    }
+
+    private fun getMyUid() : String? {  // 내 정보를 가져오기 위한 함수
+        val userSP = getSharedPreferences("user", MODE_PRIVATE)
+
+        return userSP.getString("myUid", "")
+    }
+
+    private fun getMyInfo() : UserDB? {  // 내 정보를 가져오기 위한 함수
+        val userSP = getSharedPreferences("user", MODE_PRIVATE)
+
+        val userJson = userSP.getString("myInfo", "")
+
+        return gson.fromJson(userJson, UserDB::class.java)
     }
 
     private fun initBottomNavigation(){
@@ -133,102 +166,6 @@ class MainActivity : AppCompatActivity() {
 
         instaDB.userDao().insert(
             User(instaDB.userDao().getUsers().size + 1, "", "tama", "tama", R.drawable.profile_ex3, "타마")
-        )
-    }
-
-    private fun insertStoryDummyData() {
-
-        if(instaDB.storyDao().getStories().isNotEmpty()) {
-            return
-        }
-
-        instaDB.storyDao().insert(
-            Story(4, R.drawable.story_dummy1, "")
-        )
-
-        instaDB.storyDao().insert(
-            Story(6, R.drawable.story_dummy2, "")
-        )
-
-        instaDB.storyDao().insert(
-            Story(3, R.drawable.story_dummy3, "")
-        )
-
-        instaDB.storyDao().insert(
-            Story(9, R.drawable.story_dummy4, "")
-        )
-
-        instaDB.storyDao().insert(
-            Story(7, R.drawable.story_dummy5, "")
-        )
-
-        instaDB.storyDao().insert(
-            Story(2, R.drawable.story_dummy6, "")
-        )
-
-    }
-
-    private fun insertPostDummyData() {
-
-        if(instaDB.postDao().getPosts().isNotEmpty()) {
-            return
-        }
-
-        instaDB.postDao().insert(
-            Post(2, R.drawable.profile_ex1, "얼음 깨기 너무 재밌었다!", "", 0)
-        )
-
-        instaDB.postDao().insert(
-            Post(5, R.drawable.profile_ex2, "한강 최고ㅎㅎ", "", 0)
-        )
-
-        instaDB.postDao().insert(
-            Post(1, R.drawable.profile_ex3, "차가 마시고 싶은 날...", "", 0)
-        )
-    }
-
-    private fun insertCommentDummyData() {
-
-        if(instaDB.CommentDao().getComments().size > 1) {
-            return
-        }
-
-        instaDB.CommentDao().insert(
-            Comment(1, 1, "댓글 예시", "", 0)
-        )
-
-        instaDB.CommentDao().insert(
-            Comment(2, 2, "댓글 예시", "", 0)
-        )
-
-        instaDB.CommentDao().insert(
-            Comment(3, 3, "댓글 예시", "", 0)
-        )
-    }
-
-    private fun insertReplyDummyData() {
-        if(instaDB.CommentDao().getReplies().isNotEmpty()) {
-            return
-        }
-
-        instaDB.CommentDao().insertReply(
-            Reply(5, 3, 3, "헐 대박이다", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(6, 3, 3, "진짜?", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(1, 2, 2, "와~~~", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(5, 1, 1, "에엥", "", 0)
-        )
-
-        instaDB.CommentDao().insertReply(
-            Reply(5, 1, 1, "대박이다", "", 0)
         )
     }
 

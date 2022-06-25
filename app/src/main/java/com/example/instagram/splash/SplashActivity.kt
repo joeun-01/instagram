@@ -32,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun autoLogin() {  // 자동로그인 기능
         val userSP = getSharedPreferences("user", MODE_PRIVATE)
-        val uid = userSP.getString("uid", "")
+        val uid = userSP.getString("myUid", "")
 
         if(uid == "") {  // userIdx가 없으면 로그인이 안된 상태 -> 로그인 창으로
             startActivity(Intent(this, LoginActivity::class.java))
