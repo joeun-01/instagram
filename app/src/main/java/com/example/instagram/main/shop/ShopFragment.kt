@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentShopBinding
 import com.example.instagram.main.MainActivity
+import com.google.gson.Gson
 
 class ShopFragment : Fragment() {
 
@@ -47,6 +48,13 @@ class ShopFragment : Fragment() {
         val shopRVAdapter = ShopRVAdapter(shopDatas)
         binding.shopListRv.adapter = shopRVAdapter
 
+        shopRVAdapter.setMyItemClickListener(object : ShopRVAdapter.MyItemClickListener {
+            override fun onItemClick(){
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, ShopItemFragment()).commitAllowingStateLoss()
+            }
+        })
+
 
         binding.shopWishlistRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val shopWishRVAdapter = ShopWishRVAdapter(shopWishDatas)
@@ -66,5 +74,18 @@ class ShopFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun changeDetailFragment(shopItem: ShopItem) {
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frm, ShopItemFragment()
+                /*.apply {
+                arguments = Bundle().apply {
+                    val gson = Gson()
+                    val shopJson = gson.toJson(shopItem)
+                    putString("shopItem", shopJson)
+                }
+            }*/)
+            .commitAllowingStateLoss()
     }
 }

@@ -156,16 +156,6 @@
 
             </androidx.cardview.widget.CardView>
 
-        <!--<androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/item_detail_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_detail"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />-->
 
         <View
             android:id="@+id/item_detail_line1"
@@ -185,6 +175,7 @@
                 app:expandable_spinner_size="20dp"
                 app:expandable_spinner_gravity="end"
                 app:expandable_spinner_margin="10dp"
+                app:expandable_duration="200"
                 app:expandable_isExpanded="false"
                 app:expandable_parentLayout="@layout/item_content_parent"
                 app:expandable_secondLayout="@layout/item_content_child"
@@ -197,20 +188,15 @@
                 app:expandable_showSpinner="true"
                 app:expandable_spinner="@drawable/ic_arrow_down_gray"
                 app:expandable_spinner_animate="true"
+                app:expandable_duration="200"
                 app:expandable_spinner_size="20dp"
                 app:expandable_spinner_gravity="end"
                 app:expandable_spinner_margin="10dp"
-                app:expandable_isExpanded="false"
+                app:expandable_isExpanded="true"
                 app:expandable_parentLayout="@layout/item_content2_parent"
                 app:expandable_secondLayout="@layout/item_content2_child"
                 app:layout_constraintTop_toBottomOf="@id/item_contents_el"/>
 
-           <!-- <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/item_detail_shipping_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_shipping"
-                app:layout_constraintTop_toBottomOf="@id/item_detail_line1"/>-->
 
             <View
                 android:id="@+id/item_detail_line2"
