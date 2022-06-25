@@ -3,24 +3,37 @@ package com.example.instagram.main.profile
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentProfileBinding
 import com.example.instagram.main.home.ShareBottomSheetDialog
 import com.example.instagram.room.InstagramDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentProfileBinding
     private lateinit var instaDB : InstagramDatabase
+    private var gson : Gson = Gson()
 
     private var tab = arrayListOf(R.drawable.ic_grid, R.drawable.ic_tag)
+
+    // 파이어베이스
+    private val database = Firebase.database
+    private val storyRef = database.getReference("story")
+    private val postRef = database.getReference("post")
+    private val userRef = database.getReference("user")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,8 +44,20 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         instaDB = InstagramDatabase.getInstance(requireContext())!!
 
-        // 로그인한 사용자 ID 연동
-        binding.profileNameTv.text = instaDB.userDao().getUserID(getMyIdx())
+        Log.d("Uid " , getMyUid())
+        //GtpScCFisoQqnO8SaTkTqojrMJ62
+        Log.d("info " , getMyInfo())
+        //{"ID":"dobby","email":"dobby@naver.com","name":"dobby","password":"dobby11","picture":2131165283}
+
+        // 사용자 ID 가져오기
+        var user = gson.fromJson(getMyInfo(), UserDB::class.java)
+        Log.d("Profile ", user.toString())
+//        Log.d("User-ID ", user.ID)
+//        Log.d("User-name ", user.name)
+
+        binding.profilePictureIv.setImageResource(user.picture)
+        binding.profileNameTv.text = user.ID
+
 
         // ViewPager 연결
         val profileVPAdapter = ProfileVPAdapter(this)
@@ -58,7 +83,6 @@ class ProfileFragment : Fragment() {
         binding.profileAddIv.setOnClickListener {
             showDialogCreate()
         }
-
         binding.profileListIv.setOnClickListener {
             showDialogList()
         }
@@ -70,7 +94,8 @@ class ProfileFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        binding.profileNameTv.text = instaDB.userDao().getUserID(getMyIdx())
+        var user = gson.fromJson(getMyInfo(), UserDB::class.java)
+        binding.profileNameTv.text = user.ID
     }
 
     private fun showDialogCreate(){
@@ -89,6 +114,18 @@ class ProfileFragment : Fragment() {
         val userSP = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
 
         return userSP.getInt("userIdx", 0)
+    }
+
+    private fun getMyUid(): String {  // 내 정보를 가져오기 위한 함수
+        val userSP = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
+
+        return userSP.getString("myUid", "").toString()
+    }
+
+    private fun getMyInfo(): String {  // 내 정보를 가져오기 위한 함수
+        val userSP = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
+
+        return userSP.getString("myInfo", "").toString()
     }
 
     private fun setTextStatus(isVisible: Boolean){

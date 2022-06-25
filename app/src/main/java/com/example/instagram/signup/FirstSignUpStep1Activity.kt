@@ -36,6 +36,10 @@ class FirstSignUpStep1Activity : AppCompatActivity() {
             startLoginActivity()
         }
 
+        binding.firstSignupStep1BackIv.setOnClickListener {  // 뒤로가기하면 다시 로그인 화면으로
+            finish()
+        }
+
     }
 
     private fun startLoginActivity() {

@@ -1,21 +1,18 @@
 package com.example.instagram.main.home
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.instagram.data.Story
-import com.example.instagram.data.User
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ItemSharePostBinding
-import com.example.instagram.room.InstagramDatabase
 
-class ShareRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.Adapter<ShareRVAdapter.ViewHolder>() {
-    private val instaDB = InstagramDatabase.getInstance(context)!!
-    private var user = ArrayList<User>()
+class ShareRVAdapter(private val myInfo : UserDB) : RecyclerView.Adapter<ShareRVAdapter.ViewHolder>() {
+    private var user = ArrayList<UserDB>()
 
     interface MyItemClickListener{
-
+        // click listener
     }
 
     private lateinit var mItemClickListener: PostRVAdapter.MyItemClickListener
@@ -23,18 +20,24 @@ class ShareRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.
         mItemClickListener = itemClickListener
     }
 
-    fun addMyInfo(user : User) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun addUserInfo(user : UserDB) {
         // 리사이클러뷰에 들어갈 스토리 초기화
         this.user.add(user)
+        notifyDataSetChanged()
     }
 
-    fun addOthersInfo(user : List<User>) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun addMyInfo(user : UserDB) {
         // 리사이클러뷰에 들어갈 스토리 초기화
-        this.user.addAll(user)
+        this.user.add(0, user)
+        notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clearInfo() {
         this.user.clear()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ShareRVAdapter.ViewHolder {
@@ -50,7 +53,7 @@ class ShareRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.
     override fun getItemCount(): Int = user.size
 
     inner class ViewHolder(val binding : ItemSharePostBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(user : User) {
+        fun bind(user : UserDB) {
             // 유저 정보 연결
             binding.sharePostProfileIv.setImageResource(user.picture)
 
@@ -66,6 +69,15 @@ class ShareRVAdapter(context : Context, private val myIdx : Int) : RecyclerView.
                 binding.sharePostNameTv.text = user.ID
 
                 binding.sharePostIdTv.visibility = View.GONE
+            }
+
+            if(user.ID == myInfo.ID) {  // 내 정보의 경우에만 공유, 아니면 체크박스
+                binding.sharePostShareBtn.visibility = View.VISIBLE
+                binding.sharePostCheckboxCb.visibility = View.GONE
+            }
+            else {
+                binding.sharePostShareBtn.visibility = View.GONE
+                binding.sharePostCheckboxCb.visibility = View.VISIBLE
             }
         }
     }
