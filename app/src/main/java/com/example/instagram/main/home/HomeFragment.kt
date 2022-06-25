@@ -101,7 +101,7 @@ class HomeFragment : Fragment() {
         })
 
         // 게시물 리사이클러뷰 연결
-        val postRVAdapter = PostRVAdapter(requireContext(), getMyInfo())
+        val postRVAdapter = PostRVAdapter(getMyInfo(), getMyUid())
         binding.homeFeedPostRv.adapter = postRVAdapter
         binding.homeFeedPostRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
