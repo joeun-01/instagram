@@ -10,18 +10,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.instagram.data.CommentDB
-import com.example.instagram.data.PostDB
-import com.example.instagram.data.ReplyDB
-import com.example.instagram.data.UserDB
+import com.example.instagram.R
+import com.example.instagram.data.*
 import com.example.instagram.databinding.ItemPostBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class PostRVAdapter(private val context : Context, private val myInfo : UserDB?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
+class PostRVAdapter(private val myInfo : UserDB?, private val myUid : String?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
     private val post = arrayListOf<PostDB>()
 
     // 유저 파이어베이스
@@ -36,19 +32,24 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
     private val replyRef = database.getReference("reply")
     private var reply = 0
 
-    interface MyItemClickListener{
+    // 게시물 좋아요 파이어베이스
+    private val mDatabase: DatabaseReference = FirebaseDatabase.getInstance().reference
+    private val likeRef = database.getReference("likedPost")
+    private var liked = false
+
+    interface MyItemClickListener {
         fun onShowComment(post: PostDB)
-        fun onWriteComment(postIdx : Int)
+        fun onWriteComment(postIdx: Int)
         fun onShowShare(postIdx: Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
-    fun setMyItemClickListener(itemClickListener : MyItemClickListener){
+    fun setMyItemClickListener(itemClickListener: MyItemClickListener) {
         mItemClickListener = itemClickListener
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addNewPost(post : PostDB) {
+    fun addNewPost(post: PostDB) {
         // 리사이클러뷰에 들어갈 게시물 추가
         this.post.add(post)
         notifyDataSetChanged()
@@ -61,26 +62,27 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
         notifyDataSetChanged()
     }
 
-//    private fun addToLikeTable(postIdx : Int) {  // 좋아요
-//        instaDB.postDao().addLikedPost(LikedPost(postIdx, myIdx))
-//    }
-//
-//    private fun deleteFromLikeTable(postIdx: Int) {  // 좋아요 취소
-//        instaDB.postDao().deleteLikedPost(postIdx, myIdx)
-//    }
+    private fun addToLikeTable(postIdx: Int) {  // 좋아요
+        mDatabase.child("likedPost").child(postIdx.toString() + myUid)
+            .setValue(LikedPostDB(myUid!!, postIdx))
+    }
+
+    private fun deleteFromLikeTable(postIdx: Int) {  // 좋아요 취소
+        likeRef.child(postIdx.toString() + myUid).removeValue()
+    }
 
     private fun getComments(postIdx: Int) {
         // 게시물에 달린 댓글 받아오기
         commentRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     comment = 0
 
-                    for (commentSnapShot in snapshot.children){
+                    for (commentSnapShot in snapshot.children) {
                         val getData = commentSnapShot.getValue(CommentDB::class.java)
 
                         if (getData != null) {
-                            if(getData.postIdx == postIdx) {
+                            if (getData.postIdx == postIdx) {
                                 comment++
                                 Log.d("RECYCLER", getData.toString())
                             }
@@ -99,14 +101,14 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
         // 게시물에 달린 댓글 받아오기
         replyRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     reply = 0
 
-                    for (replySnapShot in snapshot.children){
+                    for (replySnapShot in snapshot.children) {
                         val getData = replySnapShot.getValue(ReplyDB::class.java)
 
                         if (getData != null) {
-                            if(getData.postIdx == postIdx) {
+                            if (getData.postIdx == postIdx) {
                                 reply++
                                 Log.d("RECYCLER", getData.toString())
                             }
@@ -123,7 +125,8 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding : ItemPostBinding = ItemPostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding: ItemPostBinding =
+            ItemPostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
 
         return ViewHolder(binding)  // ViewHolder를 생성
     }
@@ -134,16 +137,17 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
 
         // click listener
         // 좋아요 관련
-//        holder.binding.itemPostLikeIv.setOnClickListener {
-//            if(instaDB.postDao().checkLikedPost(myIdx, post[position].postIdx).isEmpty()) {  // 좋아요가 안되어있는 경우
-//                addToLikeTable(post[position].postIdx)
-//                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
-//            }
-//            else {  // 좋아요를 한 경우
-//                deleteFromLikeTable(post[position].postIdx)
-//                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
-//            }
-//        }
+        holder.binding.itemPostLikeIv.setOnClickListener {
+            if (liked) {  // 좋아요가 되어있는 경우
+                deleteFromLikeTable(post[position].postIdx)
+                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
+                liked = false
+            } else {  // 좋아요가 되어있지 않은 경우
+                addToLikeTable(post[position].postIdx)
+                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+                liked = true
+            }
+        }
 
         // 댓글 모두 보기, 댓글 아이콘을 누르면 댓글 창으로 넘어가도록
         holder.binding.itemPostShowAllCommentTv.setOnClickListener {
@@ -163,6 +167,7 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
         holder.binding.itemPostShareIv.setOnClickListener {
             mItemClickListener.onShowShare(post[position].postIdx)
         }
+
     }
 
     // data set의 크기를 알려줌
@@ -202,7 +207,6 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
                 Log.d("FAIL-STORY", "유저 데이터를 받아오지 못했습니다")
             }
 
-
             // 게시물에 있는 댓글 불러오기
             getComments(post.postIdx)
             getReplies(post.postIdx)
@@ -213,13 +217,36 @@ class PostRVAdapter(private val context : Context, private val myInfo : UserDB?)
             binding.itemPostShowAllCommentTv.text = "댓글 " + (comment + reply) + "개 모두 보기"
             binding.itemPostMyProfileIv.setImageResource(myInfo!!.picture)
 
-//            // 좋아요한 게시물은 하트 채우기
-//            if(instaDB.postDao().checkLikedPost(myIdx, post.postIdx).isEmpty()) {  // 좋아요가 안되어있는 경우
-//                binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
-//            }
-//            else {  // 좋아요를 한 경우
-//                binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
-//            }
+            // 좋아요한 게시물은 하트 채우기
+            likeRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        for (likeSnapShot in snapshot.children){
+                            val getData = likeSnapShot.getValue(LikedPostDB::class.java)
+
+                            if (getData != null) {
+                                if(getData.postIdx == post.postIdx) {
+                                    liked = true
+                                    Log.d("CHECKING", getData.postIdx.toString())
+                                }
+                            }
+                        }
+
+                        if(liked) {  // 좋아요가 되어있는 경우
+                            binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+                        }
+                        else {
+                            binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
+                        }
+
+                        liked = false
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("FAIL", "데이터를 불러오지 못했습니다")
+                }
+            })
         }
     }
 }
