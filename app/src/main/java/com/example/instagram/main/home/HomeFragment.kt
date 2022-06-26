@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.instagram.R
 import com.example.instagram.data.PostDB
 import com.example.instagram.data.StoryDB
 import com.example.instagram.data.UserDB
@@ -25,7 +26,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
 
-    private lateinit var instaDB : InstagramDatabase
     private var gson : Gson = Gson()
 
     // 파이어베이스
@@ -41,7 +41,9 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        instaDB = InstagramDatabase.getInstance(requireContext())!!
+        binding.homeTopHeartIv.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_frm, ActivityFragment()).addToBackStack(null).commit()
+        }
 
         return binding.root
     }
