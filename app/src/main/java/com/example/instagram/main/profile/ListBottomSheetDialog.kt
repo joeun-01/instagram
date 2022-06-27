@@ -34,4 +34,6 @@ class ListBottomSheetDialog: BottomSheetDialogFragment() {
         return binding.root
     }
 
+    override fun getTheme(): Int = R.style.AppBottomSheetDialogTheme
+
 }
