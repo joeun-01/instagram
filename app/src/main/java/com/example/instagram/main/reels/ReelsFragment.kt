@@ -27,8 +27,8 @@ class ReelsFragment: Fragment() {
 
         //더미데이터
         reelsDatas.apply {
-            add(ReelsItem("userididid",R.drawable.profile_ex1,"조은 하루", R.drawable.reels_dummyimg2))
-            add(ReelsItem("userid123123",R.drawable.profile_ex2,"블루야 왜 블루",R.drawable.reels_dummyimg))
+            add(ReelsItem("userid1231",R.drawable.profile_ex3,"벤틀리",R.raw.video3))
+            add(ReelsItem("userid123",R.drawable.profile_ex2,"졸귀",R.raw.video4))
 
         }
 

@@ -2,12 +2,8 @@ package com.example.instagram.main.shop
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.instagram.R
 import com.example.instagram.databinding.ItemShopBinding
-import com.example.instagram.main.MainActivity
-import com.example.instagram.main.search.SearchItem
 
 
 class ShopRVAdapter(private val shopList: ArrayList<ShopItem>): RecyclerView.Adapter<ShopRVAdapter.ViewHolder>() {

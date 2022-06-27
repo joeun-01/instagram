@@ -4,12 +4,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <VideoView
         android:id="@+id/item_reels_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/reels_dummyimg2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -176,4 +175,35 @@
 
     </LinearLayout>
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/item_reels_volumeon_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/volumeup"
+        android:visibility="invisible"
+        android:background="@drawable/volume_background"
+        android:layout_gravity="center" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/item_reels_volumeoff_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/volumeoff"
+        android:visibility="gone"
+        android:background="@drawable/volume_background"
+        android:layout_gravity="center" />
+
+
+
+
+
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
