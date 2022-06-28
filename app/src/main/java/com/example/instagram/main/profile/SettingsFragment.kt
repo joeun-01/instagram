@@ -44,7 +44,8 @@ class SettingsFragment: Fragment() {
             val userSP = requireActivity().getSharedPreferences("user", MODE_PRIVATE)
             val userEditor = userSP.edit()
 
-            userEditor.remove("uid")
+            userEditor.remove("myUid")
+            userEditor.remove("myInfo")
             userEditor.apply()
 
             auth.signOut()

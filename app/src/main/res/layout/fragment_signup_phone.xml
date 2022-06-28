@@ -74,7 +74,7 @@
         android:id="@+id/first_signup_safe_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_signup_phone_safe"
+        android:text="@string/signup_phone_safe"
         android:textAlignment="center"
         android:textColor="#A6A6A6"
         android:layout_marginTop="20dp"
