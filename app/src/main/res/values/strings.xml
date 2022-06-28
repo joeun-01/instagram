@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Instagram</string>
+
     <string name="signup_id_safe">새 계정에 사용할 사용자 이름을 선택하요. 나중에\n언제든지 변경할 수 있습니다.</string>
     <string name="signup_password_safe">비밀번호를 저장할 수 있으므로 iCloud® 기기에서 로그인 정보를 입력하지 않아도 됩니다.</string>
     <string name="comment_title">댓글</string>
+
+    // 회원가입 관련
     <string name="add_new_account">새로운 전화번호 또는 이메일 주소 추가</string>
     <string name="first_signup_email">전화번호 또는 이메일 주소 입력</string>
     <string name="alreadyAccount">이미 계정이 있으신가요?</string>
@@ -19,6 +22,20 @@
     <string name="first_signup_name_safe">친구들이 회원님을 찾을 수 있도록 이름을 추가하세요.</string>
     <string name="first_signup_complete_safe">나중에 언제든지 사용자 이름을 변경할 수 있습니다.</string>
     <string name="first_signup_complete_safe2">서비스를 이용하는 사람이 회원님의 연락처 정보를 Instagram에 업\n로드했을 수도 있습니다. 더 알아보기.</string>
+
+    // 활동 액티비티 관련
+    <string name="activity">활동</string>
+    <string name="follow_request">팔로우 요청</string>
+    <string name="not_read">읽지 않음</string>
+    <string name="check">확인</string>
+    <string name="remove">삭제</string>
+
+    // 게시물 관련
+    <string name="post">게시물</string>
+    <string name="new_post">새 게시물</string>
+    <string name="recent">최근 항목</string>
+    <string name="select_many">여러 항목 선택</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

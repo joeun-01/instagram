@@ -96,6 +96,8 @@ class LoginActivity: AppCompatActivity() {
                         saveMyUid(firebaseAuth!!.currentUser!!.uid)
                         saveMyInfo(user)
 
+                        Log.d("SUCCESS-MYID", firebaseAuth!!.currentUser.toString())
+
                     }
                     else {
                         Log.d("FAIL-MAIN", "데이터 읽어오기가 실패했습니다")
@@ -109,6 +111,7 @@ class LoginActivity: AppCompatActivity() {
                 Toast.makeText(this, "로그인 오류", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     private fun saveMyInfo(user : UserDB) {

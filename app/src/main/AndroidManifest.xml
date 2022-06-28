@@ -36,7 +36,7 @@
         
         <activity android:name=".main.home.StoryActivity"/>
         <activity android:name=".main.home.CommentActivity"/>
-        
+        <activity android:name=".main.home.AddPostActivity"/>
 
         <activity android:name=".main.profile.ProfileEditActivity"/>
     </application>

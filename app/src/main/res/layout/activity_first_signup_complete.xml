@@ -61,7 +61,7 @@
         android:paddingVertical="14dp"
         android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="30dp"
-        android:background="@drawable/signup_btn_background"
+        android:background="@drawable/blue_round_stroke"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/first_signup_complete_have_account_tv"/>
