@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         insertUserDummyData()
 
         initBottomNavigation()
-
+        
         // 유저 정보가 잘 들어왔는지 확인
 //        Log.d("SUCCESS-INFO", getMyInfo().toString())
 
