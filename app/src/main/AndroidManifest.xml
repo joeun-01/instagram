@@ -23,15 +23,17 @@
 
         <activity android:name=".main.MainActivity"/>
         <activity android:name=".login.LoginActivity"/>
-        <activity android:name=".signup.SignUpIDActivity"/>
-        <activity android:name=".signup.SignUpPasswordActivity"/>
-        <activity android:name=".signup.SignUpCompleteActivity"/>
+        <activity android:name=".main.late_signup.SignUpIDActivity"/>
+        <activity android:name=".main.late_signup.SignUpPasswordActivity"/>
+        <activity android:name=".main.late_signup.SignUpCompleteActivity"/>
 
-        <activity android:name=".signup.FirstSignUpStep1Activity"/>
-        <activity android:name=".signup.FirstSignUpStep2Activity"/>
-        <activity android:name=".signup.FirstSignUpStep3Activity"/>
-        <activity android:name=".signup.FirstSignUpStep4Activity"/>
-        <activity android:name=".signup.FirstSignUpCompleteActivity"/>
+        <activity android:name=".signup.SignUpStep1Activity"/>
+        <activity android:name=".signup.SignUpNameActivity"/>
+        <activity android:name=".signup.SignUpPasswordActivity"/>
+        <activity android:name=".signup.SignUpBirthdayActivity"/>
+        <activity android:name=".signup.SignUpTermActivity"/>
+        <activity android:name=".signup.SignUpIDActivity"/>
+        <activity android:name=".signup.SignUpCompleteActivity"/>
         
         <activity android:name=".main.home.StoryActivity"/>
         <activity android:name=".main.home.CommentActivity"/>

@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.instagram.databinding.FragmentFirstSignupPhoneBinding
+import com.example.instagram.databinding.FragmentSignupPhoneBinding
 
-class FirstSignUpPhoneFragment : Fragment() {
+class SignUpPhoneFragment : Fragment() {
 
-    lateinit var binding: FragmentFirstSignupPhoneBinding
+    lateinit var binding: FragmentSignupPhoneBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,10 +18,10 @@ class FirstSignUpPhoneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentFirstSignupPhoneBinding.inflate(inflater, container, false)
+        binding = FragmentSignupPhoneBinding.inflate(inflater, container, false)
 
         binding.firstSignupPhoneNextTv.setOnClickListener {
-            startActivity(Intent(requireActivity(), FirstSignUpStep2Activity::class.java))
+            startActivity(Intent(requireActivity(), SignUpNameActivity::class.java))
         }
 
         return binding.root

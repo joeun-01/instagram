@@ -4,19 +4,29 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.instagram.data.User
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivitySignupCompleteBinding
-import com.example.instagram.databinding.ActivitySignupPasswordBinding
 import com.example.instagram.login.LoginActivity
-import com.example.instagram.room.InstagramDatabase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
+
 class SignUpCompleteActivity : AppCompatActivity() {
+
     lateinit var binding : ActivitySignupCompleteBinding
 
     private val gson : Gson = Gson()
-    lateinit var userDB : InstagramDatabase
+    private var auth : FirebaseAuth? = null
+
+    private lateinit var mDatabase : DatabaseReference
+
+    private var userList = arrayListOf<UserDB>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,25 +35,48 @@ class SignUpCompleteActivity : AppCompatActivity() {
         binding = ActivitySignupCompleteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userDB = InstagramDatabase.getInstance(this)!!
+        auth = Firebase.auth  // 회원가입용
+        mDatabase = FirebaseDatabase.getInstance().reference  // 데이터 넣기용
 
-        // 여태까지 저장한 유저 정보 가져오기
+        // 유저 정보 가져오기
         val userSP = getSharedPreferences("user", MODE_PRIVATE)
-        var userJson = userSP.getString("userInfo", "")
+        val userJson = userSP.getString("userInfo", "")
 
-        val user = gson.fromJson(userJson, User::class.java)
+        val user = gson.fromJson(userJson, UserDB::class.java)
 
-        binding.signupCompleteWelcomeTv.text = user.ID + "님, Instagram에\n 오신 것을 환영합니다"
+        binding.signupCompleteTitleTv.text = user.ID + "님으로 가입하시겠어요?"
 
-        binding.signupCompleteCompleteBtn.setOnClickListener {
-
-            user.userIdx = userDB.userDao().getUsers().size + 1
-            userDB.userDao().insert(user)
-
-            //Log.d("user no.0 ", userDB.userDao().getUser(0).toString())
-            Log.d("signup User id ", userDB.userDao().getUser(user.userIdx).toString())
-
-            startActivity(Intent(this, LoginActivity::class.java))
+        // 로그인 화면 연결
+        binding.signupCompleteLoginTv.setOnClickListener {
+            startLoginActivity()
         }
+
+        binding.signupCompleteNextTv.setOnClickListener {
+            createAccount(user)
+        }
+    }
+
+    private fun createAccount(user: UserDB) {
+        auth?.createUserWithEmailAndPassword(user.email, user.password)?.addOnCompleteListener(this) {
+                task ->
+            if (task.isSuccessful) {
+                putIntoDatabase(user)
+                Log.d("SUCCESS-MAIN", userList.toString())
+
+                startLoginActivity()  // 회원가입이 끝나면 로그인 화면으로
+
+                Toast.makeText(this, "계정 생성 완료", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "계정 생성 실패", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun putIntoDatabase(user : UserDB) {
+        mDatabase.child("user").child((auth!!.uid.toString())).setValue(user)
+    }
+
+    private fun startLoginActivity() {
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }
