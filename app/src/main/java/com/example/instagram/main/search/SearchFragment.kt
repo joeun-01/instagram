@@ -62,28 +62,28 @@ class SearchFragment: Fragment() {
         binding.searchRv.adapter = searchRVAdapter
         binding.searchRv.layoutManager = GridLayoutManager(context, 3)
 
-
-        // 게시물 데이터 받아오기
-        postRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                if (snapshot.exists()) {
-                    for (postSnapshot in snapshot.children) {
-                        val getData = postSnapshot.getValue(PostDB::class.java)
-
-                        if (getData != null) {
-                            searchRVAdapter.addNewPost(getData)
-                        }
-
-                        Log.d("SUCCESS", getData.toString())
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("FAIL", "데이터를 불러오지 못했습니다")
-            }
-        })
+//
+//        // 게시물 데이터 받아오기
+//        postRef.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                if (snapshot.exists()) {
+//                    for (postSnapshot in snapshot.children) {
+//                        val getData = postSnapshot.getValue(PostDB::class.java)
+//
+//                        if (getData != null) {
+//                            searchRVAdapter.addNewPost(getData)
+//                        }
+//
+//                        Log.d("SUCCESS", getData.toString())
+//                    }
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.d("FAIL", "데이터를 불러오지 못했습니다")
+//            }
+//        })
 
 
         searchRVAdapter.setMyItemClickListener(object : SearchRVAdapter.MyItemClickListener {
@@ -106,13 +106,13 @@ class SearchFragment: Fragment() {
     private fun showSearchTab(post: PostDB) {  // 탐색탭
 
         val fragment=Fragment()
-
-        var bundle = Bundle()// 번들을 통해 값 전달
-
-        bundle.putString("userID",post.uid)
-        bundle.putString("picture", post.picture.toString())
-
-        fragment.arguments=bundle
+//
+//        var bundle = Bundle()// 번들을 통해 값 전달
+//
+//        bundle.putString("userID",post.uid)
+//        bundle.putString("picture", post.picture.toString())
+//
+//        fragment.arguments=bundle
         setFragment(fragment)
 
     }

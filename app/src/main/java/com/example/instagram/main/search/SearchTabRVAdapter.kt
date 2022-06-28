@@ -51,12 +51,13 @@ class SearchTabRVAdapter(private val myInfo : UserDB?, private val myUid : Strin
 
     }
 
-    // data set의 크기를 알려줌
+
     override fun getItemCount(): Int = post.size
 
     inner class ViewHolder(val binding: ItemSearchtabBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        // ItemView를 잡아주는 ViewHolder
+
+
         fun bind(post: PostDB) {
 
             var user: UserDB

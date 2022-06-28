@@ -85,7 +85,7 @@ class SearchTabFragment:Fragment() {
             }
         })
         }
-    // 내 정보를 가져오기 위한 함수
+
     private fun getMyInfo(): UserDB? {
         val userSP = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
 
@@ -94,7 +94,7 @@ class SearchTabFragment:Fragment() {
         return gson.fromJson(userJson, UserDB::class.java)
     }
 
-    private fun getMyUid() : String? {  // 내 정보를 가져오기 위한 함수
+    private fun getMyUid() : String? {
         val userSP = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
 
         return userSP.getString("myUid", "")
