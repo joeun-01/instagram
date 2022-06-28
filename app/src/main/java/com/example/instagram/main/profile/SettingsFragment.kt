@@ -3,6 +3,7 @@ package com.example.instagram.main.profile
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,13 @@ import com.example.instagram.databinding.FragmentListBinding
 import com.example.instagram.databinding.FragmentSettingsBinding
 import com.example.instagram.login.LoginActivity
 import com.example.instagram.main.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SettingsFragment: Fragment() {
+
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var binding: FragmentSettingsBinding
 
@@ -24,6 +30,8 @@ class SettingsFragment: Fragment() {
     ): View? {
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
+
+        auth = Firebase.auth
 
 
         binding.sttsBackIv.setOnClickListener {
@@ -38,6 +46,9 @@ class SettingsFragment: Fragment() {
 
             userEditor.remove("uid")
             userEditor.apply()
+
+            auth.signOut()
+            Log.d("SUCCESS-MYID", auth.currentUser.toString())
 
             startActivity(Intent(activity, LoginActivity::class.java))
         }

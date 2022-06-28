@@ -69,7 +69,7 @@
         android:paddingVertical="12dp"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="30dp"
-        android:background="@drawable/login_btn_background"
+        android:background="@drawable/lightblue_round_stroke"
         app:layout_constraintTop_toBottomOf="@id/signup_id_et"/>
 
 

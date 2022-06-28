@@ -48,13 +48,13 @@ class MainActivity : AppCompatActivity() {
         userRef.child(getMyUid().toString()).get().addOnSuccessListener {
             if(it != null) {
                 user = it.getValue(UserDB::class.java)!!
-                Log.d("SUCCESS-MAIN", user.toString())
+                Log.d("SUCCESS-MYID", user.toString())
             }
             else {
-                Log.d("FAIL-MAIN", "데이터가 존재하지 않습니다")
+                Log.d("FAIL-MYID", "데이터가 존재하지 않습니다")
             }
         }.addOnFailureListener {
-            Log.d("FAIL-MAIN", "데이터가 존재하지 않습니다")
+            Log.d("FAIL-MYID", "데이터가 존재하지 않습니다")
         }
 
     }
