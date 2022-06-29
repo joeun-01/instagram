@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.R
-import com.example.instagram.data.User
+import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivityAnotherSignupIdBinding
-import com.example.instagram.databinding.ActivitySignupIdBinding
 import com.example.instagram.login.LoginActivity
 import com.google.gson.Gson
 
@@ -16,7 +15,7 @@ class SignUpIDActivity : AppCompatActivity() {
 
     private var gson : Gson = Gson()
 
-    private var user = User(0, "", "", "", R.drawable.basic_profile, "")
+    private var user = UserDB("", "", "", "", R.drawable.basic_profile)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +29,7 @@ class SignUpIDActivity : AppCompatActivity() {
         }
 
         binding.signupIdNextBtn.setOnClickListener {  // 아이디 입력 후 넘어가기
-            var id = binding.signupIdEt.text.toString()
+            val id = binding.signupIdEt.text.toString()
 
             if(id.isNotEmpty()) {
                 val userSP = getSharedPreferences("user", MODE_PRIVATE)
@@ -46,7 +45,7 @@ class SignUpIDActivity : AppCompatActivity() {
                 startActivity(Intent(this, SignUpPasswordActivity::class.java))
             }
             else {
-                Toast.makeText(this, "ID를 입력해야합니다.", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "ID를 입력해야합니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }

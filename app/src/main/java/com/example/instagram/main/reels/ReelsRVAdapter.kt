@@ -1,5 +1,6 @@
 package com.example.instagram.main.reels
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +33,16 @@ class ReelsRVAdapter(private val reelsList: ArrayList<ReelsItem>): RecyclerView.
             binding.itemReelsUserimgIv.setImageResource(Img.userImg!!)
             binding.itemReelsUserimg2Iv.setImageResource(Img.userImg!!)
             binding.itemReelsContentTv.text=Img.content
-            binding.itemReelsImg.setImageResource(Img.ReelsImg!!)
+            //비디오 재생
+
+            val videoUri = Uri.parse( "android.resource://com.example.instagram/"   + Img.ReelsImg!!)
+
+            binding.itemReelsImg.setVideoURI(videoUri)
+            binding.itemReelsImg.start()
+
+            //무한 반복
+            binding.itemReelsImg.setOnCompletionListener{
+                binding.itemReelsImg.start()}
 
         }
     }
