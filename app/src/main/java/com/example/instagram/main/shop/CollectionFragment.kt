@@ -8,28 +8,27 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.R
-import com.example.instagram.databinding.FragmentGuideBinding
-import com.example.instagram.databinding.FragmentShopBinding
+import com.example.instagram.databinding.FragmentCollectionBinding
 import com.example.instagram.main.MainActivity
 
 
-class GuideFragment : Fragment() {
+class CollectionFragment : Fragment() {
 
-    private lateinit var binding: FragmentGuideBinding
-    private var guideDatas = ArrayList<Guide>()
+    private lateinit var binding: FragmentCollectionBinding
+    private var collections = ArrayList<Collection>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGuideBinding.inflate(inflater, container, false)
+        binding = FragmentCollectionBinding.inflate(inflater, container, false)
 
 
-        binding.guideRv.layoutManager =
-            GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
-        val guideRVAdapter = GuideRVAdapter(guideDatas)
-        binding.guideRv.adapter = guideRVAdapter
+        binding.collectionRv.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val collectionRVAdapter = CollectionRVAdapter(collections)
+        binding.collectionRv.adapter = collectionRVAdapter
 
         /*guideRVAdapter.setMyItemClickListener(object : GuideRVAdapter.MyItemClickListener {
             override fun onItemClick(){
@@ -38,10 +37,9 @@ class GuideFragment : Fragment() {
             }
         })*/
 
-        binding.guideWishIv.setOnClickListener {
+        binding.collectionWishIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null).commitAllowingStateLoss()
-
         }
 
         binding.backIb.setOnClickListener {
@@ -50,5 +48,4 @@ class GuideFragment : Fragment() {
 
         return binding.root
     }
-
 }

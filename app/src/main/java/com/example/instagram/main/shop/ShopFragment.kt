@@ -51,7 +51,7 @@ class ShopFragment : Fragment() {
         shopRVAdapter.setMyItemClickListener(object : ShopRVAdapter.MyItemClickListener {
             override fun onItemClick(){
                 (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frm, ShopItemFragment()).commitAllowingStateLoss()
+                    .replace(R.id.main_frm, ShopItemFragment()).addToBackStack(null).commitAllowingStateLoss()
             }
         })
 
@@ -63,7 +63,7 @@ class ShopFragment : Fragment() {
 
         binding.shopWishIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, WishlistFragment()).commitAllowingStateLoss()
+                .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null).commitAllowingStateLoss()
         }
 
 
@@ -76,13 +76,24 @@ class ShopFragment : Fragment() {
 
         binding.shopMenuGuideTv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, GuideFragment()).commitAllowingStateLoss()
+                .replace(R.id.main_frm, GuideFragment()).addToBackStack(null).commitAllowingStateLoss()
         }
 
         binding.shopMenuVideoTv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, ShopVideoFragment()).commitAllowingStateLoss()
+                .replace(R.id.main_frm, ShopVideoFragment()).addToBackStack(null).commitAllowingStateLoss()
         }
+
+        binding.shopMenuEditorTv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, EditorFragment()).addToBackStack(null).commitAllowingStateLoss()
+        }
+
+        binding.shopMenuCollectionTv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, CollectionFragment()).addToBackStack(null).commitAllowingStateLoss()
+        }
+
 
         return binding.root
     }

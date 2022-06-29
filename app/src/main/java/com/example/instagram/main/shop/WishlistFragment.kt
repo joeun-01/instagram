@@ -28,7 +28,7 @@ class WishlistFragment : Fragment() {
 
         binding.wishlistCartIb.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, CartFragment()).commitAllowingStateLoss()
+                .replace(R.id.main_frm, CartFragment()).addToBackStack(null).commitAllowingStateLoss()
         }
 
         wishDatas.apply {
@@ -44,6 +44,10 @@ class WishlistFragment : Fragment() {
         val wishlistRVAdapter = WishlistRVAdapter(wishDatas)
         binding.wishlistRv.adapter = wishlistRVAdapter
 
+
+        binding.backIb.setOnClickListener {
+            (context as MainActivity).onBackPressed()
+        }
 
         return binding.root
     }
