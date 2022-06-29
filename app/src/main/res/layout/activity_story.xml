@@ -53,7 +53,7 @@
             android:id="@+id/story_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="시간"
+            android:text="5시간"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_marginStart="10dp"
