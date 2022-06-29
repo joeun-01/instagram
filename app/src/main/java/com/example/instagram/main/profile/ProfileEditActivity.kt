@@ -27,7 +27,6 @@ class ProfileEditActivity : AppCompatActivity() {
     private val postRef = database.getReference("post")
     private val userRef = database.getReference("user")
 
-    private lateinit var map: HashMap<String, Objects>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +50,13 @@ class ProfileEditActivity : AppCompatActivity() {
         binding.editDoneTv.setOnClickListener {
             var name = binding.editNameEt.text.toString()
             var id = binding.editUseridEt.text.toString()
+
             editName(name)
             if (id.isNotEmpty()){
                 editID(id)
             }
 
-            Log.d("edit User name ", instaDB.userDao().getUser(getMyIdx()).toString())
+            saveMyInfo(user)
 
             finish()
         }
@@ -75,6 +75,9 @@ class ProfileEditActivity : AppCompatActivity() {
 
         Log.d("New-name ", user.name)
 
+        saveMyInfo(user)
+
+        editDatabase(user)
     }
 
     // id 편집
@@ -91,7 +94,7 @@ class ProfileEditActivity : AppCompatActivity() {
 
         saveMyInfo(user)
 
-        userRef.setValue(user)
+        editDatabase(user)
     }
 
     private fun getMyInfo(): String {  // 내 정보를 가져오기 위한 함수
@@ -121,5 +124,13 @@ class ProfileEditActivity : AppCompatActivity() {
 
         userEditor.putString("myInfo", userJson)
         userEditor.apply()
+    }
+
+    private fun editDB(origin: String, new: String){
+        userRef.child("user").child(origin).setValue(new)
+    }
+
+    private fun editDatabase(user: UserDB){
+        userRef.child("user").child(getMyUid().toString()).setValue(user)
     }
 }
