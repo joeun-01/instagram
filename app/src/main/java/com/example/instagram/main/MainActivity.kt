@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     private val database = Firebase.database
     private val userRef = database.getReference("user")
 
+    private lateinit var mDatabase : DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         insertUserDummyData()
 
         initBottomNavigation()
-        
+
         // 유저 정보가 잘 들어왔는지 확인
 //        Log.d("SUCCESS-INFO", getMyInfo().toString())
 

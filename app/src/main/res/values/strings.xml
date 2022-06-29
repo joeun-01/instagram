@@ -43,6 +43,7 @@
     <string name="not_read">읽지 않음</string>
     <string name="check">확인</string>
     <string name="remove">삭제</string>
+    <string name="follow_info">요청을 승인하거나 무시합니다</string>
 
     // 게시물 관련
     <string name="post">게시물</string>
