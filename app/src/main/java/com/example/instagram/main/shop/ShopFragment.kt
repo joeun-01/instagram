@@ -73,6 +73,17 @@ class ShopFragment : Fragment() {
             bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
         }
 
+
+        binding.shopMenuGuideTv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, GuideFragment()).commitAllowingStateLoss()
+        }
+
+        binding.shopMenuVideoTv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, ShopVideoFragment()).commitAllowingStateLoss()
+        }
+
         return binding.root
     }
 
