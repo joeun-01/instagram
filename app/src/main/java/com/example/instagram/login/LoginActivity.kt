@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivityLoginBinding
 import com.example.instagram.main.MainActivity
-import com.example.instagram.room.InstagramDatabase
 import com.example.instagram.signup.SignUpStep1Activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
@@ -20,7 +19,6 @@ class LoginActivity: AppCompatActivity() {
 
     lateinit var binding : ActivityLoginBinding
 
-    private lateinit var userDB : InstagramDatabase
     private var firebaseAuth: FirebaseAuth? = null
 
     private var gson : Gson = Gson()
@@ -35,7 +33,6 @@ class LoginActivity: AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userDB = InstagramDatabase.getInstance(this)!!
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.loginLoginBtn.setOnClickListener {

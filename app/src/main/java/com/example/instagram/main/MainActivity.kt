@@ -11,7 +11,6 @@ import com.example.instagram.main.profile.ProfileFragment
 import com.example.instagram.main.reels.ReelsFragment
 import com.example.instagram.main.search.SearchFragment
 import com.example.instagram.main.shop.ShopFragment
-import com.example.instagram.room.InstagramDatabase
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
-    private lateinit var instaDB : InstagramDatabase
     private var gson : Gson = Gson()
 
     private val database = Firebase.database
@@ -35,11 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        instaDB = InstagramDatabase.getInstance(this)!!
-
-
-        insertUserDummyData()
 
         mDatabase = FirebaseDatabase.getInstance().reference  // 데이터 넣기용
 
@@ -124,53 +117,6 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
-    }
-
-    private fun insertUserDummyData() {
-
-        if(instaDB.userDao().getUsers().size > 1) {
-            return
-        }
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "ddobby", "ddobby", R.drawable.profile_ex1, "도비" )
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "ally", "ally", R.drawable.profile_ex2, "앨리")
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "blue", "blue", R.drawable.profile_ex3, "블루")
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "" , "luna", "luna", R.drawable.profile_ex1, "루나" )
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "harry", "harry", R.drawable.profile_ex2, "해리")
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "cocoa", "cocoa", R.drawable.profile_ex3, "코코아")
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "ark", "ark", R.drawable.profile_ex3, "아크")
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "ginie", "ginie", R.drawable.profile_ex1, "지니" )
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "seora", "seora", R.drawable.profile_ex2, "서라")
-        )
-
-        instaDB.userDao().insert(
-            User(instaDB.userDao().getUsers().size + 1, "", "tama", "tama", R.drawable.profile_ex3, "타마")
-        )
     }
 
 }
