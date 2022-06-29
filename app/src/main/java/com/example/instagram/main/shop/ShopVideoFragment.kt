@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.instagram.R
 import com.example.instagram.databinding.FragmentGuideBinding
 import com.example.instagram.databinding.FragmentShopVideoBinding
+import com.example.instagram.main.MainActivity
 
 class ShopVideoFragment : Fragment() {
 
@@ -35,6 +37,15 @@ class ShopVideoFragment : Fragment() {
             }
         })*/
 
+
+        binding.videoWishIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null).commitAllowingStateLoss()
+        }
+
+        binding.backIb.setOnClickListener {
+            (context as MainActivity).onBackPressed()
+        }
 
         return binding.root
     }
