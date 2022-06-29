@@ -1,51 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/signup_complete_welcome_tv"
+        android:id="@+id/signup_complete_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="jjy_joeun님, Instagram에\n 오신 것을 환영합니다"
-        android:textColor="@color/black"
-        android:textSize="23sp"
-        android:textStyle="bold"
+        android:text="님으로 가입하시겠어요?"
+        android:textSize="24sp"
         android:textAlignment="center"
-        android:layout_marginTop="120dp"
-        android:layout_marginHorizontal="50dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="55dp"
+        android:layout_marginHorizontal="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/signup_complete_complete_btn"
+        android:id="@+id/signup_complete_safe_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="가입 완료하기"
+        android:text="@string/signup_complete_safe"
+        android:textAlignment="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/signup_complete_title_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/signup_complete_safe2_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_complete_safe2"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@id/signup_complete_next_tv"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/signup_complete_next_tv"/>
+
+    <TextView
+        android:id="@+id/signup_complete_next_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="15sp"
         android:paddingVertical="14dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/signup_btn_background"
-        app:layout_constraintTop_toBottomOf="@+id/signup_complete_welcome_tv"/>
+        android:background="@drawable/blue_round_stroke"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/signup_complete_have_account_tv"/>
 
     <TextView
-        android:id="@+id/signup_complete_add_new_tv"
+        android:id="@+id/signup_complete_have_account_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_new_account"
-        android:textColor="#3797EF"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/signup_complete_complete_btn"
+        android:text="@string/alreadyAccount"
+        android:textColor="#A6A6A6"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/signup_complete_login_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/signup_complete_login_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="#3897F0"
+        android:layout_marginStart="7dp"
+        app:layout_constraintTop_toTopOf="@id/signup_complete_have_account_tv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_complete_have_account_tv"
+        app:layout_constraintStart_toEndOf="@id/signup_complete_have_account_tv"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

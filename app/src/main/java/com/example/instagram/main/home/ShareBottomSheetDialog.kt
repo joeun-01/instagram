@@ -41,7 +41,7 @@ class ShareBottomSheetDialog : BottomSheetDialogFragment() {
         binding.sharePostUserRv.adapter = shareRVAdapter
         binding.sharePostUserRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        // 게시물 데이터 받아오기
+        // 유저 데이터 받아오기
         userRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 shareRVAdapter.clearInfo()

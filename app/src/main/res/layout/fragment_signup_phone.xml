@@ -65,7 +65,7 @@
         android:textSize="15sp"
         android:paddingVertical="14dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/login_btn_background"
+        android:background="@drawable/lightblue_round_stroke"
         app:layout_constraintTop_toBottomOf="@id/first_signup_phone_ly"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -74,7 +74,7 @@
         android:id="@+id/first_signup_safe_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_signup_phone_safe"
+        android:text="@string/signup_phone_safe"
         android:textAlignment="center"
         android:textColor="#A6A6A6"
         android:layout_marginTop="20dp"

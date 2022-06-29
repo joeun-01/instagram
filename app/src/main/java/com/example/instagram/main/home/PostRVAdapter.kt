@@ -1,7 +1,6 @@
 package com.example.instagram.main.home
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
@@ -16,6 +15,7 @@ import com.example.instagram.databinding.ItemPostBinding
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+
 
 class PostRVAdapter(private val myInfo : UserDB?, private val myUid : String?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
     private val post = arrayListOf<PostDB>()
@@ -35,7 +35,9 @@ class PostRVAdapter(private val myInfo : UserDB?, private val myUid : String?) :
     // 게시물 좋아요 파이어베이스
     private val mDatabase: DatabaseReference = FirebaseDatabase.getInstance().reference
     private val likeRef = database.getReference("likedPost")
-    private var liked = false
+
+    // 게시물 좋아요 업데이트 파이어베이스
+    private val postRef = database.getReference("post")
 
     interface MyItemClickListener {
         fun onShowComment(post: PostDB)
@@ -69,6 +71,16 @@ class PostRVAdapter(private val myInfo : UserDB?, private val myUid : String?) :
 
     private fun deleteFromLikeTable(postIdx: Int) {  // 좋아요 취소
         likeRef.child(postIdx.toString() + myUid).removeValue()
+    }
+
+    private fun updateLikeNum(post: PostDB, update : Int) {  // 좋아요 개수 업데이트
+        if(post.like + update < 0) return
+
+        val likeNumRef: DatabaseReference = postRef.child(post.postIdx.toString())
+        val likeUpdate: MutableMap<String, Any> = HashMap()
+        likeUpdate["like"] = post.like + update
+
+        likeNumRef.updateChildren(likeUpdate)
     }
 
     private fun getComments(postIdx: Int) {
@@ -136,18 +148,6 @@ class PostRVAdapter(private val myInfo : UserDB?, private val myUid : String?) :
         holder.bind(post[position])
 
         // click listener
-        // 좋아요 관련
-        holder.binding.itemPostLikeIv.setOnClickListener {
-            if (liked) {  // 좋아요가 되어있는 경우
-                deleteFromLikeTable(post[position].postIdx)
-                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
-                liked = false
-            } else {  // 좋아요가 되어있지 않은 경우
-                addToLikeTable(post[position].postIdx)
-                holder.binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
-                liked = true
-            }
-        }
 
         // 댓글 모두 보기, 댓글 아이콘을 누르면 댓글 창으로 넘어가도록
         holder.binding.itemPostShowAllCommentTv.setOnClickListener {
@@ -217,29 +217,47 @@ class PostRVAdapter(private val myInfo : UserDB?, private val myUid : String?) :
             binding.itemPostShowAllCommentTv.text = "댓글 " + (comment + reply) + "개 모두 보기"
             binding.itemPostMyProfileIv.setImageResource(myInfo!!.picture)
 
+            // 좋아요 관련
+            binding.itemPostLikeNumTv.text = "좋아요 " + post.like + "개"
+
             // 좋아요한 게시물은 하트 채우기
             likeRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    var isLike = false
+
+                    // 좋아요 관련
+                    binding.itemPostLikeIv.setOnClickListener {
+                        if (isLike) {  // 좋아요가 되어있는 경우
+                            deleteFromLikeTable(post.postIdx)
+                            binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
+                            updateLikeNum(post, -1)
+                            isLike = false
+                        } else {  // 좋아요가 되어있지 않은 경우
+                            addToLikeTable(post.postIdx)
+                            binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
+                            updateLikeNum(post, +1)
+                            isLike = true
+                        }
+                    }
+
                     if (snapshot.exists()){
                         for (likeSnapShot in snapshot.children){
                             val getData = likeSnapShot.getValue(LikedPostDB::class.java)
 
-                            if (getData != null) {
-                                if(getData.postIdx == post.postIdx) {
-                                    liked = true
+                            if (getData != null) {  // 내가 누른 좋아요가 맞으면 표시
+                                if(getData.postIdx == post.postIdx && getData.uid == myUid) {
+                                    isLike = true
                                     Log.d("CHECKING", getData.postIdx.toString())
                                 }
                             }
                         }
 
-                        if(liked) {  // 좋아요가 되어있는 경우
+                        if(isLike) {  // 좋아요가 되어있는 경우
                             binding.itemPostLikeIv.setImageResource(R.drawable.ic_filled_heart)
                         }
                         else {
                             binding.itemPostLikeIv.setImageResource(R.drawable.ic_heart)
                         }
-
-                        liked = false
                     }
                 }
 

@@ -72,7 +72,7 @@
         android:textAlignment="center"
         android:paddingVertical="12dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/login_btn_background"
+        android:background="@drawable/lightblue_round_stroke"
         app:layout_constraintTop_toBottomOf="@id/login_forget_password_tv"/>
 
     <TextView
