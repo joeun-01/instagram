@@ -1,6 +1,5 @@
 package com.example.instagram.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +9,7 @@ import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.ActivityLoginBinding
 import com.example.instagram.main.MainActivity
 import com.example.instagram.room.InstagramDatabase
-import com.example.instagram.signup.FirstSignUpStep1Activity
+import com.example.instagram.signup.SignUpStep1Activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -46,7 +45,7 @@ class LoginActivity: AppCompatActivity() {
 
         binding.loginSignupTv.setOnClickListener {
             // 회원가입을 원하면 회원가입 창으로
-            startActivity(Intent(this, FirstSignUpStep1Activity::class.java))
+            startActivity(Intent(this, SignUpStep1Activity::class.java))
         }
     }
 
@@ -86,9 +85,8 @@ class LoginActivity: AppCompatActivity() {
         // 파이어베이스를 이용한 로그인
         firebaseAuth!!.signInWithEmailAndPassword(id, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                // 자동로그인, 유저 정보를 불러오기 위한 현재 유저 정보 저장
-                var user : UserDB
 
+                var user : UserDB
                 myRef.child(firebaseAuth!!.currentUser!!.uid).get().addOnSuccessListener {
                     if(it != null) {
                         user = it.getValue(UserDB::class.java)!!
@@ -96,15 +94,19 @@ class LoginActivity: AppCompatActivity() {
                         saveMyUid(firebaseAuth!!.currentUser!!.uid)
                         saveMyInfo(user)
 
+                        Log.d("SUCCESS-MYID", firebaseAuth!!.currentUser.toString())// 홈 화면 띄우기
+
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                     else {
                         Log.d("FAIL-MAIN", "데이터 읽어오기가 실패했습니다")
                     }
                 }
 
-                // 홈 화면 띄우기
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+
+
             } else {
                 Toast.makeText(this, "로그인 오류", Toast.LENGTH_SHORT).show()
             }
