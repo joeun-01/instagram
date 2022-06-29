@@ -99,6 +99,7 @@ class HomeFragment : Fragment() {
                                 storyRVAdapter.addNewStoryToFirst(getData)
                                 exist = true  // 존재 여부를 확인
                             }
+
                             // 내가 올린 스토리가 아니면 순서 상관 없이 추가
                             storyRVAdapter.addNewStory(getData)
                         }
