@@ -1,19 +1,21 @@
 package com.example.instagram.main.home
 
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.instagram.R
 import com.example.instagram.data.PostDB
 import com.example.instagram.data.StoryDB
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentHomeBinding
-import com.example.instagram.room.InstagramDatabase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -25,7 +27,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
 
-    private lateinit var instaDB : InstagramDatabase
     private var gson : Gson = Gson()
 
     // 파이어베이스
@@ -41,7 +42,30 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        instaDB = InstagramDatabase.getInstance(requireContext())!!
+        binding.homeTopHeartIv.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_frm, ActivityFragment()).addToBackStack(null).commit()
+        }
+
+        binding.homeTopAddIv.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(view: View?) {
+                val context: Context = ContextThemeWrapper(context, R.style.PopupMenu)
+                val popUp = PopupMenu(context, view, R.style.PopupMenu)
+                requireActivity().menuInflater.inflate(R.menu.popup, popUp.menu)
+
+                popUp.setOnMenuItemClickListener { item ->
+                    when (item!!.itemId) {
+                        R.id.menu_post -> startActivity(Intent(requireContext(), AddPostActivity::class.java))
+                        R.id.menu_story -> Toast.makeText(requireContext(), "스토리", Toast.LENGTH_SHORT).show()
+                        R.id.menu_reels -> Toast.makeText(requireContext(), "릴스", Toast.LENGTH_SHORT).show()
+                        R.id.menu_live -> Toast.makeText(requireContext(), "라방", Toast.LENGTH_SHORT).show()
+                    }
+
+                    false
+                }
+                popUp.show()
+            }
+
+        })
 
         return binding.root
     }
@@ -75,6 +99,7 @@ class HomeFragment : Fragment() {
                                 storyRVAdapter.addNewStoryToFirst(getData)
                                 exist = true  // 존재 여부를 확인
                             }
+
                             // 내가 올린 스토리가 아니면 순서 상관 없이 추가
                             storyRVAdapter.addNewStory(getData)
                         }

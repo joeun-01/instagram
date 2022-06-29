@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:icon="@drawable/ic_create_post"
+        android:title="@string/post"
+        android:id="@+id/menu_post">
+    </item>
+    <item
+        android:icon="@drawable/ic_create_story"
+        android:title="스토리"
+        android:id="@+id/menu_story">
+    </item>
+    <item
+        android:icon="@drawable/ic_create_reel"
+        android:title="릴스"
+        android:id="@+id/menu_reels">
+    </item>
+    <item
+        android:icon="@drawable/ic_create_live"
+        android:title="라이브 방송"
+        android:id="@+id/menu_live">
+    </item>
+</menu>
