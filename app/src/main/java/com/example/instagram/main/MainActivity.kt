@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         insertUserDummyData()
 
+        mDatabase = FirebaseDatabase.getInstance().reference  // 데이터 넣기용
+
         initBottomNavigation()
 
         // 유저 정보가 잘 들어왔는지 확인
