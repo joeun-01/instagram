@@ -44,7 +44,13 @@ class ReelsRVAdapter(private val reelsList: ArrayList<ReelsItem>): RecyclerView.
             binding.itemReelsImg.setOnCompletionListener{
                 binding.itemReelsImg.start()}
 
+
+            binding.itemReelsImg.setOnPreparedListener{
+                binding.itemReelsImg.start()}
+
         }
+
+        }
+
     }
 
-}
