@@ -166,6 +166,7 @@ class HomeFragment : Fragment() {
                 showShareDialog(postIdx)
             }
         })
+
     }
 
     private fun getMyUid() : String? {  // 내 정보를 가져오기 위한 함수

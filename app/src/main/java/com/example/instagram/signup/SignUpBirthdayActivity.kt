@@ -20,10 +20,10 @@ class SignUpBirthdayActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 생일 저장 후 다음 단계로
-        binding.signupBirthdayDateDp.init(2022, 6, 30, object : DatePicker.OnDateChangedListener{
+        binding.signupBirthdayDateDp.init(2022, 5, 30, object : DatePicker.OnDateChangedListener{
             @SuppressLint("SetTextI18n")
             override fun onDateChanged(view: DatePicker?, year: Int, month: Int, day: Int) {
-                binding.signupBirthdayEt.setText(year.toString() + "년 " + month.toString() + "월 " + day.toString() + "일")
+                binding.signupBirthdayEt.setText(year.toString() + "년 " + (month + 1).toString() + "월 " + day.toString() + "일")
                 binding.signupBirthdayNextTv.setBackgroundResource(R.drawable.blue_round_stroke)
             }
 
