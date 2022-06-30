@@ -37,9 +37,6 @@ class SearchListFragment : Fragment(){
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frm, SearchRstFragment()).commitAllowingStateLoss()
 
-                     //텍스트도 같이 넘어가게끔, 아직 구현 못했어여
-                     //var resultTxt=binding.searchlistSearchbarEt.editableText.toString()
-                     //binding.searchlistSearchbarEt.editableText=resultTxt
 
                 handled = true
             }

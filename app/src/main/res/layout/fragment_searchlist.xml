@@ -122,6 +122,15 @@
             app:layout_constraintTop_toBottomOf="@id/item_list_userid_tv"
             app:layout_constraintStart_toStartOf="@id/item_list_userid_tv" />
 
+<androidx.appcompat.widget.AppCompatImageView
+    android:layout_width="15dp"
+    android:layout_height="15dp"
+    android:src="@drawable/ic_close"
+    android:layout_marginEnd="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/item_list_img_iv"
+    app:layout_constraintBottom_toBottomOf="@id/item_list_img_iv"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -167,7 +176,14 @@
             app:layout_constraintTop_toBottomOf="@id/item_list_userid2_tv"
             app:layout_constraintStart_toStartOf="@id/item_list_userid2_tv" />
 
-
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_close"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_list_img2_iv"
+            app:layout_constraintBottom_toBottomOf="@id/item_list_img2_iv"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -212,6 +228,15 @@
             app:layout_constraintTop_toBottomOf="@id/item_list_userid3_tv"
             app:layout_constraintStart_toStartOf="@id/item_list_userid3_tv" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_close"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_list_img3_iv"
+            app:layout_constraintBottom_toBottomOf="@id/item_list_img3_iv"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_searchlist4_ll"
@@ -255,6 +280,15 @@
             app:layout_constraintTop_toBottomOf="@id/item_list_userid4_tv"
             app:layout_constraintStart_toStartOf="@id/item_list_userid4_tv" />
 
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_close"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_list_img4_iv"
+            app:layout_constraintBottom_toBottomOf="@id/item_list_img4_iv"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

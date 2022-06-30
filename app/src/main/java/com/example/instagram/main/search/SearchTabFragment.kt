@@ -28,9 +28,6 @@ class SearchTabFragment: Fragment() {
     private val database = Firebase.database
     private val searchRef = database.getReference("search")
 
-//    val userID=arguments?.getString("userID")
-//    val picture=arguments?.getInt("picture")
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,7 +41,6 @@ class SearchTabFragment: Fragment() {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, SearchFragment()).commitAllowingStateLoss()
         }
-
 
         return binding.root
     }
@@ -82,7 +78,6 @@ class SearchTabFragment: Fragment() {
                 Log.d("FAIL", "데이터를 불러오지 못했습니다")
             }
         })
-
 
     }
 

@@ -40,9 +40,6 @@ class SearchRVAdapter(private val myInfo : UserDB?, private val myUid : String?)
         Log.d("SUCCESS-POST", this.search.toString())
     }
 
-
-
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemSearchimgBinding =
             ItemSearchimgBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
