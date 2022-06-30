@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.instagram.databinding.FragmentShopItemBinding
+import com.example.instagram.main.MainActivity
 
 class ShopItemFragment : Fragment() {
 
@@ -33,6 +34,9 @@ class ShopItemFragment : Fragment() {
             itemContents2El.parentLayout.setOnClickListener { itemContents2El.toggleLayout() }
         }
 
+        binding.backIb.setOnClickListener {
+            (context as MainActivity).onBackPressed()
+        }
 
 
 
