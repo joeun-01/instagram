@@ -42,15 +42,12 @@ class SearchTabRVAdapter(private val myInfo : UserDB?, private val myUid : Strin
         // 해당 position에 대한 데이터를 binding
         holder.bind(search[position])
 
-
                 }
-
 
     override fun getItemCount(): Int = search.size
 
     inner class ViewHolder(val binding: ItemSearchtabBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
 
         fun bind(search: SearchDB) {
 
