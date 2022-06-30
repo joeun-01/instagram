@@ -16,6 +16,7 @@ import com.example.instagram.data.PostDB
 import com.example.instagram.data.StoryDB
 import com.example.instagram.data.UserDB
 import com.example.instagram.databinding.FragmentHomeBinding
+import com.example.instagram.main.direct.DirectFragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -44,6 +45,10 @@ class HomeFragment : Fragment() {
 
         binding.homeTopHeartIv.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_frm, ActivityFragment()).addToBackStack(null).commit()
+        }
+
+        binding.homeTopSendIv.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_frm, DirectFragment()).addToBackStack(null).commit()
         }
 
         binding.homeTopAddIv.setOnClickListener(object : View.OnClickListener{
