@@ -4,13 +4,9 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.instagram.R
-import com.example.instagram.data.StoryDB
+
 import com.example.instagram.databinding.ItemShopBinding
-import com.example.instagram.main.MainActivity
-import com.example.instagram.main.search.SearchItem
 
 
 class ShopRVAdapter(): RecyclerView.Adapter<ShopRVAdapter.ViewHolder>() {
