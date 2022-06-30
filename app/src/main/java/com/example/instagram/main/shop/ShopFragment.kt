@@ -97,11 +97,11 @@ class ShopFragment : Fragment() {
                         .commitAllowingStateLoss()
                 }
 
-                binding.shopWishAllTv.setOnClickListener {
+                /*binding.shopWishAllTv.setOnClickListener {
                     (context as MainActivity).supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null)
-                        .commitAllowingStateLoss()
-                }
+                        .replace(R.id.main_frm, WishlistFragment())
+                        .commitAllowingStateLoss()gig
+                }*/
 
 
                 val bottomSheet = ShopDialogFragment()
