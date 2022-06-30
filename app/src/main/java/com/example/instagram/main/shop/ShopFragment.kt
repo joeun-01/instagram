@@ -1,6 +1,7 @@
 package com.example.instagram.main.shop
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +11,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentShopBinding
 import com.example.instagram.main.MainActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
 class ShopFragment : Fragment() {
 
     private lateinit var binding: FragmentShopBinding
-    private var shopDatas = ArrayList<ShopItem>()
+    private val database = Firebase.database
+    private val shopRef = database.getReference("shop")
+
+
     private var shopWishDatas = ArrayList<WishItem>()
 
     override fun onCreateView(
@@ -25,15 +34,6 @@ class ShopFragment : Fragment() {
     ): View? {
         binding = FragmentShopBinding.inflate(inflater, container, false)
 
-        //shopping dummy data
-        shopDatas.apply {
-            add(ShopItem(0, R.drawable.shop_item1, 0))
-            add(ShopItem(1, R.drawable.shop_item2, 0))
-            add(ShopItem(2, R.drawable.shop_item3, 0))
-            add(ShopItem(3, R.drawable.shop_item4, 0))
-            add(ShopItem(4, R.drawable.shop_item5, 0))
-            add(ShopItem(5, R.drawable.shop_item6, 0))
-        }
 
         //shopping wish list dummy data
         shopWishDatas.apply {
@@ -43,71 +43,92 @@ class ShopFragment : Fragment() {
             add(WishItem(3, R.drawable.shop_item6, "Lap Skirt White", "treemingbird"))
         }
 
+
+
         binding.shopListRv.layoutManager =
             GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
-        val shopRVAdapter = ShopRVAdapter(shopDatas)
+        val shopRVAdapter = ShopRVAdapter()
         binding.shopListRv.adapter = shopRVAdapter
 
+
+        shopRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                /*shopRVAdapter.clearShop()*/
+
+                for(shopSnapshot in snapshot.children){
+                    val getShop = shopSnapshot.getValue(ShopItem::class.java)
+
+                    if (getShop != null) {
+                        shopRVAdapter.addShopItem(getShop)
+                    }
+
+                    Log.d("Success-shop", getShop.toString())
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("FAIL-SHOP", "No data")
+            }
+        } )
+
         shopRVAdapter.setMyItemClickListener(object : ShopRVAdapter.MyItemClickListener {
-            override fun onItemClick(){
+            override fun onItemClick(Shop: ShopItem) {
                 (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frm, ShopItemFragment()).addToBackStack(null).commitAllowingStateLoss()
+                    .replace(R.id.main_frm, ShopItemFragment().apply {
+                        arguments = Bundle().apply {
+                            val gson = Gson()
+                            val shopJson = gson.toJson(Shop)
+                            putString("shopItem", shopJson)
+                        }
+                    }).addToBackStack(null).commitAllowingStateLoss()
             }
         })
 
 
-        binding.shopWishlistRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val shopWishRVAdapter = ShopWishRVAdapter(shopWishDatas)
-        binding.shopWishlistRv.adapter = shopWishRVAdapter
+                binding.shopWishlistRv.layoutManager =
+                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                val shopWishRVAdapter = ShopWishRVAdapter(shopWishDatas)
+                binding.shopWishlistRv.adapter = shopWishRVAdapter
 
 
-        binding.shopWishIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null).commitAllowingStateLoss()
-        }
-
-
-        val bottomSheet = ShopDialogFragment()
-
-        binding.shopListIv.setOnClickListener {
-            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
-        }
-
-
-        binding.shopMenuGuideTv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, GuideFragment()).addToBackStack(null).commitAllowingStateLoss()
-        }
-
-        binding.shopMenuVideoTv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, ShopVideoFragment()).addToBackStack(null).commitAllowingStateLoss()
-        }
-
-        binding.shopMenuEditorTv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, EditorFragment()).addToBackStack(null).commitAllowingStateLoss()
-        }
-
-        binding.shopMenuCollectionTv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, CollectionFragment()).addToBackStack(null).commitAllowingStateLoss()
-        }
-
-
-        return binding.root
-    }
-
-    private fun changeDetailFragment(shopItem: ShopItem) {
-        (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, ShopItemFragment()
-                /*.apply {
-                arguments = Bundle().apply {
-                    val gson = Gson()
-                    val shopJson = gson.toJson(shopItem)
-                    putString("shopItem", shopJson)
+                binding.shopWishIv.setOnClickListener {
+                    (context as MainActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null)
+                        .commitAllowingStateLoss()
                 }
-            }*/)
-            .commitAllowingStateLoss()
-    }
-}
+
+
+                val bottomSheet = ShopDialogFragment()
+
+                binding.shopListIv.setOnClickListener {
+                    bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+                }
+
+
+                binding.shopMenuGuideTv.setOnClickListener {
+                    (context as MainActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frm, GuideFragment()).addToBackStack(null)
+                        .commitAllowingStateLoss()
+                }
+
+                binding.shopMenuVideoTv.setOnClickListener {
+                    (context as MainActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frm, ShopVideoFragment()).addToBackStack(null)
+                        .commitAllowingStateLoss()
+                }
+
+                binding.shopMenuEditorTv.setOnClickListener {
+                    (context as MainActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frm, EditorFragment()).addToBackStack(null)
+                        .commitAllowingStateLoss()
+                }
+
+                binding.shopMenuCollectionTv.setOnClickListener {
+                    (context as MainActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frm, CollectionFragment()).addToBackStack(null)
+                        .commitAllowingStateLoss()
+                }
+
+                return binding.root
+            }
+        }

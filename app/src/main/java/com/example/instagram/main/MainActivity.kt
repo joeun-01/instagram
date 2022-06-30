@@ -31,6 +31,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Log.d("shop1", R.drawable.shop_item1.toString())
+        Log.d("shop2", R.drawable.shop_item2.toString())
+        Log.d("shop3", R.drawable.shop_item3.toString())
+        Log.d("shop4", R.drawable.shop_item4.toString())
+        Log.d("shop5", R.drawable.shop_item5.toString())
+        Log.d("shop6", R.drawable.shop_item6.toString())
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

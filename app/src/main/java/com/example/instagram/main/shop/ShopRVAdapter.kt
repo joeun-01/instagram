@@ -1,20 +1,39 @@
 package com.example.instagram.main.shop
 
+import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+
 import com.example.instagram.databinding.ItemShopBinding
 
 
-class ShopRVAdapter(private val shopList: ArrayList<ShopItem>): RecyclerView.Adapter<ShopRVAdapter.ViewHolder>() {
+class ShopRVAdapter(): RecyclerView.Adapter<ShopRVAdapter.ViewHolder>() {
+    private var shopList = ArrayList<ShopItem>()
+
 
     interface MyItemClickListener{
-        fun onItemClick()
+        fun onItemClick(shop : ShopItem)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
     fun setMyItemClickListener(itemClickListener: MyItemClickListener){
         mItemClickListener = itemClickListener
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addShopItem(shop : ShopItem) {
+        Log.d("shop-complete", "성공")
+        this.shopList.add(shop)
+        notifyDataSetChanged()
+        Log.d("Success-Shop", this.shopList.toString())
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearShop() {
+        this.shopList.clear()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -34,11 +53,11 @@ class ShopRVAdapter(private val shopList: ArrayList<ShopItem>): RecyclerView.Ada
     inner class ViewHolder(private val binding: ItemShopBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(Img: ShopItem) {
-            binding.shopItemIv.setImageResource(Img.shopImg!!)
+        fun bind(shop: ShopItem) {
+            binding.shopItemIv.setImageResource(shop.shopImg!!)
 
             binding.shopItemIv.setOnClickListener {
-                mItemClickListener.onItemClick()
+                mItemClickListener.onItemClick(shop)
             }
 
         }
