@@ -2,6 +2,7 @@ package com.example.instagram.main.search
 
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

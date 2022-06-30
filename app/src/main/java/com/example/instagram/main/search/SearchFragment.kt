@@ -35,8 +35,6 @@ class SearchFragment: Fragment() {
     private val database = Firebase.database
     private val searchRef = database.getReference("search")
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,7 +48,6 @@ class SearchFragment: Fragment() {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, SearchListFragment()).commitAllowingStateLoss()
         }
-
 
         return binding.root
     }
@@ -98,26 +95,14 @@ class SearchFragment: Fragment() {
     }
     private fun showSearchtab(search: SearchDB) {  // 탐색탭
 
-
         val searchtabFragment=SearchTabFragment()
-//
-//        var bundle=Bundle()
-//        bundle.putString("userId",search.uid)
-//        bundle.putString("picture",search.picture.toString())
-//        bundle.putString("text",search.text)
-////
-//        searchtabFragment.arguments=bundle
         setFragment(searchtabFragment)
-
-
     }
 
     private fun setFragment(fragment: Fragment){
         (context as MainActivity).supportFragmentManager.beginTransaction()
             .replace(R.id.main_frm,SearchTabFragment()).commitAllowingStateLoss()
     }
-
-
 
     private fun getMyUid() : String? {  // 내 정보를 가져오기 위한 함수
         val userSP = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)

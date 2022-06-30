@@ -48,6 +48,15 @@ class MainActivity : AppCompatActivity() {
         // 유저 정보가 잘 들어왔는지 확인
 //        Log.d("SUCCESS-INFO", getMyInfo().toString())
 
+        Log.d("POSTYAMYAM", R.drawable.post_dummy1.toString())
+        Log.d("POSTYAMYAM", R.drawable.post_dummy2.toString())
+        Log.d("POSTYAMYAM", R.drawable.post_dummy3.toString())
+        Log.d("POSTYAMYAM", R.drawable.post_dummy4.toString())
+        Log.d("POSTYAMYAM", R.drawable.post_dummy5.toString())
+        Log.d("POSTYAMYAM", R.drawable.post_dummy6.toString())
+
+
+
         var user : UserDB
         userRef.child(getMyUid().toString()).get().addOnSuccessListener {
             if(it != null) {
