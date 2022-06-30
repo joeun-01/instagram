@@ -33,8 +33,8 @@ class ReelsRVAdapter(private val reelsList: ArrayList<ReelsItem>): RecyclerView.
             binding.itemReelsUserimgIv.setImageResource(Img.userImg!!)
             binding.itemReelsUserimg2Iv.setImageResource(Img.userImg!!)
             binding.itemReelsContentTv.text=Img.content
-            //비디오 재생
 
+            //비디오 재생
             val videoUri = Uri.parse( "android.resource://com.example.instagram/"   + Img.ReelsImg!!)
 
             binding.itemReelsImg.setVideoURI(videoUri)
@@ -44,7 +44,7 @@ class ReelsRVAdapter(private val reelsList: ArrayList<ReelsItem>): RecyclerView.
             binding.itemReelsImg.setOnCompletionListener{
                 binding.itemReelsImg.start()}
 
-
+            //다시 돌아와도 재생되게
             binding.itemReelsImg.setOnPreparedListener{
                 binding.itemReelsImg.start()}
 

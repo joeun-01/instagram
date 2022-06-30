@@ -40,10 +40,9 @@ class ReelsFragment: Fragment() {
         binding.reelsRv.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
 
+        //한 페이지씩 넘어가게
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.reelsRv)
-
-
 
         return binding.root
 
