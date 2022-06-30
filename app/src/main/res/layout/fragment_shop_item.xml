@@ -19,8 +19,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/item_shop_profile_iv"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:src="@drawable/basic_profile"
         android:layout_marginStart="25dp"
         app:layout_constraintTop_toTopOf="@id/back_ib"
@@ -34,7 +34,7 @@
         android:text="shop.treemingbird"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:layout_marginStart="15dp"
         app:layout_constraintTop_toTopOf="@id/item_shop_profile_iv"
         app:layout_constraintStart_toEndOf="@id/item_shop_profile_iv"
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:text="집업 셔츠 화이트"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
@@ -100,15 +100,26 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
-                android:id="@+id/item_detail_price_tv"
+                android:id="@+id/item_detail_won_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="&#65510;129,000"
-                android:textSize="20dp"
+                android:text="&#65510;"
+                android:textSize="17sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="7dp"
                 app:layout_constraintTop_toBottomOf="@id/item_detail_name_tv"
                 app:layout_constraintStart_toStartOf="@id/item_detail_name_tv"/>
+
+            <TextView
+                android:id="@+id/item_detail_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&#65510;129,000"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="7dp"
+                app:layout_constraintTop_toBottomOf="@id/item_detail_name_tv"
+                app:layout_constraintStart_toEndOf="@id/item_detail_won_tv"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/item_detail_bookmark_iv"
@@ -160,7 +171,7 @@
         <View
             android:id="@+id/item_detail_line1"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="5dp"
             android:background="@color/light_gray"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@id/item_website_cv"/>
@@ -177,6 +188,7 @@
                 app:expandable_spinner_margin="10dp"
                 app:expandable_duration="200"
                 app:expandable_isExpanded="false"
+                android:paddingBottom="20dp"
                 app:expandable_parentLayout="@layout/item_content_parent"
                 app:expandable_secondLayout="@layout/item_content_child"
                 app:layout_constraintTop_toBottomOf="@id/item_detail_line1"/>
@@ -192,7 +204,8 @@
                 app:expandable_spinner_size="20dp"
                 app:expandable_spinner_gravity="end"
                 app:expandable_spinner_margin="10dp"
-                app:expandable_isExpanded="true"
+                app:expandable_isExpanded="false"
+                android:paddingBottom="20dp"
                 app:expandable_parentLayout="@layout/item_content2_parent"
                 app:expandable_secondLayout="@layout/item_content2_child"
                 app:layout_constraintTop_toBottomOf="@id/item_contents_el"/>
@@ -201,7 +214,7 @@
             <View
                 android:id="@+id/item_detail_line2"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="5dp"
                 android:background="@color/light_gray"
                 app:layout_constraintTop_toBottomOf="@id/item_contents2_el"/>
 
@@ -284,6 +297,7 @@
                 android:textSize="15sp"
                 android:textColor="@color/blue"
                 android:layout_marginTop="3dp"
+                android:paddingBottom="10dp"
                 app:layout_constraintStart_toStartOf="@id/shipping_brand_id_tv"
                 app:layout_constraintTop_toBottomOf="@id/shipping_brand_follow_tv"/>
 
@@ -297,6 +311,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:paddingBottom="10dp"
                 app:layout_constraintTop_toBottomOf="@id/shop_more_tv"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -315,8 +330,9 @@
             <View
                 android:id="@+id/item_detail_line3"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="5dp"
                 android:background="@color/light_gray"
+                android:layout_marginTop="10dp"
                 app:layout_constraintTop_toBottomOf="@id/shipping_message_cv"/>
 
             <TextView
@@ -351,26 +367,9 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_brand"
                 android:layout_marginTop="15dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/item_show_brand_tv"/>
 
-            <TextView
-                android:id="@+id/item_together_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="함께 나온 제품"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="25dp"
-                app:layout_constraintStart_toStartOf="@id/item_show_brand_tv"
-                app:layout_constraintTop_toBottomOf="@id/item_more_rv"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/item_together_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/item_together_tv"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/brand_profile_iv"
@@ -378,7 +377,7 @@
                 android:layout_height="50dp"
                 android:src="@drawable/basic_profile"
                 android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/item_together_rv"
+                app:layout_constraintTop_toBottomOf="@id/item_more_rv"
                 app:layout_constraintStart_toStartOf="@id/item_show_brand_tv"/>
 
             <TextView
@@ -386,7 +385,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:text="쇼핑 계속하기"
                 android:layout_marginStart="15dp"
                 app:layout_constraintStart_toEndOf="@id/brand_profile_iv"
@@ -397,7 +396,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/grey"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:text="shop.treemingbird"
                 android:layout_marginTop="3dp"
                 app:layout_constraintTop_toBottomOf="@id/continue_tv"
@@ -409,7 +408,8 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_arrow_down"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_arrow_gray"
                 android:layout_marginEnd="15dp"
                 app:layout_constraintTop_toTopOf="@id/brand_profile_iv"
                 app:layout_constraintBottom_toBottomOf="@id/brand_profile_iv"

@@ -43,6 +43,14 @@ class ShopVideoFragment : Fragment() {
                 .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null).commitAllowingStateLoss()
         }
 
+        videoDatas.apply {
+            add(ShopVideo(R.drawable.guide, "doremifa"))
+            add(ShopVideo(R.drawable.guide, "doremifa"))
+            add(ShopVideo(R.drawable.guide, "doremifa"))
+            add(ShopVideo(R.drawable.guide, "doremifa"))
+            add(ShopVideo(R.drawable.guide, "doremifa"))
+        }
+
         binding.backIb.setOnClickListener {
             (context as MainActivity).onBackPressed()
         }

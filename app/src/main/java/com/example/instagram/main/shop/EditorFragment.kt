@@ -47,6 +47,13 @@ class EditorFragment : Fragment() {
             (context as MainActivity).onBackPressed()
         }
 
+        editors.apply {
+            add(Editor(R.drawable.editor,"android.official", "에디터"))
+            add(Editor(R.drawable.editor,"android.official", "에디터"))
+            add(Editor(R.drawable.editor,"android.official", "에디터"))
+            add(Editor(R.drawable.editor,"android.official", "에디터"))
+        }
+
 
         return binding.root
     }
