@@ -39,6 +39,7 @@ class SignUpPasswordActivity : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // 입력이 시작되면 작동
                 binding.signupPasswordEt.hint = "입력 중"
+
             }
 
             override fun afterTextChanged(text: Editable?) {
@@ -46,6 +47,9 @@ class SignUpPasswordActivity : AppCompatActivity() {
                 if (text != null) {  // 무조건 6글자 이상이어야 함
                     if(text.length >= 6) {
                         binding.signupPasswordNextBtn.setBackgroundResource(R.drawable.blue_round_stroke)
+                    }
+                    else{
+                        binding.signupPasswordNextBtn.setBackgroundResource(R.drawable.lightblue_round_stroke)
                     }
                 }
 

@@ -41,6 +41,10 @@ class SignUpEmailFragment : Fragment() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // 입력이 시작되면 작동
                 binding.firstSignupEmailNextTv.setBackgroundResource(R.drawable.blue_round_stroke)
+
+                if(p0.isNullOrBlank()) {
+                    binding.firstSignupEmailNextTv.setBackgroundResource(R.drawable.more_lightblue_round_stroke)
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {

@@ -112,7 +112,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_post"
+                android:src="@drawable/ic_follow"
                 app:layout_constraintStart_toStartOf="@id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@+id/stts_searchbar_iv" />
 
@@ -133,7 +133,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_reel"
+                android:src="@drawable/ic_notification"
                 app:layout_constraintStart_toStartOf="@id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@id/stts_followNinvate_iv"/>
 
@@ -154,7 +154,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_story"
+                android:src="@drawable/ic_privacy"
                 app:layout_constraintStart_toStartOf="@+id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@+id/stts_notifications_iv"/>
 
@@ -175,7 +175,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_highlight"
+                android:src="@drawable/ic_security"
                 app:layout_constraintStart_toStartOf="@id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@+id/stts_privacy_iv"/>
 
@@ -196,7 +196,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_live"
+                android:src="@drawable/ic_ads"
                 app:layout_constraintStart_toStartOf="@id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@+id/stts_security_iv"/>
 
@@ -217,7 +217,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_guide"
+                android:src="@drawable/ic_account"
                 app:layout_constraintStart_toStartOf="@id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@+id/stts_ads_iv"/>
 
@@ -238,7 +238,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_guide"
+                android:src="@drawable/ic_help"
                 app:layout_constraintStart_toStartOf="@id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@+id/stts_accounts_iv"/>
 
@@ -259,7 +259,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_create_guide"
+                android:src="@drawable/ic_about"
                 app:layout_constraintStart_toStartOf="@id/stts_searchbar_iv"
                 app:layout_constraintTop_toBottomOf="@+id/stts_help_iv"/>
 

@@ -39,6 +39,10 @@ class SignUpNameActivity : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // 입력이 시작되면 작동
                 binding.signupNameNextTv.setBackgroundResource(R.drawable.blue_round_stroke)
+
+                if(p0.isNullOrBlank()) {
+                    binding.signupNameNextTv.setBackgroundResource(R.drawable.lightblue_round_stroke)
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {
