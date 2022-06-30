@@ -11,7 +11,7 @@ class ProfileVPAdapter(fragment : Fragment) : FragmentStateAdapter(fragment){
     override fun createFragment(position: Int): Fragment {
         return when(position) {
             // 여기에 들어간 Fragment는 나중에 만들어서 수정해주면 됩니닷
-            0 -> HomeFragment()
+            0 -> GridPostFragment()
             else -> HomeFragment()
         }
     }
