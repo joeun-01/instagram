@@ -42,6 +42,11 @@ class CollectionFragment : Fragment() {
                 .replace(R.id.main_frm, WishlistFragment()).addToBackStack(null).commitAllowingStateLoss()
         }
 
+        collections.apply {
+            add(Collection(R.drawable.profile_ex1, "seveteen.official", "Bella Vita Rosa", 13, R.drawable.collection))
+
+        }
+
         binding.backIb.setOnClickListener {
             (context as MainActivity).onBackPressed()
         }

@@ -44,6 +44,11 @@ class GuideFragment : Fragment() {
 
         }
 
+        guideDatas.apply {
+            add(Guide(0, R.drawable.profile_ex1, 13, "seveteen.official", "Hello Sunshine!", R.drawable.guide))
+            add(Guide(0, R.drawable.profile_ex1, 13, "seveteen.official", "Hello Sunshine!", R.drawable.guide))
+        }
+
         binding.backIb.setOnClickListener {
             (context as MainActivity).onBackPressed()
         }
